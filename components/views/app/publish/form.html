@@ -1,0 +1,22 @@
+<form id="scheme-form" lay-filter="scheme-form" class="layui-form model-form">
+    <input name="publish_id" type="hidden" lay-filter="publish_id"  id="publish_id" value={{publish_id}} />
+    <div class="layui-form-item">
+        <label class="layui-form-label">版式</label>
+        <div class="layui-input-block">
+            <select id="scheme_sku_id" name="scheme_sku_id" lay-filter="scheme_sku_id" lay-verify="required">
+                <option value="">请选择</option>
+                <option p-for="schemes" p-bind="value:{{id}}">{{name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="scheme-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/app/publish/add.js?v=0.0.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

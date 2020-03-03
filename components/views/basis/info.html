@@ -1,0 +1,70 @@
+<!--提示信息-->
+<style>
+.layui-form-label{
+  width: 100px
+}
+</style>
+<div class="layui-col-md12">
+    <div class="layui-card">
+        <div class="layui-card-header">首页 - 网站配置</div>
+    </div>
+</div>
+<!--提示信息-->
+<form action="" class="layui-form layer-form" id="article-form" lay-filter="article-form">
+    <input type="hidden" name="row">
+    <input id="material-id" type="hidden" name="id">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md8">
+            <div class="layui-tab layui-tab-card">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">后台版本:</label>
+                        <div class="layui-col-md8">
+                            <input type="text" maxlength="100" lay-verify="required" name="adminVersion" autocomplete="off" placeholder="请输入标题"
+                                class="layui-input" value=''>
+                        </div>
+                    </div>
+                    <input type="hidden" name="type_id" value="2" title="图集">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"> app版本:</label>
+                        <div class="layui-col-md8">
+                            <div class="layui-col-md8">
+                                <input type="text"  maxlength="100" lay-verify="required" name="apiVersion" autocomplete="off"
+                                    placeholder="请输入标题" class="layui-input" value=''>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">客服联系方式: </label>
+                        <div class="layui-col-md8">
+                                <div class="layui-col-md8">
+                                    <input type="text"  maxlength="100" lay-verify="required" name="serverContact" autocomplete="off"
+                                        placeholder="请输入标题" class="layui-input" value=''>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">管理员联系方式:</label>
+                            <div class="layui-col-md8">
+                                    <div class="layui-col-md8">
+                                        <input type="text"  maxlength="100" lay-verify="required" name="adminContact" autocomplete="off"
+                                            placeholder="请输入标题" class="layui-input" value=''>
+                                    </div>
+                                </div>
+                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                    <button type="button" class="layui-btn" lay-filter="form-submit" lay-submit>
+                        <i class="layui-icon">修改</i>
+                    </button>
+                </div>
+                
+        </div>
+
+    </div>
+</form>
+<script src="/assets/module/sys/basis/info.js">
+</script>

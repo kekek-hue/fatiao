@@ -1,0 +1,40 @@
+<form  enctype="multipart/form-data" id="person-form" lay-filter="person-form" class="layui-form model-form">
+    <input type="hidden" name="id" id="id">
+    <input type="hidden" name="edit_type" value="integral" id="edit_type">
+    <div class="layui-form-item">
+        <label class="layui-form-label">名称</label>
+        <div class="layui-input-block">
+            <input id="name" name="name" placeholder="请输入名称" disabled type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">最大次数</label>
+        <div class="layui-input-block">
+            <input id="max_num" name="max_num" placeholder="最大次数"  type="number" class="layui-input" min="0" lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">增加分数</label>
+        <div class="layui-input-block">
+            <input id="add_num" name="add_num" placeholder="最大次数"  type="number" class="layui-input" min="0" lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">最高增加次数</label>
+        <div class="layui-input-block">
+            <input id="increase_num" name="increase_num" placeholder="最高增加次数"  type="increase_num" class="layui-input" min="0" lay-verify="required"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button type="button" class="layui-btn" lay-filter="integral-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript" src="/assets/module/sys/integral/form.js"></script>
+<script type="text/javascript">
+    layui.use('element',function(){
+        Lay(layui);
+    });
+</script>

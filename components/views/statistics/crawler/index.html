@@ -1,0 +1,66 @@
+<!-- 搜索条件 -->
+<div class="layui-card">
+  <div class="layui-form layui-card-header">
+       <form id='searchForm' onsubmit="return false;" >
+          <div class="layui-inline">
+            <label class="layui-form-label">来源网址：</label>
+            <div class="layui-input-block">
+                <select name="site_id" id="site_id" lay-verify="">
+                  <option value="" >请选择</option>
+                </select>  
+            </div>
+          </div>
+          <div class="layui-inline">
+            <label class="layui-form-label">开始时间：</label>
+            <div class="layui-input-block"> 
+                <input type="text" class="layui-input" id="start_time" name="start_time">
+            </div>
+          </div>
+          <div class="layui-inline">
+            <label class="layui-form-label">结束时间：</label>
+            <div class="layui-input-block">
+              <input type="text" class="layui-input" id="end_time" name="end_time">
+            </div>
+          </div>
+          <div class="layui-inline">
+            <button id="crawler-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+          </div>
+        </form>
+  </div>
+</div>          
+<!-- 搜索条件 -->
+
+<!--数据概览-->
+<div class="layui-card">
+  <div class="layui-row layui-col-space15">
+      <div class="layui-col-xs15 layui-col-md15">
+          <div class="layui-card">
+            <div class="layui-card-header">来源数据概括图表</div>
+            <div class="layui-card-body">
+              <div class="layui-carousel layadmin-dataview crown-carousel crown-news" id="crawler-dataview-div">
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>    
+</div>
+<!--数据概览-->
+<div class="layui-card">
+    <div class="layui-card-body">
+       <!-- 表格顶部操作列 -->
+        <script type="text/html" id="crawler-chart-toolbar">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm"><i
+                        class="layui-icon">&#xe654;</i>预览
+                </button>
+            </div>
+        </script>
+        <!-- 表格顶部操作列 -->
+          <table class="layui-table" id="crawler-chart-table" lay-filter="crawler-chart-table"></table>
+        <!-- 表格顶部操作列 -->
+    </div>
+</div>
+
+<script type="text/javascript">
+  layui.use(['sys/statistics/crawler/crawlerChart']);
+</script>

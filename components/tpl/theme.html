@@ -1,0 +1,91 @@
+
+<!-- 主题设置模板 -->
+
+<script type="text/html" template lay-done="">
+  {{# 
+    var local = layui.data(layui.setter.tableName)
+    ,theme = local.theme || {}
+    ,themeColorIndex =  parseInt((theme && theme.color) ? theme.color.index : 0) || 0;
+  }}
+  <div class="layui-card-header">
+    配色方案:
+  </div>
+  <div class="layui-card-body layadmin-setTheme">
+    <ul class="layadmin-setTheme-color">
+      {{# layui.each(layui.setter.theme.color, function(index, item){ }}
+        <li layadmin-event="setTheme" data-index="{{ index }}" data-alias="{{ item.alias }}" 
+        {{ index === themeColorIndex ? 'class="layui-this"' : '' }} title="{{ item.alias }}">
+          <div class="layadmin-setTheme-header" style="background-color: {{ item.header }};"></div>
+          <div class="layadmin-setTheme-side" style="background-color: {{ item.main }};">
+            <div class="layadmin-setTheme-logo" style="background-color: {{ item.logo }};"></div>
+          </div>
+        </li>
+      {{# }); }}
+    </ul>
+  </div>
+</script>
+<!-- 主题设置模板 -->
+<script type="text/html" template lay-done="">
+  {{# 
+    var local = layui.data(layui.setter.tableName)
+    ,theme = local.theme || {}
+    ,initBgIndex =  parseInt((theme && theme.color) ? theme.color.index : 0) || 0;
+  }}
+  <div class="layui-card-header">
+    背景图片方案:
+  </div>
+  <div class="layui-card-body layadmin-setTheme">
+    <ul class="layadmin-setTheme-color">
+      {{# layui.each(layui.setter.themeBg.imgs, function(index, item){ }}
+        <li layadmin-event="setThemeBg" data-index="{{ index }}" 
+        {{ index === initBgIndex ? 'class="layui-this"' : '' }} title="{{ item.alias }}">
+          {{# if(item.path) { }}
+            <img  src="{{ item.path }}">
+          {{# }else{ }}
+            <cite>{{ item.alias }}</cite>
+          {{# } }}
+        </li>
+      {{# }); }}
+    </ul>
+  </div>
+</script>
+<!--opacity begin-->
+ <div class="layui-card-header">
+    透明度:
+  </div>
+  <div class="layui-card-body layadmin-setTheme">
+    <div id="opacity-slider" class="opacity-slider"></div>
+  </div>
+<!--opacity end-->
+
+<script>
+  layui.use(['slider','setter','index'], function(){
+   var $ = layui.$
+   ,slider = layui.slider
+   setter = layui.setter,
+   opacityValue = 100,
+   index = layui.index;
+
+   var e = layui.data(setter.tableName);
+   index.setOpacity(e.opacityValue);
+   e.opacityValue ? index.setOpacity(e.opacityValue) : setter.opacityValue && index.initOpacity(setter.opacityValue) ;
+   if(e.opacityValue){
+      opacityValue = e.opacityValue;
+   }else{
+      opacityValue = setter.opacityValue;
+   }
+    //开启输入框
+   var opacitySlider =  slider.render({
+      elem: '#opacity-slider'
+      ,input: true //输入框
+      ,value: opacityValue
+      ,change: function(value){
+        if(value > 0){
+          index.setOpacity(value);
+        }
+      }
+    });
+   opacitySlider.setValue(opacityValue);
+  });
+</script>
+

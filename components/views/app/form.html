@@ -1,0 +1,57 @@
+<form id="scheme-sku-form" lay-filter="scheme-sku-form" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <div class="layui-form-item">
+        <label class="layui-form-label">版式名称：</label>
+        <div class="layui-input-block">
+            <input name="name" placeholder="请输入版式名称" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">文章类型：</label>
+        <div class="layui-input-block">
+            <select name="article_type" id="article_type" lay-verify="required" lay-filter="article_type">
+            </select>
+        </div>
+    </div>
+    
+    <div class="layui-form-item" id="routerDiv">
+        <label class="layui-form-label">排序：</label>
+        <div class="layui-input-block">
+            <input name="sort" placeholder="版式排序,越小越靠前" type="text" class="layui-input" maxlength="64" lay-verify=""/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型：</label>
+        <div class="layui-input-block">
+            <input type="radio" name="type" value="1" title="列表" checked="checked">
+            <input type="radio" name="type" value="2" title="大轮播">
+            <input type="radio" name="type" value="3" title="小轮播">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态：</label>
+        <div class="layui-input-block">
+            <input type="radio" name="status" value="0" title="正常" checked="checked">
+            <input type="radio" name="status" value="1" title="禁用">
+        </div>
+    </div>
+
+   <div class="layui-form-item">
+        <label class="layui-form-label">是否固定：</label>
+        <div class="layui-input-block">
+            <input type="radio" name="scheme_type" value="2" title="固定" checked="checked">
+            <input type="radio" name="scheme_type" value="1" title="不固定">
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="scheme-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/app/add.js?v=0.0.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

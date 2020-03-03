@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="screen-orientation" content="portrait">
+		<link rel="stylesheet" href="css/mui.min.css">
+
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.mui-control-content {
+			/* background-color: white; */
+			/* height: calc(100vh-60px); */
+			/* min-height: calc(100vh - 60px); */
+		}
+
+		#dom{
+			height:675px;
+			padding-bottom: 10px;
+			background-color: white;
+			overflow-y: auto;
+
+		}
+			
+		body{
+			height: 100% !important;
+		}
+
+		.mui-slider {
+			background: #FFFFFF;
+		}
+		#sliderProgressBar {
+			background: #FFFFFF;
+			height: 3px;
+		}
+
+		.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+			color: #3966A7
+		}
+
+		#sliderProgressBar p {
+			height: 100%;
+			background: #3966a7;
+			width: 55%;
+			margin: 0 auto;
+		}
+
+		#top {
+			color: #999;
+			padding: 8px;
+			position: fixed;
+			top: 60px;
+			
+
+		}
+
+
+		.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+			border: none;
+		}
+
+		.mui-control-item img {
+			height: 35px;
+			width: 35px;
+		}
+
+		.mui-control-item * {
+			vertical-align: middle;
+		}
+
+
+
+		.task {
+			display: flex;
+			justify-content: space-between;
+			border-bottom: 1px solid #eee;
+			padding: 8px 10px
+		}
+
+		.task div p {
+			color: #333;
+			font-size: 1rem;
+		}
+
+		.task div .task_plan {
+			color: #999;
+			font-size: 14px
+		}
+
+		.task>p {
+			height: 34px;
+			line-height: 30px;
+			width: 90px;
+			text-align: center;
+			color: #333;
+			border-radius: 20px;
+			margin-top: 5px;
+			font-size: 16px;
+		}
+
+		.task .completed {
+			color: #3966a7;
+		}
+
+		.nodata {
+			text-align: center;
+			color: #666;
+			margin-top: 100px;
+			font-size: 20px
+		}
+
+		#item1mobile {
+			margin-top: 0.625rem;
+		}
+			
+		#slider{
+			height: 100%;
+			overflow-y: auto;
+		}
+		
+	</style>
+
+	<body>
+		<div  id="dom">
+			<div id="slider" class="mui-slider">
+				<div class="top">
+					<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<a class="mui-control-item left-item mui-active" href="#item1mobile">
+							<span><img :src="integral" alt="" srcset="" v-show="show_img"> <img :src="integralActive" alt="" srcset=""
+								 v-show="img_show">赚积分</span>
+						</a>
+						<a class="mui-control-item" href="#item2mobile">
+							<span><img :src="gift" alt="" srcset="" v-show="img_show"><img :src="giftActive" alt="" srcset="" v-show="show_img">积分兑换</span>
+						</a>
+					</div>
+					<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6">
+						<p></p>
+					</div>
+				</div>
+
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+
+						<div class="mui-table-view">
+							<div class="task" v-for="i in renwulist">
+								<div>
+									<p>{{i.name}}</p>
+									<p class="task_plan">用户每天{{i.name}}({{i.return=="已完成"?i.max_num:i.return}}/{{i.max_num}}) 可获得{{i.add_num}}积分奖励</p>
+								</div>
+								<p :class="i.return=='已完成'?completed:''">{{i.return=="已完成"?i.return:"未完成"}}</p>
+							</div>
+						</div>
+
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class='nodata'>--- 敬请期待 ---</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src='js/vue.min.js'></script>
+		<script>
+			var vm = new Vue({
+				el: '#dom',
+				data: {
+					integral: "img/integral.png",
+					integralActive: "img/integralActive.png",
+					gift: "img/gift.png",
+					giftActive: "img/gitActive.png",
+					img_show: true,
+					show_img: false,
+					renwulist: []
+				},
+
+				mounted() {},
+				created() {
+					this.brige();
+					this.getrenwu()
+				},
+				activated() {
+					this.brige();
+					this.getrenwu()
+				},
+				methods: {
+					brige() {
+						var that = this
+						window.getparms = function(data) {
+
+							that.userid = data.content;
+
+						};
+
+					},
+
+					getrenwu() {
+						let that = this;
+						mui.ajax('http://api2.ceh.com.cn/integral/info', {
+							data: {
+								user_id: this.userid
+							},
+							dataType: 'json', //服务器返回json格式数据
+							type: 'get', //HTTP请求类型
+							success: function(data) {
+								that.renwulist = data.data
+
+							},
+							error: function(xhr, type, errorThrown) {
+
+							}
+						});
+
+					},
+				},
+			});
+			// mui.init({
+			// 	swipeBack: false
+			// });
+			(function($) {
+				// $('.mui-scroll-wrapper').scroll({
+				// 	indicators: true //是否显示滚动条
+				// });
+
+				var item2 = document.getElementById('item2mobile');
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					vm.img_show = !vm.img_show;
+					vm.show_img = !vm.show_img;
+					if (e.detail.slideNumber === 1) {
+						document.getElementById("slider").style.overflowY="hidden"
+						
+					}else{
+						document.getElementById("slider").style.overflowY="auto"
+					}
+				});
+
+			})(mui);
+		</script>
+
+	</body>
+
+</html>

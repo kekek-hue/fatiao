@@ -1,0 +1,64 @@
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-normal" lay-event="edit-attr">其他图片</button>
+    <button class="layui-btn layui-btn-normal" lay-event="update-attr">编辑</button>
+    <button class="layui-btn layui-btn-normal" lay-event="chapters-attr">发布</button>
+    <!--<i class="layui-icon layui-icon-edit" title="编辑" lay-event="update-attr"></i>-->
+    <!--<i class="layui-icon layui-icon-website" title="发布" lay-event="chapters-attr"></i>-->
+</script>
+
+<div class="layui-fluid">
+    <div class="crumb-caption">
+    <span class="crumb">
+      <a href="/">首页</a>
+      <a href="javascript:;"> /图集</a>
+    </span>
+    </div>
+    <script type="text/html" id="articleTool">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-normal" lay-event="addPic">添加</button>
+            <button type="button" class="layui-btn layui-btn-normal" lay-event="getCheckData">删除</button>
+        </div>
+    </script>
+    <table class="layui-table article-table" id="article-table" lay-filter="article-table">
+    </table>
+
+    <div class="layui-tab-item">
+        <div id="pageDemo"></div>
+    </div>
+</div>
+<script type="text/html" id="newType">
+    {{# if (d.type == 1){d.type = '图文'}}
+    <span style="color:#F581B1;">{{d.type}}</span>
+    {{#} else if (d.type == 2){d.type ='图集'}}
+    <span style="color:#1e9fff;">{{d.type}}</span>
+    {{#} else if (d.type == 3){d.type ='视频'}}
+    <span style="color:#F581B1;">{{d.type}}</span>
+    {{#} else if (d.type == 4){d.type ='视频'}}
+    <span style="color:#F581B1;">{{d.type}}</span>
+    {{#} else {d.type ='其他'}}
+    <span style="color:#F581B1;">{{d.type}}</span>
+    {{# } }}
+</script>
+
+
+<script type="text/html" id="newState">
+    {{# if (d.state == 1){d.state = '其他'}}
+    <span style="color:#F581B1;">{{d.state}}</span>
+    {{#} else if (d.state == 2){d.state ='已发布'}}
+    <span style="color:green;">{{d.state}}</span>
+    {{#} else if (d.state == 0){d.state ='入库'}}
+    <span style="color:green;">{{d.state}}</span>
+    {{# } }}
+</script>
+<script src="/assets/module/sys/article/pic.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        Lay(layui);
+    });
+</script>
+
+
+
+
+
+

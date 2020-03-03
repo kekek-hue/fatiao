@@ -1,0 +1,40 @@
+<form enctype="multipart/form-data" id="commune-form" lay-filter="commune-form" class="layui-form model-form">
+    <input type="hidden" name="user_id" id="id" value="1">
+    <div class="layui-form-item">
+        <label class="layui-form-label">名称</label>
+        <div class="layui-input-block">
+            <input id="name" name="name" placeholder="请输入名称" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">详情</label>
+        <div class="layui-input-block">
+            <input name="info" id="info" placeholder="请输入详情" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">封面图:</label>
+        <div class="layui-input-block">
+            <div class="layui-upload">
+                <button type="button" class="layui-btn" id="thumbnail" name="thumbnail[]">上传图片</button>
+                <div class="layui-upload-list thumbnail">
+                    <input type="hidden" name="cover_id" class="thumbnailPath" id="cover_id" value="0">
+                    <img class="layui-upload-img" style="height: auto;width: 100px" id="lowSource" src="">
+                    <p id="failText"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="commune-form-submit" lay-submit type="button">保存</button>
+    </div>
+</form>
+<script type="text/javascript" src="/assets/module/sys/commune/update.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        Lay(layui);
+    });
+</script>

@@ -1,0 +1,87 @@
+<div class="layui-card-header">
+    <h2 class="header-title">修改个人信息</h2>
+</div>
+<div class="layui-card-body" style="padding: 30px;">
+    <form class="layui-form" lay-filter="userinfo-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">昵称</label>
+            <div class="layui-input-block">
+                <input name="nickname" placeholder="请输入昵称" type="text" class="layui-input" maxlength="20"
+                       lay-verify="required" required/>(必填)
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input name="email" placeholder="请输入邮箱" type="email" class="layui-input" maxlength="20"
+                       lay-verify="email"/>(必填)
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-block">
+                <input name="tel" placeholder="请输入手机号" type="tel" class="layui-input" maxlength="20"
+                       lay-verify="phone"/>(必填)
+            </div>
+        </div>
+        <input type="hidden" name="id" id="id">
+        <div class="layui-form-item">
+            <label class="layui-form-label"/></label>
+            <button class="layui-btn" lay-filter="userinfo-submit" lay-submit type="button">保存</button>
+            <button id="btnClose" class="layui-btn layui-btn-primary close" type="button">取消</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    layui.use(['form', 'config', 'jquery', 'setter', 'ppp'], function () {
+        var form = layui.form;
+        var crown = layui.crown;
+        var config = layui.config;
+        var setter = layui.setter
+        var $ = layui.jquery;
+        var ppp = layui.ppp;
+        // 回显user数据
+        var user = config.getUser()
+        form.verify({
+            // emails: [/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/,'请输入正确邮箱'],
+            email:function(value){
+                var reg=new RegExp(/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/);
+                if(reg.test(value)){
+                }else{
+                    return '请输入正确邮箱';
+                }
+            }
+        });
+
+        form.val('userinfo-form', user);
+
+        //监听提交
+        form.on('submit(userinfo-submit)', function (data) {
+            if(navigator.onLine){
+
+            }else{
+                layer.alert('请检查网络');
+                return false;
+            }
+            layer.load(2);
+
+            $.post(setter.serverUrl+'admin/updateInfo', data.field, function (e) {
+                var info = JSON.parse(e);
+                if (info.code==200)
+                {
+                    location.reload();
+                    // layer.closeAll();
+                }else{
+                    layer.closeAll();
+                }
+                layer.alert(info.msg);
+            });
+            return false;
+        })
+        // 消息
+        $('#btnClose').click(function () {
+            layer.closeAll();
+        });
+    });
+</script>

@@ -1,0 +1,39 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">版式文章</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>版式文章</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+      <!-- 表格顶部操作列 -->
+        <script type="text/html" id="add-publish-article-toolbar">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="addPublishArticle"><i
+                        class="layui-icon">&#xe654;</i>添加发布文章
+                </button>
+            </div>
+        </script>
+        <table class="layui-table" id="scheme-article-table" lay-filter="scheme-article-table"></table>
+    </div>
+</div>
+<script type="text/html" id="faceArticle">
+  <div><img style="height:50px" data-img="http://img2.ceh.com.cn/cover/{{d.article_id}}" src="http://img2.ceh.com.cn/cover/{{d.article_id}}"></div>
+</script>
+<script type="text/html" id="type-tpl-type">
+    <input type="checkbox" lay-filter="type-tpl-type" value="{{d.row}}" lay-skin="switch"
+           lay-text="大图轮播|中图轮播" {{d.style==2?'checked':''}}/>
+</script>
+<!-- 表格操作列 -->
+<script type="text/html" id="scheme-article-table-bar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="delete">删除</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="addPublishArticle">添加</a>
+
+</script>
+<script type="text/javascript"  src="/assets/module/sys/app/publishArticle.js?v=0.1.9"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

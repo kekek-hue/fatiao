@@ -1,0 +1,44 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">恢复数据库</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>数据库管理</cite></a>
+        </span>
+    </div>
+  <form action='{url:/tools/backup_del}'  target="_blank" method='post' name='resForm' id="resForm" target="_blank"></form>
+    <div class="layui-card-body">
+         <!-- 表格顶部操作列 -->
+        <script type="text/html" id="db-res-toolbar">
+            <div class="layui-btn-container layui-icon-rotate-custom">
+                <button class="layui-btn layui-btn-danger layui-btn-sm" lay-event="delete"><i
+                        class="layui-icon">&#x1006;</i>批量删除
+                </button>
+          
+                <button class="layui-btn layui-btn-normal layui-btn-sm " lay-event="resAct"><i
+                        class="layui-icon  layui-anim-rotate layui-anim-loop">&#xe669;</i>还原
+                </button>
+            
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="downloadPack"><i
+                        class="layui-icon  layui-anim-upbit layui-anim-loop">&#xe601;</i>打包下载
+                </button>
+            
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="localUpload"><i
+                        class="layui-icon  layui-anim-upbit layui-anim-loop">&#xe62f;</i>本地导入
+                </button>
+            </div>
+        </script>
+        <table class="layui-table" id="db-res-table" lay-filter="db-res-table"></table>
+    </div>
+</div>
+ <!-- 表格顶部操作列 -->
+<script type="text/html" id="db-res-db-bar">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="download">下载</a>
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="delete">删除</a>
+</script>
+<script type="text/javascript"  src="/assets/module/sys/db/dbres.js?v=0.1.9"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

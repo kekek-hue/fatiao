@@ -1,0 +1,398 @@
+<script type="text/html" id="tree_bar">
+    {{# if (d.url == 2){ }}
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="preview">预览</a>
+    {{# } else { }}
+    {{d.url}}
+    {{# } }}
+</script>
+<style>
+.layui-carousel>[carousel-item]:before {
+    display: none
+}
+#tow{
+    position: absolute;
+    top: 0px
+}
+</style>
+<div class="layui-row layui-col-space15" id="totalInformation">
+    <div class="layui-col-xs6 layui-col-md3">
+        <div class="layui-card card-box-shadow">
+            <div class="layui-card-header">
+                发布量<span class="layui-badge layui-bg-blue pull-right">总</span>
+            </div>
+            <div class="layui-card-body">
+
+                <section class="layui-card">
+                    <div class="layui-card-body countup">
+                        <div class="left a">
+                            <i class="layui-icon layui-icon-upload-drag"></i>
+                        </div>
+                        <div class="right">
+                            <i class="layui-nav-more decline"></i>
+                            <div class="p">
+                                <h3>{{publishTotalDay}}</h3>
+                                <!--<cite>-0%同比增长</cite>-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <p>总计发布量<span class="pull-right"><cite>{{publishTotal}}</cite><i
+                            class="layui-icon layui-icon-flag"></i></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-xs6 layui-col-md3">
+        <div class="layui-card card-box-shadow">
+            <div class="layui-card-header">
+                评论<span class="layui-badge layui-bg-black pull-right">总</span>
+            </div>
+            <div class="layui-card-body">
+
+                <section class="layui-card">
+                    <div class="layui-card-body countup">
+                        <div class="left b">
+                            <i class="layui-icon layui-icon-chat"></i>
+                        </div>
+                        <div class="right">
+                            <i class="layui-nav-more "></i>
+                            <div class="p">
+                                <h3>{{commentTotalDay}}</h3>
+                                <!--<cite>+0%同比增长</cite>-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <p>总评论<span class="pull-right"><cite>{{commentTotal}}</cite><i
+                            class="layui-icon layui-icon-download-circle"></i></span></p>
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-xs6 layui-col-md3">
+        <div class="layui-card card-box-shadow">
+            <div class="layui-card-header">
+                原始数据<span class="layui-badge layui-bg-green pull-right">总</span>
+            </div>
+            <div class="layui-card-body">
+
+                <section class="layui-card">
+                    <div class="layui-card-body countup">
+                        <div class="left c">
+                            <i class="layui-icon layui-icon-layer"></i>
+                        </div>
+                        <div class="right">
+                            <i class="layui-nav-more"></i>
+                            <div class="p">
+                                <h3>{{tranNumber(crawlerTotalDay,2)}}</h3>
+                                <!--<cite>+0%同比增长</cite>-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <p>原始数据总数<span class="pull-right"><cite>{{tranNumber(crawlerTotal,2)}}</cite><i
+                            class="layui-icon layui-icon-rate"></i></span></p>
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-xs6 layui-col-md3">
+        <div class="layui-card card-box-shadow">
+            <div class="layui-card-header">
+                用户<span class="layui-badge layui-bg-orange pull-right">总</span>
+            </div>
+            <div class="layui-card-body">
+
+                <section class="layui-card">
+                    <div class="layui-card-body countup">
+                        <div class="left d">
+                            <i class="layui-icon layui-icon-username"></i>
+                        </div>
+                        <div class="right">
+                            <i class="layui-nav-more decline"></i>
+                            <div class="p">
+                                <h3>{{userTotalDay}}</h3>
+                                <!--<cite>-0%同比增长</cite>-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <p>总用户<span class="pull-right"><cite>{{userTotal}}</cite><i
+                            class="layui-icon layui-icon-user"></i></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--快捷方式开始-->
+<!-- <div class="layui-row layui-col-space15">
+    <div class="layui-col-md6 ">
+        <div class="layui-card">
+            <div class="layui-card-header">快捷方式</div>
+            <div class="layui-card-body">
+
+                <div class="layui-carousel layadmin-carousel layadmin-shortcut layui-carousel crown-carousel">
+                    <div carousel-item>
+                        <ul class="layui-row layui-col-space10">
+                            <li class="layui-col-xs3">
+                                <a href="#!crawlerArticle.html">
+                                    <i class="layui-icon new-article"></i>
+                                    <cite>最新文章</cite>
+                                </a>
+                            </li>
+                            <li class="layui-col-xs3">
+                                <a href="#!publishList.html">
+                                    <i class="layui-icon publish-article"></i>
+                                    <cite>发布文章</cite>
+                                </a>
+                            </li>
+                            <li class="layui-col-xs3">
+                                <a href="#!app.html">
+                                    <i class="layui-icon app"></i>
+                                    <cite>版式管理</cite>
+                                </a>
+                            </li>
+                            <li class="layui-col-xs3">
+                                <a href="#!menu.html" target="_blank">
+                                    <i class="layui-icon plantform"></i>
+                                    <cite>平台管理</cite>
+                                </a>
+                            </li>
+                            <li class="layui-col-xs3">
+                                <a href="#!menu.html">
+                                    <i class="layui-icon role"></i>
+                                    <cite>权限管理</cite>
+                                </a>
+                            </li>
+                            <li class="layui-col-xs3">
+                                <a href="http://www.ndrc.gov.cn/wsdw/" target="_blank">
+                                    <i class="layui-icon go"></i>
+                                    <cite>来源网址</cite>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-md6">
+        <div class="layui-card">
+            <div class="layui-card-header">待办事项</div>
+            <div class="layui-card-body">
+
+                <div class="layui-carousel layadmin-carousel layadmin-backlog layui-carousel crown-carousel">
+                    <div carousel-item>
+                        <ul class="layui-row layui-col-space10">
+                            <li class="layui-col-xs6">
+                                <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                    <h3>待审评论</h3>
+                                    <p><cite>66</cite></p>
+                                </a>
+                            </li>
+                            <li class="layui-col-xs6">
+                                <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
+                                    <h3>待审帖子</h3>
+                                    <p><cite>12</cite></p>
+                                </a>
+                            </li>
+                            <li class="layui-col-xs6">
+                                <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                    <h3>待审文章</h3>
+                                    <p><cite>99</cite></p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!--快捷方式结束-->
+<!--基本详情-->
+<div class="layui-row layui-col-space15  cosole-main">
+    <div class="layui-row layui-col-space15" p-com="home.consoleMain"></div>
+</div>
+<!--基本详情-->
+<!--数据概览-->
+<div class="layui-row layui-col-space15">
+    <div class="layui-col-xs15 layui-col-md15">
+        <div class="layui-card">
+            <div class="layui-card-header">数据概览</div>
+            <div class="layui-card-body">
+                <div class="layui-carousel layadmin-dataview crown-carousel crown-news" lay-filter="console-dataview-div-like"
+                    id="console-dataview-div-like">
+                    <div carousel-item>
+                        <div></div>
+                    </div>
+                    <div carousel-item id="tow">
+                        <div></div>
+                    </div>
+                </div>
+               <!-- <div class="layui-carousel layadmin-dataview crown-carousel crown-news" lay-filter="LAY-index-dataview"
+                  id="console-dataview-div-fav">
+                    <div carousel-item>
+                        <div></div>
+                    </div>
+                </div>  -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--数据概览-->
+<div class="layui-row layui-col-space15">
+    <!--更新-->
+    <div class="layui-col-lg8 layui-col-md7">
+
+        <div class="layui-card">
+            <div class="layui-tab layui-tab-brief layadmin-latestData">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">采集数据</li>
+                    <li>精修文章</li>
+                    <li>今日热搜</li>
+                    <li>今日热闻</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <!--采集数据开始-->
+                    <div class="layui-tab-item layui-show">
+                        <table class="layui-table" id="data-crawler-table" lay-even="" lay-filter="data-crawler-table"
+                            lay-skin="row">
+                        </table>
+                    </div>
+                    <!--采集数据结束-->
+                    <!--精修文章开始-->
+                    <div class="layui-tab-item">
+                        <script type="text/html" id="data-index-table-bar">
+                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="delete">删除</a>
+                        </script>
+                        <div class="layui-card-body">
+                            <table class="layui-table" lay-filter="data-index-table" id="data-index-table" lay-even=""
+                                lay-skin="row">
+                            </table>
+                        </div>
+                    </div>
+                    <!--精修文章结束-->
+                    <!--今日热搜开始-->
+                    <div class="layui-tab-item">
+                        <table class="layui-table" id="hot-tags-table">
+                        </table>
+                    </div>
+                    <!--今日热搜开始-->
+                    <!--今日热文开始-->
+                    <div class="layui-tab-item">
+                        <table class="layui-table" id="LAY-index-topCard">
+                            <thead>
+                                <tr>
+                                    <th width='80'>ID</th>
+                                    <th>关键词</th>
+                                    <th width='150'>搜索次数</th>
+                                    <th width='150'>用户数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--今日热文结束-->
+                </div>
+            </div>
+        </div>
+        <div class="layui-card">
+            <div class="layui-card-header">更新日志</div>
+            <div class="layui-card-body">
+                <ul class="layui-timeline">
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <div class="layui-timeline-title">
+                                PPP默默开发中...&emsp;<span class="layui-badge-rim">目前</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-lg4 layui-col-md5">
+        <div class="layui-card">
+            <div class="layui-card-header">后台系统</div>
+            <div class="layui-card-body">
+                <table class="layui-table layui-text">
+                    <colgroup>
+                        <col width="130">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>版本</td>
+                            <td class="afterdata">0.0.1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="layui-card">
+            <div class="layui-card-header">前端系统</div>
+            <div class="layui-card-body">
+                <table class="layui-table layui-text">
+                    <colgroup>
+                        <col width="100">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>版本</td>
+                            <td><a href="#" target="_blank" class="beforedata">0.0.2</a></td>
+                        </tr>
+                        <tr>
+                            <td>联系方式</td>
+                            <td style="padding-bottom: 0" class="clicklianxi">
+                                <div class="layui-btn-container">
+                                    <a href="#"  class="layui-btn layui-btn-danger"  name="admin">联系管理员</a>
+                                    <a href="#"  class="layui-btn" name="ke">联系客服</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--信息板块-->
+        <div class="layui-card">
+            <div class="layui-card-header">信息板块</div>
+            <div class="layui-card-body">
+                <div class="layui-carousel crown-carousel crown-news" id="information-div">
+                    <div carousel-item>
+                        <div>
+                            <a href="" target="_blank" class="layui-bg-green">北自所</a>
+                        </div>
+                        <div>
+                            <a href="" target="_blank" class="layui-bg-cyan">改革开放40年</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--信息板块-->
+    </div>
+</div>
+<script type="text/html" id="tagState">
+    {{# if (d.is_del == 1){d.is_del = '已删除'}}
+    <span style="color:#F581B1;">{{d.is_del}}</span>
+    {{#} else if (d.is_del == 2){d.is_del ='正常'}}
+    <span style="color:green;">{{d.is_del}}</span>
+    {{#} else if (d.is_del == 3){d.is_del ='审核未通过'}}
+    <span style="color:#F581B1;">{{d.is_del}}</span>
+    {{#} else if (d.is_del == 0){d.is_del ='待审核'}}
+    <span style="color:#F581B1;">{{d.is_del}}</span>
+    {{# } }}
+</script>
+<script src="/assets/module/sys/home/home.js"></script>
+<script src="/assets/module/sys/home/consoleMain.js"></script>
+<script type="text/javascript" src="/assets/module/sys/console/consoleChart.js"></script>

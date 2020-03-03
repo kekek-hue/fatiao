@@ -1,0 +1,2061 @@
+<!--发布文章-->
+<div class="layui-fluid">
+    <div class="layui-btn-group pb10 pt10 article-tab">
+        <button class="layui-btn  layui-btn-normal" >添加文档</button>
+        <button class="layui-btn layui-btn-normal">我的文档</button>
+        <button class="layui-btn layui-btn-normal">稿件审核</button>
+        <button class="layui-btn layui-btn-normal">栏目管理</button>
+        <button class="layui-btn layui-btn-normal">更新列表</button>
+        <button class="layui-btn layui-btn-normal">更新文档</button>
+        <button class="layui-btn layui-btn-normal">文章回收站</button>
+    </div>
+    <div>
+        <table class="layui-table article-table">
+            <caption class="crumb-caption">
+                <span class="crumb">
+                  <a href="/">首页</a>
+                  <a href="javascript:;"> / 文章</a>
+                </span>
+            </caption>
+            <thead>
+            <tr>
+                <th width="8">
+                    <input type="checkbox"/>
+                </th>
+                <th>ID</th>
+                <th>文章标题</th>
+                <th>更新时间</th>
+                <th>类目</th>
+                <th>点击</th>
+                <th>html</th>
+                <th>权限</th>
+                <th>发布人</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td width="8">
+                    <input type="checkbox"/>
+                </td>
+                <td>1</td>
+                <td><a href="">PHP正则表达式的几则使用技巧</a></td>
+                <td>2016-11-29</td>
+                <td>js</td>
+                <td>0</td>
+                <td class="red">未生成</td>
+                <td>待审核</td>
+                <td>张三</td>
+                <td>
+                    <i class="layui-icon layui-icon-survey edit-attr" title="编辑属性"></i>
+                    <i class="layui-icon layui-icon-edit" title="编辑"></i>
+                    <i class="layui-icon layui-icon-website" title="预览"></i>
+                </td>
+            </tr>
+            <tr>
+                <td width="8">
+                    <input type="checkbox"/>
+                </td>
+                <td>1</td>
+                <td>PHP正则表达式的几则使用技巧</td>
+                <td>2016-11-29</td>
+                <td>js</td>
+                <td>0</td>
+                <td>已生成</td>
+                <td>待审核</td>
+                <td>里斯</td>
+                <td>
+                    <i class="layui-icon layui-icon-survey edit-attr" title="编辑属性"></i>
+                    <i class="layui-icon layui-icon-edit" title="编辑"></i>
+                    <i class="layui-icon layui-icon-website" title="预览"></i>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <!--点击编辑属性弹出层-->
+       <div class="form-dv" style="display:none;">
+           <form action="" class="layui-form layer-form">
+               <div class="layui-form-item">
+                   <label class="layui-form-label">所属栏目:</label>
+                   <div class="layui-input-inline">
+                       <select name="modules" lay-verify="required" lay-search="">
+                           <option value="">直接选择或搜索选择</option>
+                           <option value="1">html</option>
+                           <option value="2">div+css</option>
+                           <option value="3">javascript</option>
+                           <option value="4">element</option>
+                           <option value="5">laytpl</option>
+                       </select>
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label class="layui-form-label">属性:</label>
+                   <div class="layui-input-block">
+                       <input type="checkbox" name="like[headlines]" title="头条" lay-skin="primary">
+                       <input type="checkbox" name="like[recommend]" title="推荐" lay-skin="primary">
+                       <input type="checkbox" name="like[specialRecommendation]" title="特荐" lay-skin="primary">
+                       <input type="checkbox" name="like[specialRecommendation]" title="特荐" lay-skin="primary">
+                       <input type="checkbox" name="like[specialRecommendation]" title="特荐" lay-skin="primary">
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label class="layui-form-label">标题:</label>
+                   <div class="layui-input-inline">
+                       <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label class="layui-form-label">简略标题:</label>
+                   <div class="layui-input-inline">
+                       <input type="text" name="brief-title" lay-verify="brief-title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label class="layui-form-label">阅读权限:</label>
+                   <div class="layui-input-inline">
+                       <select name="yd-modules" lay-verify="required" lay-search="">
+                           <option value="">直接选择或搜索选择</option>
+                           <option value="1">待审核稿件</option>
+                           <option value="2">开放浏览</option>
+                           <option value="3">注册会员</option>
+                       </select>
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label class="layui-form-label">关键字:</label>
+                   <div class="layui-input-inline">
+                       <input type="text" name="keywords" lay-verify="" autocomplete="off" placeholder="请输入关键字" class="layui-input">
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <div class="layui-input-block">
+                       <button type="button" class="layui-btn layui-btn-normal"  lay-filter="">确定</button>
+                       <button type="button" class="layui-btn layui-btn-primary">返回</button>
+                   </div>
+               </div>
+           </form>
+       </div>
+
+
+
+   </div>
+
+<!--添加文章-->
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>添加文章</legend>
+    </fieldset>
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+            <li class="layui-this">常规信息</li>
+            <li>高级参数</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form action="" class="layui-form layer-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">文章标题:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="art-title" lay-verify="art-title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                        </div>
+                        <label class="layui-form-label">简略标题:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="brief-title" lay-verify="brief-title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">自定义属性:</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="like[headlines]" title="头条" lay-skin="primary">
+                            <input type="checkbox" name="like[recommend]" title="推荐" lay-skin="primary">
+                            <input type="checkbox" name="like[specialRecommendation]" title="特荐" lay-skin="primary">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所属栏目:</label>
+                        <div class="layui-input-inline">
+                            <select name="modules" lay-verify="required" lay-search="">
+                                <option value="">直接选择或搜索选择</option>
+                                <option value="1">html</option>
+                                <option value="2">div+css</option>
+                                <option value="3">javascript</option>
+                                <option value="4">element</option>
+                                <option value="5">laytpl</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">缩略图:</label>
+                        <div class="layui-input-block">
+                            <a href="javascript:;" class="upload">选择文件
+                                <input class="change" type="file" multiple="multiple" id="img"/>
+                            </a>
+                            <!--<input type="file" id="img" name="img"/>-->
+                            <div class="thumbnail" id="thumbail"> </div>
+                        </div>
+                    </div>
+                    <!--这放编辑器-->
+
+                    <textarea class="layui-textarea" id="LAY_demo1" style="display: none">
+                      把编辑器的初始内容放在这textarea即可
+                    </textarea>
+
+
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn layui-btn-normal"  lay-filter="">确定</button>
+                            <button type="button" class="layui-btn layui-btn-primary">返回</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-tab-item">
+                <form action="" class="layui-form layer-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">评论选项:</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="remark" value="允许评论" title="允许评论" checked="">
+                            <input type="radio" name="remark" value="禁止评论" title="禁止评论">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">文章排序:</label>
+                        <div class="layui-input-inline">
+                            <select name="art-sort" lay-verify="required" lay-search="">
+                                <option value="">直接选择或搜索选择</option>
+                                <option value="1">正常排序</option>
+                                <option value="2">置顶一周</option>
+                                <option value="3">置顶一个月</option>
+                            </select>
+                        </div>
+                        <label class="layui-form-label">阅读权限:</label>
+                        <div class="layui-input-inline">
+                            <select name="yd-modules" lay-verify="required" lay-search="">
+                                <option value="">直接选择或搜索选择</option>
+                                <option value="1">待审核稿件</option>
+                                <option value="2">开放浏览</option>
+                                <option value="3">注册会员</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">验证日期</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                        </div>
+                        <label class="layui-form-label">关键字:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keywords" lay-verify="" autocomplete="off" placeholder="请输入关键字" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">文章摘要</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn layui-btn-normal"  lay-filter="">确定</button>
+                            <button type="button" class="layui-btn layui-btn-primary">返回</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--栏目管理-->
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>栏目管理</legend>
+    </fieldset>
+    <ul class="column-list">
+        <li>
+            <div class="first-list">
+                <a href="#" class="">一级菜单 <i class="layui-icon layui-icon-triangle-d"></i></a>
+                <p class="fr edit-p">
+                    <a href="javascript:;">移动</a>
+                    <a href="javascript:;">删除</a>
+                </p>
+            </div>
+            <ul class="second-list">
+                <li>
+                    <a href="#">二级菜单1 </a>
+                    <p class="fr edit-p">
+                        <a href="javascript:;">移动</a>
+                        <a href="javascript:;">删除</a>
+                    </p>
+                </li>
+                <li>
+                    <a href="#">二级菜单11 </a>
+                    <p class="fr edit-p">
+                        <a href="javascript:;">移动</a>
+                        <a href="javascript:;">删除</a>
+                    </p>
+                </li>
+                <li>
+                    <a href="#">二级菜单111 </a>
+                    <p class="fr edit-p">
+                        <a href="javascript:;">移动</a>
+                        <a href="javascript:;">删除</a>
+                    </p>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="first-list">
+                <a href="#" class="">一级菜单 <i class="layui-icon layui-icon-triangle-d"></i></a>
+                <p class="fr edit-p">
+                    <a href="javascript:;">移动</a>
+                    <a href="javascript:;">删除</a>
+                </p>
+            </div>
+            <ul class="second-list">
+                <li>
+                    <a href="#">二级菜单2 </a>
+                    <p class="fr edit-p">
+                        <a href="javascript:;">移动</a>
+                        <a href="javascript:;">删除</a>
+                    </p>
+                </li>
+                <li>
+                    <a href="#">二级菜单22 </a>
+                    <p class="fr edit-p">
+                        <a href="javascript:;">移动</a>
+                        <a href="javascript:;">删除</a>
+                    </p>
+                </li>
+                <li>
+                    <a href="# edit-p">二级菜单222 </a>
+                    <p class="fr">
+                        <a href="javascript:;">移动</a>
+                        <a href="javascript:;">删除</a>
+                    </p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+<!--用户管理-->
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>注册会员</legend>
+    </fieldset>
+   <div class="filter-box">
+       <form action="" class="layui-form">
+           <div class="layui-form-item">
+               <label class="layui-form-label">关键字:</label>
+               <div class="layui-input-inline">
+                   <input type="text" name="keywords" lay-verify="" autocomplete="off" placeholder="请输入关键字" class="layui-input">
+               </div>
+               <div class="layui-input-inline">
+                   <select name="user-sort" lay-verify="required">
+                       <option value="1">排序</option>
+                       <option value="2">注册时间</option>
+                       <option value="3">登录时间</option>
+                   </select>
+               </div>
+               <div class="layui-input-inline">
+                   <select name="sex" lay-verify="required">
+                       <option value="1">性别</option>
+                       <option value="2">男</option>
+                       <option value="3">女</option>
+                       <option value="4">保密</option>
+                   </select>
+               </div>
+               <div class="layui-input-inline">
+                   <select name="u-type" lay-verify="required">
+                       <option value="1">类型</option>
+                       <option value="2">个人</option>
+                       <option value="3">企业</option>
+                   </select>
+               </div>
+               <div class="layui-input-inline">
+                   <select name="u-status" lay-verify="required">
+                       <option value="1">状态</option>
+                       <option value="2">未通过审核</option>
+                       <option value="3">限制用户(禁言)</option>
+                       <option value="4">正常使用</option>
+                   </select>
+               </div>
+               <div class="layui-input-inline text-left">
+                   <button type="button" class="layui-btn layui-btn-normal user-btn"  lay-filter="">搜索</button>
+               </div>
+           </div>
+       </form>
+   </div>
+    <table class="layui-table register-table">
+        <caption class="crumb-caption">
+            <span class="fl">注册会员表</span>
+            <p class="fr">
+                <a href="javascript:;">所有会员</a>
+                <a href="javascript:;">被禁言用户</a>
+                <a href="javascript:;">被推荐</a>
+                <a href="javascript:;">普通</a>
+            </p>
+        </caption>
+        <thead>
+        <tr>
+            <th width="8">
+                <input type="checkbox"/>
+            </th>
+            <th>ID</th>
+            <th>登录名</th>
+            <th>性别</th>
+            <th>会员等级</th>
+            <th>会员属性</th>
+            <th>最后登录</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td width="8">
+                <input type="checkbox"/>
+            </td>
+            <td>1</td>
+            <td><a href="">沙羡</a></td>
+            <td>男</td>
+            <td>注册会员</td>
+            <td>个人用户</td>
+            <td>2018-10-10</td>
+            <td>
+                <i class="layui-icon layui-icon-edit" title="修改"></i>
+                <i class="layui-icon layui-icon-delete user-del" title="删除"></i>
+                <i class="layui-icon layui-icon-util" title="提升"></i>
+            </td>
+        </tr>
+        <tr>
+            <td width="8">
+                <input type="checkbox"/>
+            </td>
+            <td>1</td>
+            <td><a href="">沙羡</a></td>
+            <td>男</td>
+            <td>注册会员</td>
+            <td>个人用户</td>
+            <td>2018-10-10</td>
+            <td>
+                <i class="layui-icon layui-icon-edit" title="修改"></i>
+                <i class="layui-icon layui-icon-delete user-del" title="删除"></i>
+                <i class="layui-icon layui-icon-util" title="提升"></i>
+            </td>
+        </tr>
+        <tr>
+            <td width="8">
+                <input type="checkbox"/>
+            </td>
+            <td>1</td>
+            <td><a href="">沙羡</a></td>
+            <td>男</td>
+            <td>注册会员</td>
+            <td>个人用户</td>
+            <td>2018-10-10</td>
+            <td>
+                <i class="layui-icon layui-icon-edit" title="修改"></i>
+                <i class="layui-icon layui-icon-delete user-del" title="删除"></i>
+                <i class="layui-icon layui-icon-util" title="提升"></i>
+            </td>
+        </tr>
+        <tr>
+            <td width="8">
+                <input type="checkbox"/>
+            </td>
+            <td>1</td>
+            <td><a href="">沙羡</a></td>
+            <td>男</td>
+            <td>注册会员</td>
+            <td>个人用户</td>
+            <td>2018-10-10</td>
+            <td>
+                <i class="layui-icon layui-icon-edit" title="修改"></i>
+                <i class="layui-icon layui-icon-delete user-del" title="删除"></i>
+                <i class="layui-icon layui-icon-util" title="提升"></i>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--用户修改-->
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>用户修改</legend>
+    </fieldset>
+    <form action="" class="layui-form modify-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="username" lay-verify=""  class="layui-input" value="沙羡" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码:</label>
+            <div class="layui-input-inline">
+                <input type="password" name="username" lay-verify=""  class="layui-input"  placeholder="请输入密码">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">注册时间:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="reg-time" lay-verify=""  class="layui-input" value="2018-10-20 10：10：10" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">最近登录时间:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="log-time" lay-verify=""  class="layui-input" value="2018-10-20 10：10：10" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户类型:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="user-type" lay-verify=""  class="layui-input" value="个人" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别:</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="男" title="男" checked="">
+                <input type="radio" name="sex" value="女" title="女">
+                <input type="radio" name="sex" value="保密" title="保密">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">会员等级:</label>
+            <div class="layui-input-inline">
+                <select name="vip-grade" lay-verify="required">
+                    <option value="1">注册会员</option>
+                    <option value="2">中级会员</option>
+                    <option value="3">高级会员</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">资料状况:</label>
+            <div class="layui-input-inline">
+                <select name="data-status" lay-verify="required">
+                    <option value="1">正常使用</option>
+                    <option value="2">未通过审核</option>
+                    <option value="3">限制用户(禁言)</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal"  lay-filter="">确定修改</button>
+                <button type="button" class="layui-btn layui-btn-primary">返回</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--提升等级-->
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>提升等级</legend>
+    </fieldset>
+    <form action="" class="layui-form modify-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="username" lay-verify=""  class="layui-input" value="沙羡" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码:</label>
+            <div class="layui-input-inline">
+                <input type="password" name="username" lay-verify=""  class="layui-input"  placeholder="请输入密码">
+            </div>
+            <div class="layui-form-mid layui-word-aux">留空则不修改</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户类型:</label>
+            <div class="layui-input-inline">
+                <select name="user-type" lay-verify="required">
+                    <option value="1">发布员</option>
+                    <option value="2">管理员</option>
+                    <option value="3">超级管理员</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">负责模块:</label>
+            <div class="layui-input-inline">
+                <select name="duty" lay-verify="required" multiple>
+                    <option value="1">所有</option>
+                    <option value="2">分类</option>
+                    <option value="3">下载模块</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal"  lay-filter="">确定提升</button>
+                <button type="button" class="layui-btn layui-btn-primary">返回</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>图文列表</legend>
+    </fieldset>
+    <table class="layui-table img-table">
+        <caption class="crumb-caption">
+            <span>图文列表</span>
+        </caption>
+        <thead>
+        <tr>
+            <th width="8">
+                <input type="checkbox"/>
+            </th>
+            <th>ID</th>
+            <th>文档图片</th>
+            <th>文档标题</th>
+            <th>类目</th>
+            <th>权限</th>
+            <th>发布人</th>
+            <th>html</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td width="8">
+                <input type="checkbox"/>
+            </td>
+            <td>1</td>
+            <td>
+                <img src="images/auth/login_bg.jpg" alt=""/>
+            </td>
+            <td><a href="">我的世界-关于花的图片</a></td>
+            <td>站长图集</td>
+            <td>开放浏览</td>
+            <td>admin</td>
+            <td class="red">未生成</td>
+            <td>
+                <i class="layui-icon layui-icon-edit" title="修改"></i>
+                <i class="layui-icon layui-icon-delete user-del" title="删除"></i>
+            </td>
+        </tr>
+        <tr>
+            <td width="8">
+                <input type="checkbox"/>
+            </td>
+            <td>1</td>
+            <td>
+                <img src="images/auth/login_bg.jpg" alt=""/>
+            </td>
+            <td><a href="">我的世界-关于花的图片</a></td>
+            <td>站长图集</td>
+            <td>开放浏览</td>
+            <td>admin</td>
+            <td >已生成</td>
+            <td>
+                <i class="layui-icon layui-icon-edit" title="修改"></i>
+                <i class="layui-icon layui-icon-delete user-del" title="删除"></i>
+            </td>
+        </tr>
+        <tr>
+            <td width="8">
+                <input type="checkbox"/>
+            </td>
+            <td>1</td>
+            <td>
+                <img src="images/auth/login_bg.jpg" alt=""/>
+            </td>
+            <td><a href="">我的世界-关于花的图片</a></td>
+            <td>站长图集</td>
+            <td>开放浏览</td>
+            <td>admin</td>
+            <td class="red">未生成</td>
+            <td>
+                <i class="layui-icon layui-icon-edit" title="修改"></i>
+                <i class="layui-icon layui-icon-delete user-del" title="删除"></i>
+            </td>
+        </tr>
+        <tr>
+            <td width="8">
+                <input type="checkbox"/>
+            </td>
+            <td>1</td>
+            <td>
+                <img src="images/auth/login_bg.jpg" alt=""/>
+            </td>
+            <td><a href="">我的世界-关于花的图片</a></td>
+            <td>站长图集</td>
+            <td>开放浏览</td>
+            <td>admin</td>
+            <td >已生成</td>
+            <td>
+                <i class="layui-icon layui-icon-edit" title="修改"></i>
+                <i class="layui-icon layui-icon-delete user-del" title="删除"></i>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--分类管理  树状图-->
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>树状图</legend>
+    </fieldset>
+    <ul class="layui-nav layui-nav-tree layui-inline tree-list" lay-filter="demo">
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;" class="layui-row">
+                <span class="layui-col-xs1">全局ID</span>
+                <span class="layui-col-xs1">父级ID</span>
+                <span class="layui-col-xs1">祖级ID</span>
+                <span class="layui-col-xs1">资源ID</span>
+                <span class="layui-col-xs1">层级</span>
+                <span class="layui-col-xs2">分类名称</span>
+                <span class="layui-col-xs2">创建时间</span>
+                <span class="layui-col-xs2">更新时间</span>
+                <span class="layui-col-xs1">创建者</span>
+            </a>
+            <dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                    <ul class="layui-nav-child second-ul">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;" class="layui-row">
+                                <span class="layui-col-xs1">全局ID</span>
+                                <span class="layui-col-xs1">父级ID</span>
+                                <span class="layui-col-xs1">祖级ID</span>
+                                <span class="layui-col-xs1">资源ID</span>
+                                <span class="layui-col-xs1">层级</span>
+                                <span class="layui-col-xs2">分类名称</span>
+                                <span class="layui-col-xs2">创建时间</span>
+                                <span class="layui-col-xs2">更新时间</span>
+                                <span class="layui-col-xs1">创建者</span>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                    <ul class="layui-nav-child three-ul">
+                                        <li class="layui-nav-item">
+                                            <a href="javascript" class="layui-row">
+                                                <span class="layui-col-xs1">全局ID</span>
+                                                <span class="layui-col-xs1">父级ID</span>
+                                                <span class="layui-col-xs1">祖级ID</span>
+                                                <span class="layui-col-xs1">资源ID</span>
+                                                <span class="layui-col-xs1">层级</span>
+                                                <span class="layui-col-xs2">分类名称</span>
+                                                <span class="layui-col-xs2">创建时间</span>
+                                                <span class="layui-col-xs2">更新时间</span>
+                                                <span class="layui-col-xs1">创建者</span>
+                                            </a>
+                                            <dl class="layui-nav-child">
+                                                <dd>
+                                                    <a href="javascript:;" class="layui-row">
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">2</span>
+                                                        <span class="layui-col-xs2">zz</span>
+                                                        <span class="layui-col-xs2">2018-10-10</span>
+                                                        <span class="layui-col-xs2">2018-10-11</span>
+                                                        <span class="layui-col-xs1">hh</span>
+                                                    </a>
+                                                </dd>
+                                                <dd>
+                                                    <a href="javascript:;" class="layui-row">
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">2</span>
+                                                        <span class="layui-col-xs2">zz</span>
+                                                        <span class="layui-col-xs2">2018-10-10</span>
+                                                        <span class="layui-col-xs2">2018-10-11</span>
+                                                        <span class="layui-col-xs1">hh</span>
+                                                    </a>
+                                                </dd>
+                                                <dd>
+                                                    <a href="javascript:;" class="layui-row">
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">2</span>
+                                                        <span class="layui-col-xs2">zz</span>
+                                                        <span class="layui-col-xs2">2018-10-10</span>
+                                                        <span class="layui-col-xs2">2018-10-11</span>
+                                                        <span class="layui-col-xs1">hh</span>
+                                                    </a>
+                                                </dd>
+                                                <dd>
+                                                    <a href="javascript:;" class="layui-row">
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">1</span>
+                                                        <span class="layui-col-xs1">2</span>
+                                                        <span class="layui-col-xs2">zz</span>
+                                                        <span class="layui-col-xs2">2018-10-10</span>
+                                                        <span class="layui-col-xs2">2018-10-11</span>
+                                                        <span class="layui-col-xs1">hh</span>
+                                                    </a>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <div class="page">
+                                            <b>上一页</b>
+                                            <i class="current">1</i>
+                                            <i>2</i>
+                                            <i>3</i>
+                                            <i>...</i>
+                                            <i>7</i>
+                                            <i>8</i>
+                                            <b>下一页</b>
+                                        </div>
+                                    </ul>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+                        <div class="page">
+                            <b>上一页</b>
+                            <i class="current">1</i>
+                            <i>2</i>
+                            <i>3</i>
+                            <i>...</i>
+                            <i>7</i>
+                            <i>8</i>
+                            <b>下一页</b>
+                        </div>
+                    </ul>
+
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                </dd>
+            </dl>
+            <div class="page">
+               <b>上一页</b>
+                <i class="current">1</i>
+                <i>2</i>
+                <i>3</i>
+                <i>...</i>
+                <i>7</i>
+                <i>8</i>
+               <b>下一页</b>
+            </div>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;" class="layui-row">
+                <span class="layui-col-xs1">全局ID</span>
+                <span class="layui-col-xs1">父级ID</span>
+                <span class="layui-col-xs1">祖级ID</span>
+                <span class="layui-col-xs1">资源ID</span>
+                <span class="layui-col-xs1">层级</span>
+                <span class="layui-col-xs2">分类名称</span>
+                <span class="layui-col-xs2">创建时间</span>
+                <span class="layui-col-xs2">更新时间</span>
+                <span class="layui-col-xs1">创建者</span>
+            </a>
+            <dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                    <ul class="layui-nav-child second-ul">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;" class="layui-row">
+                                <span class="layui-col-xs1">全局ID</span>
+                                <span class="layui-col-xs1">父级ID</span>
+                                <span class="layui-col-xs1">祖级ID</span>
+                                <span class="layui-col-xs1">资源ID</span>
+                                <span class="layui-col-xs1">层级</span>
+                                <span class="layui-col-xs2">分类名称</span>
+                                <span class="layui-col-xs2">创建时间</span>
+                                <span class="layui-col-xs2">更新时间</span>
+                                <span class="layui-col-xs1">创建者</span>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+                        <div class="page">
+                            <b>上一页</b>
+                            <i class="current">1</i>
+                            <i>2</i>
+                            <i>3</i>
+                            <i>...</i>
+                            <i>7</i>
+                            <i>8</i>
+                            <b>下一页</b>
+                        </div>
+                    </ul>
+
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                </dd>
+            </dl>
+            <div class="page">
+                <b>上一页</b>
+                <i class="current">1</i>
+                <i>2</i>
+                <i>3</i>
+                <i>...</i>
+                <i>7</i>
+                <i>8</i>
+                <b>下一页</b>
+            </div>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;" class="layui-row">
+                <span class="layui-col-xs1">全局ID</span>
+                <span class="layui-col-xs1">父级ID</span>
+                <span class="layui-col-xs1">祖级ID</span>
+                <span class="layui-col-xs1">资源ID</span>
+                <span class="layui-col-xs1">层级</span>
+                <span class="layui-col-xs2">分类名称</span>
+                <span class="layui-col-xs2">创建时间</span>
+                <span class="layui-col-xs2">更新时间</span>
+                <span class="layui-col-xs1">创建者</span>
+            </a>
+            <dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                    <ul class="layui-nav-child second-ul">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;" class="layui-row">
+                                <span class="layui-col-xs1">全局ID</span>
+                                <span class="layui-col-xs1">父级ID</span>
+                                <span class="layui-col-xs1">祖级ID</span>
+                                <span class="layui-col-xs1">资源ID</span>
+                                <span class="layui-col-xs1">层级</span>
+                                <span class="layui-col-xs2">分类名称</span>
+                                <span class="layui-col-xs2">创建时间</span>
+                                <span class="layui-col-xs2">更新时间</span>
+                                <span class="layui-col-xs1">创建者</span>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+                        <div class="page">
+                            <b>上一页</b>
+                            <i class="current">1</i>
+                            <i>2</i>
+                            <i>3</i>
+                            <i>...</i>
+                            <i>7</i>
+                            <i>8</i>
+                            <b>下一页</b>
+                        </div>
+                    </ul>
+
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                </dd>
+            </dl>
+            <div class="page">
+                <b>上一页</b>
+                <i class="current">1</i>
+                <i>2</i>
+                <i>3</i>
+                <i>...</i>
+                <i>7</i>
+                <i>8</i>
+                <b>下一页</b>
+            </div>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;" class="layui-row">
+                <span class="layui-col-xs1">全局ID</span>
+                <span class="layui-col-xs1">父级ID</span>
+                <span class="layui-col-xs1">祖级ID</span>
+                <span class="layui-col-xs1">资源ID</span>
+                <span class="layui-col-xs1">层级</span>
+                <span class="layui-col-xs2">分类名称</span>
+                <span class="layui-col-xs2">创建时间</span>
+                <span class="layui-col-xs2">更新时间</span>
+                <span class="layui-col-xs1">创建者</span>
+            </a>
+            <dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                    <ul class="layui-nav-child second-ul">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;" class="layui-row">
+                                <span class="layui-col-xs1">全局ID</span>
+                                <span class="layui-col-xs1">父级ID</span>
+                                <span class="layui-col-xs1">祖级ID</span>
+                                <span class="layui-col-xs1">资源ID</span>
+                                <span class="layui-col-xs1">层级</span>
+                                <span class="layui-col-xs2">分类名称</span>
+                                <span class="layui-col-xs2">创建时间</span>
+                                <span class="layui-col-xs2">更新时间</span>
+                                <span class="layui-col-xs1">创建者</span>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-row">
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">1</span>
+                                        <span class="layui-col-xs1">2</span>
+                                        <span class="layui-col-xs2">zz</span>
+                                        <span class="layui-col-xs2">2018-10-10</span>
+                                        <span class="layui-col-xs2">2018-10-11</span>
+                                        <span class="layui-col-xs1">hh</span>
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+                        <div class="page">
+                            <b>上一页</b>
+                            <i class="current">1</i>
+                            <i>2</i>
+                            <i>3</i>
+                            <i>...</i>
+                            <i>7</i>
+                            <i>8</i>
+                            <b>下一页</b>
+                        </div>
+                    </ul>
+
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layui-row">
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">1</span>
+                        <span class="layui-col-xs1">2</span>
+                        <span class="layui-col-xs2">zz</span>
+                        <span class="layui-col-xs2">2018-10-10</span>
+                        <span class="layui-col-xs2">2018-10-11</span>
+                        <span class="layui-col-xs1">hh</span>
+                    </a>
+                </dd>
+            </dl>
+            <div class="page">
+                <b>上一页</b>
+                <i class="current">1</i>
+                <i>2</i>
+                <i>3</i>
+                <i>...</i>
+                <i>7</i>
+                <i>8</i>
+                <b>下一页</b>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<!--分类管理PPP树状图-->
+<div class="layui-fluid">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>PPP树状图</legend>
+    </fieldset>
+    <ul class="layui-nav layui-nav-tree layui-inline  ppp-tree">
+        <li class="layui-nav-item  layui-nav-itemed">
+            <div class="layui-row ppp-head">
+                <span class="layui-col-xs1">全局ID</span>
+                <span class="layui-col-xs1">名称[:层级]</span>
+                <span class="layui-col-xs1">父级[:ID]</span>
+                <span class="layui-col-xs1">顶级[:ID]</span>
+                <span class="layui-col-xs2">资源ID[复制到剪切板]</span>
+                <span class="layui-col-xs2">创建时间</span>
+                <span class="layui-col-xs2">修改时间</span>
+                <span class="layui-col-xs1">作者</span>
+                <span class="layui-col-xs1">工具条</span>
+            </div>
+        </li>
+    </ul>
+    <ul class="layui-nav layui-nav-tree layui-inline  ppp-tree">
+        <li class="layui-nav-item">
+            <div class="layui-row other-layui-row">
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1 hh-align-left hh-left-border"><i class="hh-line"></i>二级</span>
+                <span class="layui-col-xs1"><i class="vertical-line"></i>二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+            </div>
+            <dl class="layui-nav-child second-ul">
+                <dd class="layui-nav-item">
+                    <div class="layui-row other-layui-row">
+                        <span class="layui-col-xs1">三级</span>
+                        <span class="layui-col-xs1 hh-align-left hh-left-border"><i class="hh-line"></i><i class="hh-line"></i>三级</span>
+                        <span class="layui-col-xs1">三级</span>
+                        <span class="layui-col-xs1">三级</span>
+                        <span class="layui-col-xs2">三级</span>
+                        <span class="layui-col-xs2">三级</span>
+                        <span class="layui-col-xs2">三级</span>
+                        <span class="layui-col-xs1">三级</span>
+                        <span class="layui-col-xs1">三级</span>
+                    </div>
+                </dd>
+                <dd class="layui-nav-item">
+                    <div class="layui-row other-layui-row">
+                        <span class="layui-col-xs1">三级</span>
+                        <span class="layui-col-xs1">三级</span>
+                        <span class="layui-col-xs1">三级</span>
+                        <span class="layui-col-xs1">三级</span>
+                        <span class="layui-col-xs2">三级</span>
+                        <span class="layui-col-xs2">三级</span>
+                        <span class="layui-col-xs2">三级</span>
+                        <span class="layui-col-xs1">三级</span>
+                        <span class="layui-col-xs1">三级</span>
+                    </div>
+                    <ul class="layui-nav-child three-ul">
+                        <li class="layui-nav-item">
+                            <div class="layui-row other-layui-row">
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs2">j四级]</span>
+                                <span class="layui-col-xs2">四级</span>
+                                <span class="layui-col-xs2">2四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                            </div>
+                        </li>
+                        <li class="layui-nav-item">
+                            <div class="layui-row other-layui-row">
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs2">j四级]</span>
+                                <span class="layui-col-xs2">四级</span>
+                                <span class="layui-col-xs2">2四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                            </div>
+                        </li>
+                        <li class="layui-nav-item">
+                            <div class="layui-row other-layui-row">
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs2">j四级]</span>
+                                <span class="layui-col-xs2">四级</span>
+                                <span class="layui-col-xs2">2四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                            </div>
+                        </li>
+                        <li class="layui-nav-item">
+                            <div class="layui-row other-layui-row">
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs2">j四级]</span>
+                                <span class="layui-col-xs2">四级</span>
+                                <span class="layui-col-xs2">2四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                                <span class="layui-col-xs1">四级</span>
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <div class="layui-row other-layui-row">
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+            </div>
+        </li>
+        <li class="layui-nav-item">
+            <div class="layui-row other-layui-row">
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+            </div>
+        </li>
+        <li class="layui-nav-item">
+            <div class="layui-row other-layui-row">
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs2">二级</span>
+                <span class="layui-col-xs1">二级</span>
+                <span class="layui-col-xs1">二级</span>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<!--主页-->
+<div class="layui-fluid">
+   <div class="search-box clearfix">
+       <input type="text" placeholder="搜索" class="layui-input search-ipt w190 fl"/><input type="button" value="搜索" class="fl search-btn layui-btn layui-btn-normal"/>
+   </div>
+
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>主页展示</legend>
+    </fieldset>
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    新发布
+                    <span class="layui-badge layui-bg-blue layuiadmin-badge">周</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">9,999,666</p>
+                    <p>
+                        最近一周发布量
+                        <span class="layui-span-color">88万 <i class="layui-icon layui-icon-website"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    已发布
+                    <span class="layui-badge layui-bg-cyan layuiadmin-badge">月</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">9,999,666</p>
+                    <p>
+                        总发布量
+                        <span class="layui-span-color">88万 <i class="layui-icon layui-icon-flag"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    阅读量
+                    <span class="layui-badge layui-bg-green layuiadmin-badge">月</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">9,999,666</p>
+                    <p>
+                        总阅读量
+                        <span class="layui-span-color">88万 <i class="layui-icon layui-icon-read"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    活跃用户
+                    <span class="layui-badge layui-bg-orange layuiadmin-badge">月</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+
+                    <p class="layuiadmin-big-font">66,666</p>
+                    <p>
+                        最近一个月
+                        <span class="layui-span-color">15% <i class="layui-icon layui-icon-user"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md8">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">快捷方式</div>
+                        <div class="layui-card-body">
+                            <div class="layui-carousel layadmin-carousel layadmin-shortcut">
+                                <div carousel-item>
+                                    <ul class="layui-row layui-col-space10 layui-this">
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="home/homepage1.html">
+                                                <i class="layui-icon layui-icon-console"></i>
+                                                <cite>主页一</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="home/homepage2.html">
+                                                <i class="layui-icon layui-icon-chart"></i>
+                                                <cite>主页二</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="component/layer/list.html">
+                                                <i class="layui-icon layui-icon-template-1"></i>
+                                                <cite>弹层</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a layadmin-event="im">
+                                                <i class="layui-icon layui-icon-chat"></i>
+                                                <cite>聊天</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="component/progress/index.html">
+                                                <i class="layui-icon layui-icon-find-fill"></i>
+                                                <cite>进度条</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="app/workorder/list.html">
+                                                <i class="layui-icon layui-icon-survey"></i>
+                                                <cite>工单</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="user/user/list.html">
+                                                <i class="layui-icon layui-icon-user"></i>
+                                                <cite>用户</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="set/system/website.html">
+                                                <i class="layui-icon layui-icon-set"></i>
+                                                <cite>设置</cite>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="layui-row layui-col-space10">
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="set/user/info.html">
+                                                <i class="layui-icon layui-icon-set"></i>
+                                                <cite>我的资料</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="set/user/info.html">
+                                                <i class="layui-icon layui-icon-set"></i>
+                                                <cite>我的资料</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="set/user/info.html">
+                                                <i class="layui-icon layui-icon-set"></i>
+                                                <cite>我的资料</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="set/user/info.html">
+                                                <i class="layui-icon layui-icon-set"></i>
+                                                <cite>我的资料</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="set/user/info.html">
+                                                <i class="layui-icon layui-icon-set"></i>
+                                                <cite>我的资料</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="set/user/info.html">
+                                                <i class="layui-icon layui-icon-set"></i>
+                                                <cite>我的资料</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="set/user/info.html">
+                                                <i class="layui-icon layui-icon-set"></i>
+                                                <cite>我的资料</cite>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs3">
+                                            <a lay-href="set/user/info.html">
+                                                <i class="layui-icon layui-icon-set"></i>
+                                                <cite>我的资料</cite>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">待办事项</div>
+                        <div class="layui-card-body">
+
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                                <div carousel-item>
+                                    <ul class="layui-row layui-col-space10 layui-this">
+                                        <li class="layui-col-xs6">
+                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                                <h3>待审评论</h3>
+                                                <p><cite>66</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs6">
+                                            <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
+                                                <h3>待审帖子</h3>
+                                                <p><cite>12</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs6">
+                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                                <h3>待审商品</h3>
+                                                <p><cite>99</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs6">
+                                            <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
+                                                <h3>待发货</h3>
+                                                <p><cite>20</cite></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="layui-row layui-col-space10">
+                                        <li class="layui-col-xs6">
+                                            <a href="javascript:;" class="layadmin-backlog-body">
+                                                <h3>待审友情链接</h3>
+                                                <p><cite style="color: #FF5722;">5</cite></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-tab layui-tab-brief layadmin-latestData">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this">今日热搜</li>
+                                <li>今日热帖</li>
+                            </ul>
+                            <div class="layui-tab-content">
+                                <div class="layui-tab-item layui-show">
+                                    <table class="layui-table" id="LAY-index-topSearch">
+                                        <thead>
+                                        <tr>
+                                            <th width='80'>ID</th>
+                                            <th>关键词</th>
+                                            <th width='150'>搜索次数</th>
+                                            <th width='150'>用户数</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>此表格是静态模拟数据</td>
+                                            <td>1000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>此表格是静态模拟数据 此表格是静态模拟数据</td>
+                                            <td>300000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>此表格是静态模拟数据</td>
+                                            <td>1000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>此表格是静态模拟数据</td>
+                                            <td>1000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>此表格是静态模拟数据 此表格是静态模拟数据</td>
+                                            <td>300000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>此表格是静态模拟数据</td>
+                                            <td>1000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>此表格是静态模拟数据 此表格是静态模拟数据</td>
+                                            <td>300000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>此表格是静态模拟数据</td>
+                                            <td>1000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>此表格是静态模拟数据 此表格是静态模拟数据</td>
+                                            <td>300000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>此表格是静态模拟数据 此表格是静态模拟数据</td>
+                                            <td>300000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="layui-tab-item">
+                                    <table class="layui-table" id="LAY-index-topCard">
+                                        <thead>
+                                        <tr>
+                                            <th width='80'>ID</th>
+                                            <th>关键词</th>
+                                            <th width='150'>搜索次数</th>
+                                            <th width='150'>用户数</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>此表格是静态模拟数据</td>
+                                            <td>1000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>此表格是静态模拟数据</td>
+                                            <td>1000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>此表格是静态模拟数据</td>
+                                            <td>1000</td>
+                                            <td>100000</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">效果报告</div>
+                <div class="layui-card-body layadmin-takerates">
+                    <div class="layui-progress" lay-showPercent="yes">
+                        <h3>转化率（日同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长" lay-offset="-15"></span>）</h3>
+                        <div class="layui-progress-bar" lay-percent="65%"><span class="layui-progress-text">65%</span></div>
+                    </div>
+                    <div class="layui-progress" lay-showPercent="yes">
+                        <h3>签到率（日同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降" lay-offset="-15"></span>）</h3>
+                        <div class="layui-progress-bar layui-bg-red" lay-percent="30%"><span class="layui-progress-text">30%</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-card">
+                <div class="layui-card-header">实时监控</div>
+                <div class="layui-card-body layadmin-takerates">
+                    <div class="layui-progress" lay-showPercent="yes">
+                        <h3>CPU使用率</h3>
+                        <div class="layui-progress-bar" lay-percent="58%"></div>
+                    </div>
+                    <div class="layui-progress" lay-showPercent="yes">
+                        <h3>内存占用率</h3>
+                        <div class="layui-progress-bar layui-bg-red" lay-percent="90%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    layui.use(['layer','form','layedit','laydate','jquery','laypage','element'], function(){
+         var  layer = layui.layer,
+              layedit=layui.layedit,
+              laydate = layui.laydate,
+              $=layui.jquery,
+              laypage=layui.laypage,
+              element=layui.element,
+              form=layui.form;
+        form.render();
+        //构建一个默认的编辑器
+        var index = layedit.build('LAY_demo1');
+
+        //编辑器外部操作
+        var active = {
+            content: function(){
+                alert(layedit.getContent(index)); //获取编辑器内容
+            }
+            ,text: function(){
+                alert(layedit.getText(index)); //获取编辑器纯文本内容
+            }
+            ,selection: function(){
+                alert(layedit.getSelection(index));
+            }
+        };
+        //编辑属性弹出层
+        $('.edit-attr').on('click', function(){
+            layer.open({
+                type: 1,
+                title:'快速属性操作',
+//            area: ['600px', '360px'],
+                shade: 0.8,
+                shadeClose: true, //点击遮罩关闭
+                content: $('.form-dv').html()
+            });
+        });
+
+//        上传图片
+        var file = document.getElementById("img");
+        file.onchange = function(){  // 文本框内容改变时触发
+            var files = this.files; // 获取文件的数量
+            console.log(files);
+            for(var i=0;i<files.length;i++){
+                readers(files[i])
+            }
+        }
+        function readers(fil){
+            var reader = new FileReader();  // 异步读取存储在用户计算机上的文件
+            reader.readAsDataURL(fil); // 开始读取指定的Blob对象或File对象中的内容
+            reader.onload = function(){
+                document.getElementById("thumbail").innerHTML += "<img src='"+reader.result+"'>";  // 添加图片到指定容器中
+            };
+        }
+
+//        更新时间
+        laydate.render({
+            elem: '#date',
+            theme:'#1E9FFF'
+        });
+
+//        栏目管理折叠面板
+
+        $('.column-list >li').on('click',function(){
+//            var i=$(this).index();
+            $(this).find('.second-list').toggle().parent('li').siblings().children('.second-list').hide();
+        })
+
+
+        //用户点击删除
+        $('.user-del').on('click',function(){
+            layer.confirm('确定删除吗', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                layer.msg('删除成功', {
+                    icon: 1,
+                    time:2000
+                });
+            });
+        })
+
+    });
+
+</script>

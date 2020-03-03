@@ -1,0 +1,72 @@
+<script type="text/html" id="barDemo">
+    <i class="layui-icon layui-icon-edit" title="编辑" lay-event="edit"></i>
+    <i class="layui-icon layui-icon-delete" title="删除" lay-event="del"></i>
+</script>
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">广告管理</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>广告管理</cite></a>
+        </span>
+    </div>
+    <script type="text/html" id="demoTool">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-normal" lay-event="add">添加广告</button>
+            <!--<button type="button" class="layui-btn layui-btn-normal" lay-event="del">删除广告</button>-->
+        </div>
+    </script>
+    <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+        <form enctype="multipart/form-data" lay-filter="demo-form" class="layui-form model-form">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" id="title" placeholder="请输入" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">专栏：</label>
+                    <div class="layui-input-block">
+                        <select name="type" id="type" lay-verify="" lay-search="">
+                            <option value="">请选择</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="start_time" name="start_time" autocomplete="off">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="end_time" name="end_time" autocomplete="off">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn reload-btn" lay-filter="demo-form-submit" type="button" lay-submit>
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <table class="layui-table demo-table" id="demo-table" lay-filter="demo-table" lay-even="" lay-skin="row">
+        </table>
+        <div class="layui-tab-item">
+            <div id="pageDemo"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/assets/module/sys/ad/index.js"></script>
+
+
+
+
+
+

@@ -1,0 +1,173 @@
+<script type="text/html" id="checkboxTpl">
+    <input type="checkbox" name="children_article_id" value="{{d.id}}" title="添加" lay-filter="lock-article" {{ d.id==d.children_article_id ? 'checked' : '' }}>
+</script>
+<script type="text/html" id="barDemoAdd">
+    <button class="layui-btn layui-btn-normal" lay-event="del-article">删除</button>
+</script>
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">[<span class="topic-title">******</span>]专题文章管理</h2>
+        <span class="layui-breadcrumb pull-right">
+        <a href="#!console">首页</a>
+        <a><cite>专题</cite></a>
+        <a><cite class="topic-title">***</cite></a>
+        <a><cite>文章管理</cite></a>
+      </span>
+    </div>
+    <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <div class="layui-input-block">
+                    <input type="button" value="返回" id="back" placeholder="请输入" autocomplete="off" class="layui-btn layui-btn-normal">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="id" placeholder="请输入" id="id" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">标题</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" id="title" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">类型：</label>
+                <div class="layui-input-block">
+                    <select name="cate" id="cate" lay-verify="" lay-search="">
+                        <option value="">请选择分类</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">摘要</label>
+                <div class="layui-input-block">
+                    <input type="text" name="info" id="info" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">开始时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="start_time" name="start_time">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">结束时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="end_time" name="end_time">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn reload-btn" data-type="reload">
+                    <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!--已添加的文章-->
+    <script type="text/html" id="articleToolAdd">
+        <div class="layui-btn-container">
+            <button type="button" class="layui-btn layui-btn-normal" lay-event="delArticle">从专题中删除</button>
+        </div>
+    </script>
+    <div>
+        <table class="layui-table article-table" id="article-table-add" lay-filter="article-table-add" lay-even=""
+               lay-skin="row">
+        </table>
+        <div class="layui-tab-item">
+            <div id="pageDemoAdd"></div>
+        </div>
+    </div>
+    <!--/已添加的文章-->
+
+    <script type="text/html" id="articleTool">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-normal" lay-event="addArticle">添加到专题</button>
+        </div>
+    </script>
+    <div>
+        <table class="layui-table article-table" id="article-table" lay-filter="article-table" lay-even=""
+               lay-skin="row">
+        </table>
+        <div class="layui-tab-item">
+            <div id="pageDemo"></div>
+        </div>
+    </div>
+</div>
+
+
+<!--点击编辑属性弹出层-->
+
+<div class="form-dv" id="newUpdate" style="display:none;">
+    <form class="layui-form layer-form" id="updateForm">
+        <input type="hidden" name="news-id" id="news-id">
+        <div class="layui-form-item">
+            <label class="layui-form-label">文章类型:</label>
+            <div class="layui-input-block">
+                <input type="radio" name="type" value="1" title="图文">
+                <input type="radio" name="type" value="2" title="图集">
+                <input type="radio" name="type" value="3" title="视频">
+                <input type="radio" name="type" value="4" title="其他">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题:</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" id="title-news" lay-verify="title" autocomplete="off"
+                       placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态:</label>
+            <div class="layui-input-block">
+                <select name="status" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">待审核</option>
+                    <option value="2">通过</option>
+                    <option value="3">审核未通过</option>
+                    <option value="4">发布</option>
+                    <option value="5">置顶</option>
+                    <option value="4">热门</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="newsUpdateForm">确定</button>
+                <button type="button" class="layui-btn layui-btn-primary" onclick="closeDialog()">返回</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/html" id="typeHtml">
+    {{# if (d.type_id == 0){  }}
+    <span style="color:#F581B1;">图文</span>
+    {{# } else if (d.type_id == 1){ }}
+    <span style="color:green;">图文</span>
+    {{# } else if (d.type_id == 2){ }}
+    <span style="color:#F581B1;">图集</span>
+    {{# } else if (d.type_id == 3){ }}
+    <span style="color:#F581B1;">视频</span>
+    {{# } else if (d.type_id == 4){ }}
+    <span style="color:#f5ac23;">专题</span>
+    {{#  }else{ }}
+    <span style="color:#f5ac23;">其他</span>
+    {{# } }}
+</script>
+<script type="text/html" id="faceHtml">
+    {{# if(d.cover_id == 0){ }}
+    <div>-</div>
+    {{# }else{ }}
+    <div><img style="height:28px" data-img="{{d.cover_url}}" src="{{d.cover_url}}"></div>
+    {{# } }}
+</script>
+<script type="text/javascript" src="/assets/module/sys/article/topicArticle.js"></script>
+
+
+
+
+
+

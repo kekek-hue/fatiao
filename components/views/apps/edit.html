@@ -1,0 +1,50 @@
+<form id="category-form" lay-filter="category-form" class="layui-form model-form">
+    <input name="id" type="hidden" id="cate_id"/>
+    <div class="layui-form-item">
+        <label class="layui-form-label">app类别名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" id="cate_name">
+        </div>
+
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">优先级</label>
+        <div class="layui-input-block">
+            <input type="text" name="index" id="cate_index">
+            
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">分类首字母</label>
+        <div class="layui-input-block">
+            <input type="text" name="sid" id="cate_index">
+            
+        </div>
+    </div>
+
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+<!--        <button class="layui-btn" lay-filter="category-form-submit" lay-submit onclick="editadd();">保存</button>-->
+        <button class="layui-btn" lay-filter="form-submit" id="menu-table" name="menu-table" lay-submit >保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/type/app/add.js?v=0.0.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+
+  function editadd(){
+    var id = $('#cate_id').val();
+    var name = $('#cate_name').val();
+
+    var data = {id:id,name:name};
+    var url = 'http://amin2.ceh.com.cn/app/cate/update';
+
+    $.post(url,data,function(e){
+
+    },'JSON');
+    location.reload();
+  }
+
+</script>

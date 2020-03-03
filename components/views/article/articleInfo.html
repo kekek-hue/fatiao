@@ -1,0 +1,275 @@
+<!--提示信息-->
+<div class="layui-col-md12">
+    <div class="layui-card">
+        <div class="layui-card-header">首页 - 修改文章</div>
+    </div>
+</div>
+<style>
+ #add_tag_div{
+     min-height: 130px
+ }
+ #check_tag_div{
+     padding: 10px
+ }
+</style>
+<!--提示信息-->
+<form class="layui-form layer-form" id="article-form" lay-filter="article-form">
+     
+    <div class="layui-col-md8">
+          <!--图集功能添加 end-->
+       <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit="submit-article-form" type="button"
+                        lay-filter="article-form">保存
+                </button>
+                <button type="button" class="ppp-back layui-btn layui-btn-primary">返回</button>
+            </div>
+        </div>
+       
+        <div class="layui-tab layui-tab-card">
+            <div class="layui-tab-item layui-show">
+                <input type="hidden" name="id" id="id" value="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章标题:</label>
+                    <div class="layui-col-md8">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                               class="layui-input title" value=''>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章类型:</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="type_id" value="1" lay-filter='article-type' title="图文" checked
+                               lay-skin="primary">
+                        <!-- <input type="radio" name="type" value="2" title="图集"  lay-filter='article-type' lay-skin="primary">
+                        <input type="radio" name="type" value="3" title="视频"  lay-filter='article-type' lay-skin="primary"> -->
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">封面图:</label>
+                    <div class="layui-input-block">
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn" id="thumbnail" name="thumbnail[]">上传图片</button>
+                            <div class="layui-upload-list thumbnail">
+                                <input type="hidden" name="file" class="thumbnailPath" id="file" value="">
+                                <input type="hidden" name="cover_id" class="thumbnailPath" id="cover_id" value="">
+                                <input type="hidden" name="cover_ext" class="thumbnailPath" id="cover_ext" value="">
+                                <img class="layui-upload-img" style="height: 50px" id="lowSource"
+                                     src="/static/images/log.jpg">
+                                <p id="failText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--图文编辑器开始-->
+                <div class="layui-form-item" id="filter_text" style="display: none">
+                    <label class="layui-form-label"></label>
+                    <div class="layui-input-block  ">
+                        <span style="color:#c13a10">内容出现的敏感词【可通过ctrl+f 搜索来操作】：</span><span class="text"
+                                                                                           style="color:red;"></span>
+                    </div>
+                </div>
+                <!-- <textarea class="layui-textarea" id="LAY_demo1"> 请输入相关内容 </textarea> -->
+                <div class="edi-box layui-form-item imageTxt">
+                    <label class="layui-form-label">内容:</label>
+                    <div class="layui-input-block">
+                        <div id="editor" style="height: 500px"></div>
+                    </div>
+                </div>
+                <!--图文编辑器结束-->
+                <!--图集功能添加start-->
+                <div class="layui-form-item atlases-div layui-hide">
+                    <div class="">
+                        <div class="flex-center position-ref full-height">
+                            <div class="content">
+                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                                    <legend>图集文章：制作图集列表</legend>
+                                </fieldset>
+                                <div class="layui-upload">
+                                    <button type="button" class="layui-btn layui-btn-normal" id="testList">选择图集
+                                    </button>
+                                    <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+                                    <div class="layui-upload-list">
+                                        <table class="layui-table" lay-filter="atlases_table" name="atlases_table"
+                                               id="atlases_table">
+                                            <thead>
+                                            <tr>
+                                                <th class="index">序号</th>
+                                                <th>文件名</th>
+                                                <th>大小</th>
+                                                <th>状态</th>
+                                                <th>图片描述</th>
+                                                <th>预览图</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="demoList">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- <div class="layui-upload">
+                                    <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                      预览图：
+                                      <div class="layui-upload-list" id="demo2"></div>
+                                   </blockquote>
+                                  </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+                <input type="hidden" id="globalId" name="id" value="">
+                <input type="hidden" id="imgTxtId" name="imgTxtId" value="">
+                <input type="hidden" name="source_publish_time" value="" id="source_publish_time">
+
+
+            </div>
+        </div>
+    </div>
+    <!--左边属性开始-->
+    <div class="layui-col-md4">
+        <div class="layui-card">
+            <div class="layui-card-header">属性</div>
+            <div class="layui-card-body layadmin-takerates">
+                <!--折叠开始-->
+                <div class="layui-collapse" lay-accordion="">
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">类型</h2>
+                        <div class="layui-colla-content layui-show">
+                            <div id="category-id">
+                            </div>
+                        </div>
+                    </div>
+                    <!--折叠结束-->
+                    <!--折叠开始-->
+                    <!--折叠结束-->
+                </div>
+
+                <!--折叠开始-->
+                <!--                    <div class="layui-collapse" lay-filter="test">-->
+                <!--                      <div class="layui-colla-item">-->
+                <!--                        <h2 class="layui-colla-title">发布与可见性</h2>-->
+                <!--                        <div class="layui-colla-content">-->
+                <!--                          &lt;!&ndash; <p>可见性</p> &ndash;&gt;-->
+                <!--                          <p>-->
+                <!--                            <div class="layui-inline">-->
+                <!--                              <label class="layui-form-label">发布</label>-->
+                <!--                              <div class="layui-input-inline">-->
+                <!--                                <input type="text" class="layui-input" name="publish-date" id="publish-btn" placeholder="yyyy-MM-dd HH:mm:ss">-->
+                <!--                              </div>-->
+                <!--                            </div>-->
+                <!--                          </p>-->
+                <!--                        </div>-->
+                <!--                      </div>-->
+                <!--                    </div>-->
+                <!--折叠结束-->
+                <!--折叠开始-->
+                <!--                    <div class="layui-collapse" lay-filter="test">-->
+                <!--                      <div class="layui-colla-item">-->
+                <!--                        <h2 class="layui-colla-title">文章摘要(可选)</h2>-->
+                <!--                        <div class="layui-colla-content">-->
+                <!--                          <div class="layui-form-item">-->
+                <!--                                <textarea placeholder="请输入内容" name="info" class="layui-textarea"></textarea>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                      </div>-->
+                <!--                    </div>-->
+                <!--折叠结束-->
+                <!--折叠开始-->
+                <div class="layui-collapse" lay-filter="test">
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">来源</h2>
+                        <div class="layui-colla-content layui-show">
+                            <div class="layui-form-item">
+                                <div class="">
+                                    <!--作者选择开始-->
+                                    <!--                                     <div class="layui-form-item">-->
+                                    <!--                                        <label class="layui-form-label">作者:</label>-->
+                                    <!--                                         <div class="layui-input-block">-->
+                                    <!--                                            <select name="author_id"  lay-search="">-->
+                                    <!--                                                <option value="">直接选择或搜索选择</option>-->
+                                    <!--                                            </select>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+                                    <!--作者选择结束-->
+
+                                    <!--来源网址-->
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">来源网址:</label>
+                                        <div class="layui-input-block">
+                                            <select name="source_id" lay-search="" id="source_type_id">
+                                                <option value="">直接选择或搜索选择</option>
+                                                <option>
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--来源网址-->
+                                    <!--来源url-->
+                                    <!--                                    <div class="layui-form-item">-->
+                                    <!--                                        <label class="layui-form-label">来源url:</label>-->
+                                    <!--                                        <div class="layui-input-block">-->
+                                    <!--                                            <input type="text" name="source_url" lay-verify="art-title" autocomplete="off" placeholder="请输入来源url" class="layui-input" value="">-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+                                    <!--来源url-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--折叠结束-->
+
+                <!-- 操作图文标签开始 -->   
+                <div class="layui-col-md4" style="width:540px;margin:20px 0 0 -15px;">
+                    <div class="layui-card">
+                        <div class="layui-card-header">标签</div>
+                        <div class="layui-card-body layadmin-takerates">
+                            <div class="layui-collapse" lay-filter="test">
+                                <div class="layui-colla-item">
+                                    <h2 class="layui-colla-title">标签
+                                            
+                                    </h2>
+                                    <div class="layui-form-item">
+                                            <div id="check_tag_div" lay-filter="xian"></div>
+                                        <blockquote class="layui-elem-quote layui-quote-nm">
+                                            <div id="add_tag_div" ></div>
+                                            <div id="pagebox" ></div>
+                                        </blockquote>
+                                        <!--                                        <div class="layui-inline">-->
+                                        <!--                                            <label class="layui-form-label">添加标签:</label>-->
+                                        <!--                                            <div class="layui-input-inline">-->
+                                        <!--                                                <input name="add_tag" id="add_tag" type="text" placeholder="标签" autocomplete="off"-->
+                                        <!--                                                       class="layui-input">-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </div>-->
+                                    </div>
+                                    <!--                                    <div class="layui-form-item">-->
+                                    <!--                                        <button type="button" class="layui-btn layui-btn-sm" id="add_tag_btn">-->
+                                    <!--                                            <i class="layui-icon">添加</i>-->
+                                    <!--                                        </button>-->
+                                    <!--                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 操作图文标签结束 -->
+        </div>
+        <!--左边属性结束-->
+    </div>
+</form>
+<script type="text/javascript" charset="utf-8" src="/assets/jquery/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="/assets/jquery/jquery-ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="/assets/libs/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/assets/libs/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/assets/libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="/assets/module/sys/article/editArticle.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        Lay(layui);
+    });
+</script>
+

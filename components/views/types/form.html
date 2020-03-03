@@ -1,0 +1,46 @@
+<form id="menu-form" lay-filter="type-form" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <div class="layui-form-item">
+        <label class="layui-form-label">类别名称</label>
+        <div class="layui-input-block">
+            <input name="name" placeholder="请输入类别名称" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型</label>
+        <div class="layui-input-block">
+            <select name="type" lay-verify="required" lay-filter="menuType">
+                <option value="1" selected="selected">通用</option>
+                <option value="2">app首页默认</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-block">
+            <input type="radio" name="status" value="0" title="正常" checked="checked">
+            <input type="radio" name="status" value="1" title="禁用">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">上级菜单</label>
+        <div class="layui-input-block">
+            <select id="pId" name="pid" lay-filter="pid" lay-verify="required">
+                <option value="">请选择</option>
+                <option value="0">首级类型</option>
+                <option p-for="parents" p-bind="value:{{id}}">{{name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="menu-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/type/add.js?v=0.0.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

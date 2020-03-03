@@ -1,0 +1,45 @@
+<!--数据概览-->
+<div class="layui-row layui-col-space15">
+  <div class="layui-col-lg3">
+    <!--菜单板块begin-->
+    <div class="layui-card">
+      <div class="layui-card-header">模板根目录</div>
+      <div class="layui-card-body">
+       <!-- 表单tree -->
+          <ul id="menuTreeData" class="ztree"></ul>
+      </div>
+    </div>
+    <!--菜单板块end-->
+  </div>
+  <!--列表begin-->
+  <div class="layui-col-lg9">
+    <div class="layui-card">
+      <div class="layui-card-header">修改模板</div>
+      <div class="layui-card-body">
+        <!-- begin code -->
+          <textarea class="form-control" id="code" name="code"></textarea>
+        <!-- end code-->
+      </div>
+    </div>
+  </div>
+  <!--列表end-->
+</div>
+<link rel="stylesheet" href="/assets/libs/codemirror/codemirror.css"/>
+<script src="/assets/libs/codemirror/codemirror.js"></script>
+<!--groovy代码高亮-->
+<script src="/assets/libs/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<!--引入css文件，用以支持主题-->
+<link rel="stylesheet" href="/assets/libs/codemirror/theme/dracula.css"/>
+<!--支持代码折叠-->
+<link rel="stylesheet" href="/assets/libs/codemirror/addon/fold/foldgutter.css"/>
+<script src="/assets/libs/codemirror/addon/fold/foldcode.js"></script>
+<script src="/assets/libs/codemirror/addon/fold/foldgutter.js"></script>
+<script src="/assets/libs/codemirror/addon/fold/brace-fold.js"></script>
+<script src="/assets/libs/codemirror/addon/fold/comment-fold.js"></script>
+
+<script type="text/javascript"  src="/assets/module/sys/template/template.js?v=0.0.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

@@ -1,0 +1,106 @@
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i
+            class="layui-icon layui-icon-delete"></i>删除</a>
+</script>
+
+<div class="layui-fluid">
+    <div class="crumb-caption">
+      <span class="crumb">
+        <a href="/">首页</a>
+        <a href="javascript:;"> /标签列表</a>
+      </span>
+    </div>
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">ID</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="id" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="name" id="tag-name" placeholder="请输入" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">标签类型</label>
+                    <div class="layui-input-block">
+                        <select name="type" id="type" lay-verify="">
+                            <option value="">请选择状态</option>
+                            <option value="0">文章标签</option>
+                            <option value="1">点赞</option>
+                            <option value="2">身份标签</option>
+                            <option value="6">敏感词</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn reload-btn layui-btn-normal" data-type="reload">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+            </div>
+            <script type="text/html" id="tagTool">
+                <div class="layui-btn-container">
+                    <button class="layui-btn layuiadmin-btn-useradmin layui-btn-normal" data-type="batchdel"
+                            lay-event="getCheckData">删除
+                    </button>
+                    <button class="layui-btn layuiadmin-btn-useradmin layui-btn-normal" data-type="add" id="add">添加
+                    </button>
+                </div>
+            </script>
+            <table class="layui-table" id="tags-table" lay-filter="tags-table">
+            </table>
+        </div>
+    </div>
+    <div class="form-dv" id="add-form" style="display:none;">
+        <form class="layui-form layer-form" id="addForm">
+            <input type="hidden" name="id" id="id" lay-verify="required" autocomplete="off" placeholder="请输入名称"
+                   class="layui-input">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" id="name" lay-verify="required" autocomplete="off"
+                           placeholder="请输入名称" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">描述:</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="info" id="info" lay-verify="required" autocomplete="off"
+                           placeholder="请输入昵称" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">类型:</label>
+                <div class="layui-input-inline">
+                    <select name="add_type" id="add_type" lay-verify="">
+                        <option value="">请选择状态</option>
+                        <option value="0">文章标签</option>
+                        <option value="1">点赞</option>
+                        <option value="2">身份标签</option>
+                        <option value="6">敏感词</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<script src="/assets/tags/tags.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        Lay(layui);
+    })
+</script>

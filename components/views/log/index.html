@@ -1,0 +1,57 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">用户管理</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>用户管理</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <!-- 搜索条件 -->
+        <div class="layui-form toolbar">
+            <form id="searchForm" onsubmit="return false;">
+                账号：<input name="loginName" class="layui-input search-input" type="text" placeholder="输入账号"/>&emsp;
+                用户名：<input name="nickname" class="layui-input search-input" type="text" placeholder="输入用户名"/>&emsp;
+                状态：<select name="status" lay-verify="">
+                <option value="">请选择状态</option>
+                <option value="0">正常</option>
+                <option value="1">禁用</option>
+            </select>
+                <button id="user-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+            </form>
+        </div>
+        <!-- 表格顶部操作列 -->
+        <script type="text/html" id="user-toolbar">
+            <div class="layui-btn-container">
+                {{# if({{addShow}} == true){ }}
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add"><i
+                        class="layui-icon">&#xe654;</i>添加
+                </button>
+                {{# } }}
+            </div>
+        </script>
+        <table class="layui-table" id="user-table" lay-filter="user-table"></table>
+    </div>
+</div>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="user-table-bar">
+    {{#  if({{editShow}} == true){ }}
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    {{#  } }}
+    {{#  if({{resetPwdShow}} == true){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="reset">重置密码</a>
+    {{#  } }}
+</script>
+
+<!-- 表格状态列 -->
+<script type="text/html" id="user-tpl-status">
+    <input type="checkbox" lay-filter="user-tpl-status" value="{{d.id}}" lay-skin="switch"
+           lay-text="正常|禁用" {{d.status==0?'checked':''}}/>
+</script>
+<script type="text/javascript"  src="/assets/module/sys/log/log.js?v=0.1.9"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

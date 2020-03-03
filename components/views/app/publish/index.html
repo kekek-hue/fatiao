@@ -1,0 +1,39 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">发布管理</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>发布管理</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <!-- 搜索条件 -->
+        <div class="layui-form toolbar">
+            <form id="searchPublishForm" onsubmit="return false;">
+                文章id：<input name="info_id" class="layui-input search-input" type="text" placeholder="输入文章id"/>&emsp;
+                文章标题：<input name="title" class="layui-input search-input" type="text" placeholder="输入文章标题"/>&emsp;
+                <button id="publish-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+            </form>
+        </div>
+        <!-- 表格顶部操作列 -->
+        <table class="layui-table" id="user-table" lay-filter="user-table"></table>
+    </div>
+</div>
+<script type="text/html" id="faceHtml1">
+  <div><img style="height:50px" data-img="/img/{{d.face_res_id}}" src="http://img2.ceh.com.cn/cover/{{d.id}}"></div>
+</script>
+<!-- 表格操作列 -->
+<script type="text/html" id="publish-table-bar">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="publish-scheme-select">版式选择</a>
+</script>
+<!-- 表格状态列 -->
+<script type="text/html" id="publish-tpl-status">
+    <input type="checkbox" lay-filter="publish-tpl-status" value="{{d.id}}" lay-skin="switch"
+           lay-text="发布|下架" {{d.status==2?'checked':''}}/>
+</script>
+<script type="text/javascript"  src="/assets/module/sys/app/publish/publish.js?v=0.1.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

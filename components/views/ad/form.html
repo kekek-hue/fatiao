@@ -1,0 +1,77 @@
+<form  enctype="multipart/form-data" id="commune-form" lay-filter="commune-form" class="layui-form model-form">
+    <input type="hidden" name="userid" id="userid" value="1">
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+            <input id="title" name="title" placeholder="请输入" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <!-- <div class="layui-form-item">
+        <label class="layui-form-label">开始时间</label>
+        <div class="layui-input-block">
+            <input name="start_time" id="start_time" placeholder="请输入" type="text" class="layui-input" maxlength="30"
+                   lay-verify="required"/>
+            <!--<p>最多30个字</p>-->
+     <!--   </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">结束时间</label>
+        <div class="layui-input-block">
+            <input name="end_time" id="end_time" placeholder="请输入" type="text" class="layui-input" value="" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div> -->
+    <div class="layui-form-item">
+        <label class="layui-form-label">开始时间:</label>
+        <div class="layui-col-md4">
+            <input type="text" name="start_time" lay-verify="art-title" autocomplete="off"
+                placeholder="开始时间" class="layui-input" value='' id="start">
+        </div>
+</div>
+<div class="layui-form-item">
+        <label class="layui-form-label">结束时间:</label>
+        <div class="layui-col-md4">
+            <input type="text" name="end_time" lay-verify="art-title" autocomplete="off"
+                placeholder="结束时间" class="layui-input" value='' id="end">
+        </div>
+</div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">链接地址</label>
+        <div class="layui-input-block">
+            <input name="url" id="url" placeholder="请输入" type="text" class="layui-input" value="" maxlength="200"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">专栏</label>
+        <div class="layui-input-block">
+            <select name="type" lay-search id="type-form">
+                <option value="">请选择</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+            <label class="layui-form-label">封面图:</label>
+            <div class="layui-input-block">
+                <div class="layui-upload">
+                    <button type="button" class="layui-btn" id="thumbnail-img"
+                        name="thumbnail_img[]">上传图片</button>
+                    <div class="layui-upload-list thumbnail">
+                        <input type="hidden" name="cover_id" class="thumbnailPath" id="cover_id"
+                            value="">
+                            <input type="hidden" name="cover_ext" class="thumbnailPath" id="cover_ext"
+                            value="">
+                        <img class="layui-upload-img" style="height: 50px" id="lowSource" name="cover_url" src="">
+                        <p id="failText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" type="button" lay-filter="commune-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript" src="/assets/module/sys/ad/form.js"></script>

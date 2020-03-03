@@ -1,0 +1,43 @@
+<form class="layui-form pd-20" data-edi="1" enctype="multipart/form-data"
+      id="demo-form" lay-filter="demo-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">分类名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" placeholder="请输入分类名称" class="layui-input " lay-verify="title">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">关键词</label>
+        <div class="layui-input-block">
+            <input type="text" name="tag" lay-verify="title" placeholder="请输入关键词使用英文,分隔" class="layui-input tag">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">最少个数</label>
+        <div class="layui-input-block">
+            <input type="number" name="num" placeholder="最少个数" class="layui-input" min="1">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序</label>
+        <div class="layui-input-block">
+            <input type="number" name="sort" lay-verify="title" placeholder="请输入优先级，以数字格式" class="layui-input"
+                   min="1">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否使用</label>
+        <div class="layui-input-block">
+            <input type="radio" name="use" value="是" title="是">
+            <input type="radio" name="use" value="否" title="否">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="button" lay-submit lay-filter="demo-form-submit" class="layui-btn">确定</button>
+            <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        </div>
+    </div>
+    <input type="hidden" value="0" name="id">
+</form>
+<script type="text/javascript" src="/assets/module/sys/crawler/form.js"></script>

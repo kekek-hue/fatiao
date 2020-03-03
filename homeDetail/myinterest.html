@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="screen-orientation" content="portrait">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="css/mui.min.css">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			/* background: #FFFFFF; */
+		}
+        p {
+            margin-bottom: 0px;
+        }
+
+		body{
+			background: #FFFFFF;
+		}
+		.mui-btn-outlined {
+			padding: 6px 10px;
+			font-size: 14px;
+			border-radius: 3px;
+		}
+        
+        .mytag-btn {
+            background: #4a8dff;
+            border: none;
+            color: white;
+        }
+        .alltag-btn {
+            border: 1px solid #999;
+            color: #666;
+        }
+
+		.mytag,
+		.alltag {
+			padding: 10px 10px;
+		}
+
+		.paddleft {
+			display: inline-block;
+			padding: 0px 10px 10px 0px;
+			position: relative;
+			left: 0;
+		}
+
+		.tit {
+			color: #222;
+            height: 40px;
+            text-align: left;
+            font-weight: 600;
+            width: 100%;
+            padding: 6px 12px 0px 12px;
+            font-size: 18px;
+		}
+        .title-vline {
+            display: inline-block;
+            width: 5px;
+            height: 20px;
+            vertical-align: middle;
+            border-radius: 3px;
+            background-color: #4a8dff;
+            margin: 10px 0px 13px 0px;
+        }
+        .line {
+            background: #eee;
+            height: 10px;
+        }
+		img{
+			height: 15px;
+			width: 15px;
+			position: absolute;
+			top: -3px;
+			right:3px;
+		}
+	</style>
+	<body>
+		<div id="dom">
+			<div class="mytagbox">
+                <p class="tit">
+                    <span class="title-vline"></span> 我的标签
+                </p>
+				<div class="mytag">
+					<span class="paddleft" v-for="(i,t) in mytag" :key="t" @click="settag(2,i,t)"><button type="button" :class="['mui-btn',' mui-btn-outlined','mytag-btn']">{{i.name}}</button><img src="img/chacha.png" ></span>
+				</div>
+            </div>
+            <div class="line"></div>
+			<div class="alltagbox">
+				<p class="tit">
+                        <span class="title-vline"></span> 所有标签
+                </p>
+				<div class="alltag">
+					<span class="paddleft" v-for="(i,t) in alltag" :key="t" @click="settag(1,i,t)"><button type="button" :class="['mui-btn',' mui-btn-outlined', 'alltag-btn']">{{i.name}}</button></span>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src='js/vue.min.js'></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#dom',
+			data: {
+				alltag: [],
+				mytag: [],
+				active: "active",
+				tagvalue: "",
+				tagdata: [],
+				colorlist: ["mui-btn-primary", "mui-btn-success", "mui-btn-warning", "mui-btn-danger", "mui-btn-royal", ""]
+			},
+			activated() {
+				this.usertag();
+			},
+			created() {
+				this.usertag();
+			},
+			mounted() {},
+			methods: {
+				//用户的所有标签
+				usertag() {
+					this.mytag=[];
+					this.alltag=[]
+					let that = this
+					mui.ajax('http://api2.ceh.com.cn/tag/interests/list', {
+						data: {
+							user_id: "319430217930703154"
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'get', //HTTP请求类型
+						success: function(data) {
+							that.mytag = data.in;
+							that.alltag = data.not_in
+						},
+						error: function(xhr, type, errorThrown) {
+
+						}
+					});
+
+				},
+				randomRgb() {
+					return this.colorlist[Math.floor(Math.random() * this.colorlist.length)];
+				},
+				settag(tagstatus, item, index) {
+					let that = this
+					mui.ajax('http://api2.ceh.com.cn/tag/interests/set', {
+						data: {
+							user_id:"319430217930703154",
+							userid:"319430217930703154",
+							status: tagstatus,
+							tag_name: item.name,
+							tag_id: item.id
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						success: function(data) {
+							if(tagstatus==1){
+								that.alltag.splice(index,1)
+								that.mytag.unshift(item)
+							}else{
+								that.mytag.splice(index,1)
+								that.alltag.unshift(item);
+							}
+							// that.usertag();
+						},
+						error: function(xhr, type, errorThrown) {
+
+						}
+					});
+
+				},
+				getQueryString(name) {
+					let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+					let r = window.location.search.substr(1).match(reg);
+					if (r != null) {
+						return unescape(r[2]);
+					};
+					return null;
+				},
+			},
+		});
+	</script>
+</html>

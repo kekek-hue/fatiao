@@ -1,0 +1,123 @@
+<div class="layui-fluid">
+    <div class="crumb-caption">
+        <span class="crumb">
+            <a href="/">首页</a>
+            <a href="javascript:;"> /项目管理</a>
+        </span>
+    </div>
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <form enctype="multipart/form-data" lay-filter="ask-form" class="layui-form model-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">标题</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="title" id="title" placeholder="请输入" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline is-commune">
+                        <label class="layui-form-label">公社</label>
+                        <div class="layui-input-inline">
+                            <select name="commune" id="commune" lay-search="">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">类型</label>
+                        <div class="layui-input-inline">
+                            <select name="type" id="type">
+                                <option value="">请选择类型</option>
+                                <option value="2">公告</option>
+                                <option value="5">项目</option>
+                                <option value="7">政策法规</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">ID</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="id" id="id" placeholder="请输入" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline is-commune">
+                        <label class="layui-form-label">置顶</label>
+                        <div class="layui-input-inline">
+                            <select name="top" id="top">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="2">否</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline is-commune">
+                        <label class="layui-form-label">推介</label>
+                        <div class="layui-input-inline">
+                            <select name="recommend" id="recommend">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="2">否</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline" id="search_ask">
+                        <button type="button" class="layui-btn reload-btn" lay-filter="ask-form-submit" lay-submit>
+                            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script type="text/html" id="commune-add-toolbar">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add"><i
+                        class="layui-icon">&#xe654;</i>发布
+                </button>
+            </div>
+        </script>
+
+        <div>
+            <div>
+                <table class="layui-table article-table" id="communeAsk-table" lay-filter="communeAsk-table" lay-even=""
+                    lay-skin="row" >
+                </table>
+            </div>
+
+            <div class="layui-tab-item">
+                <div id="pageDemo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="barDemo">
+    {{# if(d.status==1){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="op-pass">通过</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="op-not">不通过</a>
+    {{# } else if(d.status==2){  }}
+    <!--<a class="layui-btn layui-btn-primary layui-btn-xs">通过</a>-->
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="op-not">不通过</a>
+    {{# } else if(d.status==3){  }}
+    <a class="layui-btn layui-btn-xs" lay-event="op-pass">通过</a>
+    <!--<a class="layui-btn layui-btn-primary layui-btn-xs">不通过</a>-->
+    {{# } }}
+    <!--<a class="layui-btn layui-btn-danger  layui-btn-xs" lay-event="op-delete">删除</a>-->
+
+    {{# if(d.tid && d.isCommune!=1){ }}
+    <a class="layui-btn layui-btn-xs is-commune" lay-event="op-cancel-top">取消置顶</a>
+    {{# }else if(d.isCommune!=1){ }}
+    <a class="layui-btn layui-btn-xs is-commune" lay-event="op-top">置顶</a>
+    {{# } }}
+    <a class="layui-btn layui-btn-xs is-commune" lay-event="op-del">删除</a>
+    <a class="layui-btn layui-btn-xs is-commune" title="编辑" lay-event="update-attr">编辑</a>
+</script>
+
+<script type="text/javascript" src="/assets/module/sys/commune/communeAsk.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        Lay(layui);
+    });
+</script>

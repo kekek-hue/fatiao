@@ -1,0 +1,45 @@
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="edit-attr" data-edit-type="area"
+            data-edit-title="订单" id="edit"><i
+            class="layui-icon"></i></button>
+</script>
+<script type="text/html" id="status">
+    {{# if(d.status == 0){ }}
+    <span style="color:#F581B1;">下单</span>
+    {{# } else if(d.status == 1){ }}
+    <span style="color:green;">派送中</span>
+    {{# } else if(d.status == 2){ }}
+    <span style="color:#F581B1;">送达</span>
+    {{# } else if(d.status == 3){ }}
+    <span style="color:#F581B1;">对方拒收</span>
+    {{# } else if(d.status == 4){ }}
+    <span style="color:#f5ac23;">未发货</span>
+    {{#  }else if(d.status == 5){ }}
+    <span style="color:#f5ac23;">其他</span>
+    {{# } }}
+</script>
+<div class="layui-fluid">
+    <div class="crumb-caption">
+  <span class="crumb">
+    <a href="/">首页</a>
+    <a href="javascript:;"> /积分管理/订单管理</a>
+  </span>
+    </div>
+    <div class="layui-card">
+        <div>
+            <table class="layui-table article-table" id="person-area-table" lay-filter="person-area-table" lay-even=""
+                   lay-skin="row">
+            </table>
+            <div class="layui-tab-item">
+                <div id="pageDemo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/assets/module/sys/integral/order.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        Lay(layui);
+    });
+</script>

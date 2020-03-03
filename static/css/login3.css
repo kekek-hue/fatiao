@@ -1,0 +1,53 @@
+body,html{
+    width:100%;
+    height:100%;
+    background: linear-gradient(to top, rgba(0,137,255,.5), rgba(30,159,255,1));
+
+}
+.login-title{
+    font-size:30px;
+    font-weight:700;
+    margin-bottom:10px;
+    text-align: center;
+}
+.login-sub{
+    font-size: 28px;
+    margin-bottom:40px;
+    text-align: center;
+    font-weight:500;
+}
+.login-box{
+    width:400px;
+    height:380px;
+    padding:20px;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    box-shadow: 0 0 5px #ccc;
+    background:rgba(255,255,255,.9);
+}
+.login-box .layui-form-item{
+    margin-bottom:20px;
+    position: relative;
+}
+.login-box .layui-input{
+    height:50px;
+    font-size:16px;
+    padding-left:48px;
+}
+.login-btn{
+    width:100%;
+    font-size: 22px;
+    margin-top:20px;
+    height:50px;
+}
+.login-box i{
+    position: absolute;
+    font-size: 28px;
+    left: 6px;
+    top: 10px;
+
+}

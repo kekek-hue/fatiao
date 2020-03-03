@@ -1,0 +1,83 @@
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="edit-attr"><i class="layui-icon"></i></button>
+    <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="delete-attr"><i class="layui-icon"></i></button>
+</script>
+<script type="text/html" id="TagDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="op-pass">通过</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="op-pending">待审</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="op-not">不通过</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="go-index">修改公社</a>
+    <!--<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="op-cover">修改封面</a>-->
+    <a class="layui-btn layui-btn-danger  layui-btn-xs" lay-event="op-delete">删除</a>
+</script>
+
+<script type="text/html" id="switchTpl">
+    <!-- 这里的 checked 的状态只是演示 -->
+    <input type="checkbox" name="index" value="{{d.id}}" lay-skin="switch" lay-text="是|否" lay-filter="indexDemo" {{ d.index == 1 ? 'checked' : '' }}>
+</script>
+
+<div class="layui-fluid">
+    <div class="crumb-caption">
+  <span class="crumb">
+    <a href="/">首页</a>
+    <a href="javascript:;"> /公社管理</a>
+  </span>
+    </div>
+    <div  class="layui-card">
+        <!--<div class="layui-form layui-card-header layuiadmin-card-header-auto">-->
+        <!--<div class="layui-form-item">-->
+        <!--<div class="layui-inline">-->
+        <!--<label class="layui-form-label">公社ID</label>-->
+        <!--<div class="layui-input-block">-->
+        <!--<input type="text" name="id" placeholder="请输入" id="id" autocomplete="off" class="layui-input">-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-inline">-->
+        <!--<label class="layui-form-label">公社名称</label>-->
+        <!--<div class="layui-input-block">-->
+        <!--<input type="text" name="title" id="title" placeholder="请输入" autocomplete="off" class="layui-input">-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-inline">-->
+        <!--<button class="layui-btn reload-btn" data-type="reload">-->
+        <!--<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>-->
+        <!--</button>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
+
+        <!--</div>-->
+
+        <script type="text/html" id="commune-add-toolbar">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add"><i
+                        class="layui-icon">&#xe654;</i>添加
+                </button>
+            </div>
+        </script>
+
+        <div>
+            <table class="layui-table article-table" id="commune-table" lay-filter="commune-table" lay-even="" lay-skin="row">
+            </table>
+            <div class="layui-tab-item">
+                <div id="pageDemo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"  src="/assets/module/sys/commune/communeNew.js"></script>
+<script type="text/javascript">
+    layui.use('element',function(){
+        Lay(layui);
+    });
+
+
+</script>
+
+
+
+
+
+

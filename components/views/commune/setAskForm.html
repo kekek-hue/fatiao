@@ -1,0 +1,161 @@
+<style>
+    #addAttachement {
+        padding: 10px
+    }
+
+    #attachement li {
+        margin-top: 10px;
+      
+    }
+</style>
+<form enctype="multipart/form-data" id="commune-form" lay-filter="commune-form" class="layui-form model-form">
+    <input type="hidden" name="userId" id="userId" value="1">
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+            <input id="title" name="title" placeholder="请输入名称" type="text" class="layui-input"
+                   lay-verify="required"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">投资总金额</label>
+        <div class="layui-input-block">
+            <input id="money" name="money" placeholder="请输入" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">内容</label>
+        <div class="layui-input-block">
+            <textarea name="content" id="editor" style="height: 500px"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型</label>
+        <div class="layui-input-inline">
+            <select id="type" name="type" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+                <option value="5">项目</option>
+                <option value="2">公告</option>
+                <option value="7">政策法规</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">公社</label>
+        <div class="layui-input-inline">
+            <select id="commune-id" name="commune_id" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">城市</label>
+        <div class="layui-input-inline">
+            <select id="area-id" name="area_id" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">行业</label>
+        <div class="layui-input-inline">
+            <select id="trade-id" name="industry_id" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">回报机制</label>
+        <div class="layui-input-inline">
+            <select id="reward-id" name="reward_id" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">所处阶段</label>
+        <div class="layui-input-inline">
+            <select id="age-id" name="age" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">项目示范级别/批次</label>
+        <div class="layui-input-inline">
+            <select id="level-id" name="level" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">封面图:</label>
+        <div class="layui-input-block">
+            <div class="layui-upload">
+                <button type="button" class="layui-btn" id="thumbnail" name="thumbnail[]">上传图片</button>
+                <div class="layui-upload-list thumbnail">
+                    <input type="hidden" name="cover_id" class="thumbnailPath" id="cover_id" value="">
+                    <input type="hidden" name="cover_ext" class="thumbnailPath" id="cover_ext" value="">
+                    <img class="layui-upload-img" style="height: 50px" id="lowSource" src="">
+                    <p id="failText"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="layui-form-item">
+        <label class="layui-form-label">添加附件</label>
+        <div class="layui-input-block layui-upload">
+            <button id="addAttachement" type="button">点击添加附件</button>
+            <ul id="attachement"></ul>
+        </div>
+    </div> -->
+    <div class="layui-upload">
+        <button type="button" class="layui-btn layui-btn-normal"
+                style="margin-left: 30px"
+                id="testList">选择多文件
+        </button>
+        <button type="button" class="layui-btn" id="testListAction"
+                style="display: inline; margin-left: 26px;">
+            开始上传
+        </button>
+        <div class="layui-upload-list col-md-12" id="project">
+            <table class="layui-table" style="margin: 0 0 0 0">
+                <thead style="display: none">
+                <tr>
+                    <th>文件名</th>
+                    <th>大小</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="demoList"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button id="ppp-to-list" class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" type="button" lay-filter="commune-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script>
+    var globalId = 0;
+</script>
+<script type="text/javascript" charset="utf-8" src="/assets/jquery/jquery-ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="/assets/libs/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/assets/libs/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/assets/libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="/assets/module/sys/commune/AskForm.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        Lay(layui);
+    });
+</script>

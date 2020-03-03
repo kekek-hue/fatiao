@@ -1,0 +1,52 @@
+<!-- user表单弹窗 -->
+<form id="tag-form" lay-filter="tag-form" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <!--<div class="layui-form-item" style="display: none;">-->
+        <!--<label class="layui-form-label">账号</label>-->
+        <!--<div class="layui-input-block">-->
+            <!--<input id="name" name="name" placeholder="请输入账号" type="text" class="layui-input u_name"  maxlength="20" lay-verify="required"/>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">联系人</label>
+        <div class="layui-input-block">
+            <input name="name" placeholder="请输入联系人" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">联系方式</label>
+        <div class="layui-input-block">
+            <input name="contact" placeholder="请输入联系方式" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">内容</label>
+        <div class="layui-input-block">
+            <input name="content" placeholder="请输入联系人" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item type-show">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-block">
+            <select name="status" id="status"  lay-verify="required">
+                <option value="">请选择</option>
+                <option value="1">未解决</option>
+                <option value="2">已解决</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="opinion-form-submit" lay-submit type="button">保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/opinion/setopinion.js"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

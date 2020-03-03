@@ -1,0 +1,88 @@
+<style>
+    .layui-table-tips-main{
+     display: none
+   }
+   .layui-table-tips-c{
+     display: none
+   }
+
+</style>
+<script type="text/html" id="barDemo">
+    {{# if(d.status==2){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="op-pass">不通过</a>
+    {{# } }}
+    <a class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
+  
+</script>
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">动态管理</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>动态列表</cite></a>
+        </span>
+    </div>
+    <script type="text/html" id="newState">
+        {{# if (d.status == 3){}}
+        <span style="color:red;">不通过</span>
+        {{#} else if (d.status == 2){}}
+        <span style="color:green;">通过</span>
+        
+        {{# } }}
+    </script>
+    <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+        <form enctype="multipart/form-data" lay-filter="demo-form" class="layui-form model-form">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键字：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="key" id="title" placeholder="请输入" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">状态：</label>
+                    <div class="layui-input-block">
+                        <select name="status" id="type" lay-verify="" lay-search="">
+                            <option value="0">请选择</option>
+                            <option value="2">通过</option>
+                            <option value="3">不通过</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="start_time" name="start_time" autocomplete="off">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="end_time" name="end_time" autocomplete="off">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn reload-btn" lay-filter="demo-form-submit" type="button" lay-submit>
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                  
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <table class="layui-table demo-table" id="demo-table" lay-filter="demo-table" lay-even="" lay-skin="row">
+        </table>
+        <div class="layui-tab-item">
+            <div id="pageDemo"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/assets/module/sys/smallVideo/index.js"></script>
+
+
+
+
+
+

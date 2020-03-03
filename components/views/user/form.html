@@ -1,0 +1,55 @@
+<!-- user表单弹窗 -->
+<form id="admin_user-form" lay-filter="admin_user-form" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <!--<div class="layui-form-item" style="display: none;">-->
+        <!--<label class="layui-form-label">账号</label>-->
+        <!--<div class="layui-input-block">-->
+            <!--<input id="name" name="name" placeholder="请输入账号" type="text" class="layui-input u_name"  maxlength="20" lay-verify="required"/>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input name="nickname" placeholder="请输入用户名" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手机号</label>
+        <div class="layui-input-block">
+            <input name="tel" placeholder="请输入手机号" type="text" class="layui-input" lay-verify="phone"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input name="email" placeholder="请输入邮箱" type="text" class="layui-input" lay-verify="email"/>
+        </div>
+    </div>
+    <div class="layui-form-item commune-show">
+        <label class="layui-form-label">公社</label>
+        <div class="layui-input-block">
+            <select name="commune_id" id="commune"  lay-verify="required">
+                <option value="">请选择</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item commune-hide">
+        <label class="layui-form-label">角色</label>
+        <div class="layui-input-block">
+            <select name="role" id="appCategory"  lay-verify="required">
+                <option value="">请选择</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="user-form-submit" type="button" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/user/addUser.js"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

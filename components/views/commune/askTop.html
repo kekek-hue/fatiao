@@ -1,0 +1,32 @@
+<form id="commune-ask-top-form" lay-filter="commune-ask-top-form" class="layui-form model-form">
+    <input type="hidden" name="id" id="ask_id">
+    <div class="layui-form-item">
+        <label class="layui-form-label">置顶开始时间</label>
+        <div class="layui-input-block">
+            <input placeholder="请输入开始时间" type="text" class="layui-input" id="start_time" name="start_time"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序</label>
+        <div class="layui-input-block">
+            <input placeholder="请输入序号" type="number" class="layui-input"  id="sort" name="sort" min="0"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">置顶结束时间</label>
+        <div class="layui-input-block">
+            <input placeholder="请输入结束时间" type="text" class="layui-input"  id="end_time" name="end_time"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="commune-ask-top-form-submit" lay-submit>确定</button>
+    </div>
+</form>
+<script type="text/javascript" src="/assets/module/sys/commune/communeAskModify.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        Lay(layui);
+    });
+</script>

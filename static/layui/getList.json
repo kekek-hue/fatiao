@@ -1,0 +1,93 @@
+{"code": 0
+,"msg": ""
+,"data": {
+  "mine": {
+    "username": "轴心时代"
+  ,"id": "100000"
+  ,"status": "online"
+  ,"sign": "在深邃的编码世界，做一枚轻盈的纸飞机"
+  ,"avatar": "/static/images/tx.jpg"
+  }
+,"friend": [{
+    "groupname": "中国"
+  ,"id": 0
+  ,"list": [{
+      "username": "老子"
+    ,"id": "100001"
+    ,"avatar": "/static/images/tx.jpg"
+    ,"sign": "这些都是测试数据，实际使用请严格按照该格式返回"
+    ,"status": "online"
+    },{
+      "username": "孔子"
+    ,"id": "100001222"
+    ,"sign": "如约而至，不负姊妹欢乐颂"
+    ,"avatar": "/static/images/tx.jpg"
+    },{
+      "username": "墨子"
+    ,"id": "10034001"
+    ,"avatar": "/static/images/tx.jpg"
+    ,"sign": ""
+    },{
+      "username": "孙子"
+    ,"id": "168168"
+    ,"avatar": "/static/images/tx.jpg"
+    ,"sign": "让天下没有难写的代码"
+    },{
+      "username": "韩非子"
+    ,"id": "666666"
+    ,"avatar": "/static/images/tx.jpg"
+    ,"sign": "代码在囧途，也要写到底"
+    }]
+  },{
+    "groupname": "古希腊"
+  ,"id": 1
+  ,"list": [{
+      "username": "苏格拉底"
+    ,"id": "121286"
+    ,"avatar": "/static/images/tx.jpg"
+    ,"sign": "在自己实力不济的时候，不要去相信什么媒体和记者。他们不是善良的人，有时候候他们的采访对当事人而言就是陷阱"
+    },{
+      "username": ""
+    ,"id": "108101"
+    ,"avatar": "/static/images/tx.jpg"
+    ,"sign": "柏拉图"
+    },{
+      "username": "亚里士多德"
+    ,"id": "12123454"
+    ,"avatar": "/static/images/tx.jpg"
+    ,"sign": "我瘋了！這也太準了吧  超級笑點低"
+    }]
+  },{
+    "groupname": "以色列"
+  ,"id": 2
+  ,"list": [{
+      "username": "犹太教先知"
+    ,"id": "76543"
+    ,"avatar": "/static/images/tx.jpg"
+    ,"sign": "我爱贤心"
+    }
+  ]
+  },
+  {
+    "groupname": "中东"
+  ,"id": 2
+  ,"list": [{
+      "username": "默罕默德"
+    ,"id": "76543"
+    ,"avatar": "/static/images/tx.jpg"
+    ,"sign": "我爱贤心"
+    }
+  ]
+  }
+]
+,"group": [{
+    "groupname": "古印度"
+  ,"id": "101"
+  ,"avatar": "/static/images/tx.jpg"
+  },{
+    "groupname": "中东"
+  ,"id": "102"
+  ,"avatar": "/static/images/tx.jpg"
+  }]
+}
+}

@@ -1,0 +1,37 @@
+<form  enctype="multipart/form-data" id="commune-form" lay-filter="commune-form" class="layui-form model-form">
+    <input type="hidden" name="userId" id="userId" value="1">
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+            <input id="title" name="title" placeholder="请输入名称" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">内容</label>
+        <div class="layui-input-block">
+            <input name="content" id="content" placeholder="请输入内容" type="text" class="layui-input" maxlength="30"
+                   lay-verify="required"/>
+            <p>最多30个字</p>
+        </div>
+    </div>
+
+    <div id="commune-role" class="layui-form-item">
+        <label class="layui-form-label">公社</label>
+        <div class="layui-input-inline">
+            <select id="commune-id" name="commune_id" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" type="button" lay-filter="commune-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript" src="/assets/module/sys/commune/topicForm.js"></script>
+<script type="text/javascript">
+    layui.use('element',function(){
+        Lay(layui);
+    });
+</script>

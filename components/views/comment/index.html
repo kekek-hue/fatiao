@@ -1,0 +1,69 @@
+<div class="layui-card">
+  <div class="layui-card-header">
+    <h2 class="header-title">评论管理</h2>
+    <span class="layui-breadcrumb pull-right">
+      <a href="#!console">首页</a>
+      <a><cite>评论管理</cite></a>
+    </span>
+  </div>
+  <div class="layui-card-body">
+    <!-- 搜索条件  -->
+    <div class="layui-form toolbar">
+      <form id="searchForm" onsubmit="return false;">
+        <!--<button type="button" id="repair-btn" class="layui-btn icon-btn">修复本页id</button>-->
+        标题：<input name="title" class="layui-input search-input title" type="text" placeholder="输入标题" />&emsp;
+        状态：
+        <select name="status" lay-verify="">
+          <option value="">选择状态</option>
+          <option value="1">审核中</option>
+          <option value="2">审核通过</option>
+          <option value="3">审核不通过</option>
+        </select>
+         内容：<input name="content" class="layui-input search-input content" type="text" placeholder="输入内容" />&emsp;
+        <button id="comment-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索
+        </button>
+      </form>
+    </div>
+    <!-- 表格顶部操作列 -->
+    <table class="layui-table" id="comment-table" lay-filter="comment-table"></table>
+  </div>
+</div>
+<script type="text/html" id="comment-tpl-status">
+  {{# if (d.status == 1){ }}
+  <span style="color:#F581B1;">待审核</span>
+  {{#} else if (d.status == 2){ }}
+  <span style="color:green;">审核通过</span>
+  {{#} else if (d.status == 3){ }}
+  <span style="color:#F581B1;">审核不通过</span>
+  {{# } }}
+</script>
+<script type="text/html" id="comment-tpl-type">
+  {{# if (d.type == 2001){d.type = '文章评论'}}
+  <span style="color:green;">{{d.type}}</span>
+  {{#} else if (d.type == 2003){d.status ='动态评论'}}
+  <span style="color:green;">{{d.status}}</span>
+  {{# } }}
+</script>
+<script type="text/html" id="comment-tpl-del">
+  {{# if (d.is_del == 0){d.is_del ='未删除'}}
+  <span style="color:green;">{{d.is_del}}</span>
+  {{#} else if (d.is_del == 1){d.is_del ='已删除'}}
+  <span style="color:#F581B1;">{{d.is_del}}</span>
+  {{# } }}
+</script>
+<script type="text/html" id="commentTool">
+  <div class="layui-btn-container">
+    {{# if (d.is_del==0){ }}
+    <button class="layui-btn layui-btn-danger" lay-event="del">删除</button>
+    {{# }else{ }}
+    <button class="layui-btn" >已删</button>
+    {{# } }}
+    <button class="layui-btn layui-btn-normal" lay-event="updateStatus">更改状态</button>
+  </div>
+</script>
+<script type="text/javascript" src="/assets/module/sys/comment/comment.js"></script>
+<script type="text/javascript">
+  layui.use('element', function () {
+    Lay(layui);
+  });
+</script>

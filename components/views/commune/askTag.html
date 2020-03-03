@@ -1,0 +1,63 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">项目标签</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>项目标签</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <!-- 搜索条件 -->
+        <div class="layui-form toolbar">
+            <form id="searchForm" onsubmit="return false;">
+                名称：<input name="name" class="layui-input search-input" type="text" placeholder="输入名称"/>&emsp;
+                类型：<select name="type" lay-verify="">
+                <option value="">请选择状态</option>
+                <option value="1">所属行业</option>
+                <option value="2">所在地区</option>
+                <option value="3">回报机制</option>
+                <option value="4">项目总投资</option>
+                <option value="5">职务</option>
+                <option value="6">所处阶段</option>
+                <option value="7">项目示范级别/批次</option>
+            </select>
+                <button id="user-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+            </form>
+        </div>
+        <!-- 表格顶部操作列 -->
+        <script type="text/html" id="user-toolbar">
+            <div class="layui-btn-container">
+                {{# if({{addShow}} == true){ }}
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add"><i
+                        class="layui-icon">&#xe654;</i>添加
+                </button>
+                {{# } }}
+            </div>
+        </script>
+        <table class="layui-table" id="user-table" lay-filter="user-table"></table>
+    </div>
+</div>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="user-table-bar">
+    {{#  if({{editShow}} == true){ }}
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    {{#  } }}
+    {{#  if({{resetPwdShow}} == true){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+    {{#  } }}
+</script>
+
+<!-- 表格状态列 -->
+<script type="text/html" id="user-tpl-status">
+    <span>
+        {{d.type==1?'所属行业':''}}
+        {{d.type==2?'所在地区':''}}
+        {{d.type==3?'回报机制':''}}
+        {{d.type==4?'项目总投资':''}}
+        {{d.type==5?'职务':''}}
+        {{d.type==6?'所处阶段':''}}
+        {{d.type==7?'项目示范级别/批次':''}}
+    </span>
+</script>
+<script type="text/javascript"  src="/assets/module/sys/commune/tagList.js"></script>

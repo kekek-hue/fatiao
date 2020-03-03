@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="screen-orientation" content="portrait">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+	<style type="text/css">
+		
+		*{
+			margin: 0 ;
+			padding: 0;
+			}
+				
+			#dom{
+				padding: 10px;
+			}
+		.zhuantit {
+			color: #333333;
+			padding: 10px 0;
+		}
+
+		.zhuantit p {
+			font-size: 14px;
+			color: #666666;
+		}
+
+		.huati {
+			border-bottom: 1px solid #eee;
+			padding: 8px 0px;
+		}
+
+		.huatit {
+			display: flex;
+			justify-content: space-between;
+			min-height: 30px;
+		}
+
+		.huatit img {
+			height: 70px;
+			width: 100px;
+			border-radius: 3px;
+			/* background: transparent; */
+			border: none;
+		}
+
+		.titname {
+			font-size: 14px;
+			color: #333333;
+			/* height: 58px; */
+			display: -webkit-box;
+			display: -moz-box;
+			white-space: pre-wrap;
+			word-wrap: break-word;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+		}
+
+		.huatib {
+			color: #999999;
+			font-size: 14px;
+		}
+
+		.tit {
+			/* width: 70%; */
+		}
+
+		.titBottom img {
+			width: 100%;
+			height: 200px;
+		}
+	
+.titBottom p{
+	color: #666666;
+}
+		.swiperTitle {
+			padding: 10px;
+			color: #000000;
+			font-size: 18px;
+
+		}
+
+		.c-title-vline {
+			display: inline-block;
+			width: 5px;
+			height: 19px;
+			vertical-align: middle;
+			border-radius: .8vw;
+			background-color: #4a8dff;
+			margin: 2.667vw 0 3.467vw;
+		}
+	</style>
+	<body>
+		<div id="dom">
+			<div>
+				<div class="titBottom">
+					<img src="" alt />
+					<h4></h4>
+					<p class="time">
+						
+					</p>
+				</div>
+				<div class="zhuantit">
+					<p class="zhaiyao"></p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src='js/vue.min.js'></script>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue( {
+
+			el: '#dom',
+			data: {}
+
+			,
+
+			mounted() {
+				
+			}
+
+			,
+			methods: {
+					
+				goapp(){
+					mui.alert("请去app内打开文章","PPPing")
+				}
+			}
+
+			,
+		}
+
+		);
+	
+		
+	</script>
+</html>

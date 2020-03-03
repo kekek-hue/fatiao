@@ -1,0 +1,32 @@
+<div class="layui-side-scroll">
+    <ul class="layui-nav layui-nav-tree" style="margin-top: 15px;">
+        <li style="display: none;" class="layui-nav-item">
+            <a href="javascript:;">
+                <i class="layui-icon layui-icon-template-1"></i>
+                 <cite>数据采集</cite>
+                <span class="layui-nav-more"></span>
+            </a>
+            <dl class="layui-nav-child">
+                <dd>
+                    <a onclick="layer.open({
+                                type: 2,
+                                title: '数据采集 类型管理',
+                                shadeClose: true,
+                                shade: 0.8,
+                                area: ['100%', '90%'],
+                                content: '/crawler/classifiedmanagement.html' //iframe的url
+                            });" href="javascript:void(0) ">类型管理</a>
+                </dd>
+            </dl>
+        </li>
+        <!--PPP关键词：
+
+PPP,PPP项目,PPP模式,BOT,BT,TOT,TBT,EPC项目,特许经营,重大项目,资产证券化,投资项目,投融资模式,社会资本,全过程工程咨询服务,民营资本,入库项目,回报机制,PPP专项债,公益项目,污水处理厂,传统基础设施,公共服务,项目可行性研究,公开招标,各类投资主体,政府履约,市政工程。-->
+        <li class="layui-nav-item" p-for="menus">
+            <a href="javascript:;"><i p-bind="class:layui-icon {{icon}}"></i>&emsp;<cite>{{menuName}}</cite></a>
+            <dl class="layui-nav-child" p-each="childrens">
+                <dd><a p-bind="href:#!{{router}}">{{menuName}}</a></dd>
+            </dl>
+        </li>
+    </ul>
+</div>

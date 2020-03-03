@@ -1,0 +1,64 @@
+<div class="layui-card">
+  <div class="layui-card-header">
+    <h2 class="header-title">版式管理</h2>
+    <span class="layui-breadcrumb pull-right">
+      <a href="#!console">首页</a>
+      <a><cite>版式管理</cite></a>
+    </span>
+  </div>
+  <div class="layui-card-body">
+    <!-- 搜索条件 -->
+    <div class="layui-form toolbar">
+      <form id="searchForm" onsubmit="return false;">
+        版式id：<input name="id" class="layui-input search-input" type="text" placeholder="版式id" />&emsp;
+        版式名称：<input name="name" class="layui-input search-input" type="text" placeholder="版式名称" />&emsp;
+        状态：<select name="disabled" lay-verify="">
+          <option value="">请选择状态</option>
+          <option value="0">正常</option>
+          <option value="1">禁用</option>
+        </select>
+        <button id="user-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+      </form>
+    </div>
+    <!-- 表格顶部操作列 -->
+    <!-- <script type="text/html" id="scheme-sku-toolbar">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add"><i
+                        class="layui-icon">&#xe654;</i>添加
+                </button>
+            </div>
+        </script> -->
+    <table class="layui-table" id="scheme-sku-table" lay-filter="scheme-sku-table"></table>
+  </div>
+</div>
+
+<script type="text/html" id="scheme-tpl-type">
+  {{# if (d.type == 1){d.type = '列表'}}
+    <span style="color:#F581B1;">{{d.type}}</span>
+  {{#} else if (d.type == 2){d.type ='大轮播'}}
+    <span style="color:green;">{{d.type}}</span>
+  {{#} else if (d.type == 3){d.type ='小轮播'}}
+    <span style="color:#F581B1;">{{d.type}}</span>
+  {{# } }}
+</script>
+
+<script type="text/html" id="faceHtml">
+  {{# if(d.face_id > 0) { d.face_id = '../article/showFace/'+d.face_id }else{ d.face_id = '/static/images/log.jpg' }  }}
+  <div><img style="height:28px;" data-img="{{d.face_res_id}}" src="{{d.face_id}}"></div>
+</script>
+<!-- 表格操作列 -->
+<script type="text/html" id="scheme-sku-table-bar">
+	<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="publish-article">发布文章</a>
+</script>
+<!-- 表格状态列 -->
+<script type="text/html" id="scheme-tpl-status">
+    <input type="checkbox" lay-filter="scheme-tpl-status" value="{{d.id}}" lay-skin="switch"
+           lay-text="正常|禁用" {{d.disabled==0?'checked':''}}/>
+</script>
+<script type="text/javascript" src="/assets/module/sys/app/app.js?v=0.1.9"></script>
+<script type="text/javascript">
+  layui.use('element', function () {
+    Lay(layui);
+  });
+</script>

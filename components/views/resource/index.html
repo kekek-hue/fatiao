@@ -1,0 +1,51 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">资源管理</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>资源管理</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <!-- 搜索条件 -->
+        <div class="layui-form toolbar">
+            <form id="searchForm" onsubmit="return false;">
+                资源名：<input name="resourceName" class="layui-input search-input" type="text" placeholder="输入资源名"/>&emsp;
+                请求方式：
+                <select name="method" lay-verify="">
+                    <option value="">选择请求方式</option>
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="DELETE">DELETE</option>
+                </select>
+                权限类型：
+                <select name="authType" lay-verify="">
+                    <option value="">选择类型</option>
+                    <option value="1">需要登录</option>
+                    <option value="2">无需鉴权</option>
+                    <option value="3">需要鉴权</option>
+                </select>
+                <button id="resource-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索
+                </button>
+            </form>
+        </div>
+        <!-- 表格顶部操作列 -->
+        <script type="text/html" id="resource-toolbar">
+            <div class="layui-btn-container">
+                {{# if({{refreshShow}} == true){ }}
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="refresh"><i
+                        class="layui-icon"></i>刷新资源
+                </button>
+                {{# } }}
+            </div>
+        </script>
+        <table class="layui-table" id="resource-table" lay-filter="resource-table"></table>
+    </div>
+</div>
+<script type="text/javascript"  src="/assets/module/sys/resource/resource.js?v=0.0.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

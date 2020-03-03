@@ -1,0 +1,85 @@
+<form  enctype="multipart/form-data" id="commune-form" lay-filter="commune-form" class="layui-form model-form">
+    <input type="hidden" name="userId" id="userId" value="1">
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+            <input id="title" name="title" placeholder="请输入名称" type="text" class="layui-input" 
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">内容</label>
+        <div class="layui-input-block">
+            <input name="content" id="content" placeholder="请输入内容" type="text" class="layui-input" maxlength="30"
+                   lay-verify="required"/>
+            <p>最多30个字</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型</label>
+        <div class="layui-input-inline">
+            <select id="type" name="type" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+                <option value="5">项目</option>
+                <option value="2">公告</option>
+                <option value="7">政策法规</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">公社</label>
+        <div class="layui-input-inline">
+            <select id="commune-id" name="commune_id" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">城市</label>
+        <div class="layui-input-inline">
+            <select id="area-id" name="area_id" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">行业</label>
+        <div class="layui-input-inline">
+            <select id="trade-id" name="trade_id" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">回报机制</label>
+        <div class="layui-input-inline">
+            <select id="reward-id" name="reward_id" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">上传图片</label>
+        <div class="layui-input-block">
+            <input name="file" id="image" placeholder="请上传图片" multiple="multiple" type="file" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+
+    <input type="hidden" name="id">
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="commune-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript" src="/assets/module/sys/commune/AskForm.js"></script>
+<script type="text/javascript">
+    layui.use('element',function(){
+        Lay(layui);
+    });
+</script>

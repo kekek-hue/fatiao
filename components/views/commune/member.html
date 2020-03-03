@@ -1,0 +1,58 @@
+<div class="layui-fluid">
+    <div class="crumb-caption">
+  <span class="crumb">
+    <a href="/">首页</a>
+    <a href="javascript:;"> /公社社员</a>
+  </span>
+    </div>
+
+
+    <div class="layui-card">
+
+        <div>
+            <!--      搜索-->
+            <div class="layui-form toolbar">
+                <form id="searchForm" onsubmit="return false;">
+                    用户名：<input name="name" class="layui-input search-input" type="text" placeholder="输入用户名"/>&emsp;
+
+                    <span id="commune-select">
+                        公社：
+                        <select name="communeId" lay-verify="" id="user-commune">
+                            <option value="">请选择公社</option>
+                        </select>
+                    </span>
+
+                    <button id="user-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索
+                    </button>
+                </form>
+            </div>
+
+            <table class="layui-table article-table" id="commune-member-table" lay-filter="commune-member-table"
+                   lay-even="" lay-skin="row">
+            </table>
+            <div class="layui-tab-item">
+                <div id="pageDemo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/assets/module/sys/commune/member.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        Lay(layui);
+    });
+
+
+</script>
+<script type="text/html" id="barDel">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="pass" style="color: #0bb20c;">通过</a>
+    <!--<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="not" style="color: #f0ad4e;">不过</a>-->
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="commune_del" style="color: #A60000;">拒绝</a>
+</script>
+
+
+
+
+
+

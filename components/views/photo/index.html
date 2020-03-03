@@ -1,0 +1,67 @@
+
+<!doctype html>
+<html lang="zh-CN" id="index">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>图片裁剪</title>
+    <style>
+        body {
+            margin: 0;
+            text-align: center;
+        }
+        #clipArea {
+            margin: 20px;
+            height: 300px;
+        }
+        #file,
+        #clipBtn {
+            margin: 20px;
+        }
+        #view {
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+        }
+
+    </style>
+</head>
+<body ontouchstart="">
+<div id="clipArea"></div>
+<input type="file" id="file">
+<button class="layui-btn" id="clipBtn">确定</button>
+<div id="view"></div>
+<script src="/assets/photo/iscroll-zoom-min.js"></script>
+<script src="/assets/photo/hammer.min.js"></script>
+<script src="/assets/photo/lrz.all.bundle.js"></script>
+<script src="/assets/photo/photoClip.js"></script>
+<script>
+    layui.use(['element','ppp'],function(){
+        var ppp = layui.ppp;
+        //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        var clipArea = new PhotoClip("#clipArea", {
+            size: [260, 260],
+            outputSize: [400, 400],
+            file: "#file",
+            view: "#view",
+            ok: "#clipBtn",
+            loadStart: function() {
+                console.log("照片读取中");
+            },
+            loadComplete: function() {
+                console.log("照片读取完成");
+            },
+            done: function(dataURL) {
+                // console.log(dataURL);
+                ppp.finishPopupCenter(dataURL);
+                clipArea.destroy();
+            }
+        });
+    });
+</script>
+</body>
+</html>

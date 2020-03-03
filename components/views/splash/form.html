@@ -1,0 +1,78 @@
+<form id="menu-form" lay-filter="type-form" class="layui-form model-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">说明文字：</label>
+        <div class="layui-input-block">
+            <input name="text" placeholder="说明文字" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+            <input type="hidden" name="row" value="0">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">跳转url：</label>
+        <div class="layui-input-block">
+            <input name="target_url" placeholder="跳转url" type="text" class="layui-input" maxlength="220"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">显示时长（秒）：</label>
+        <div class="layui-input-block">
+            <input name="min_shows" placeholder="单位秒" type="number" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">显示最大时长（秒）：</label>
+        <div class="layui-input-block">
+            <input name="max_shows" placeholder="单位秒" type="number" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">启用</label>
+        <div class="layui-input-block">
+            <select id="enable" name="enable" lay-verify="required">
+                <option value="-1">请选择</option>
+                <option value="1">是</option>
+                <option value="0">否</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否广告</label>
+        <div class="layui-input-block">
+            <select id="is_ad" name="is_ad" lay-verify="required">
+                <option value="">请选择</option>
+                <option value="1">广告</option>
+                <option value="0">非广告</option>
+                <option value="2">其他</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片扩展名：</label>
+        <div class="layui-input-block">
+            <input name="ext" placeholder="扩展名:png,jpg,gif(只读)" id="image_ext"  type="text" class="layui-input" maxlength="20"
+                   lay-verify="required" readonly="readonly"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">上传图片：</label>
+        <button type="button" class="layui-btn" id="upload-btn">选择图片</button>
+        <div class="layui-upload-list">
+            <img class="layui-upload-img" id="show-img">
+            <p id="demoText"></p>
+        </div>
+    </div>  
+    <input type="hidden" name="image_id" id="image_id">
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button type="button" class="layui-btn" lay-filter="menu-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/splash/add.js"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

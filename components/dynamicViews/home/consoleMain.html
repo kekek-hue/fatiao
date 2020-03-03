@@ -1,0 +1,26 @@
+<script src="/assets/module/sys/home/consoleDynamic.js?v=0.1.6"></script>
+<!--访问量下载量开始-->
+<div class="layui-col-sm12"  p-com="home.trafficVolume"></div>
+<!--访问量下载量结束-->
+<!--用户评论开始-->
+<div class="layui-col-sm4"  p-com="home.userComment"></div>
+<!--用户评论结束-->
+<div class="layui-col-sm8">
+  <div class="layui-row layui-col-space15">
+    <!--活跃用户开始-->
+    <div class="layui-col-sm6" p-com="home.activeUser"></div>
+    <!--活跃用户列表结束-->
+    <!--项目进度开始-->
+    <div class="layui-col-sm6" p-com="home.projectDeb"></div>
+    <!--项目进度结束-->
+    <!--用户全国分布开始-->
+    <div class="layui-col-sm12" p-com="home.userDistribution"></div>
+    <!--用户全国分布结束-->
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+  layui.use(['element','sample'],function(){
+    LayCosoleDynamic(layui);
+  });
+</script>

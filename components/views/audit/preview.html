@@ -1,0 +1,142 @@
+<style>
+    .disnone {
+        display: none;
+    }
+
+    .layui-layer-btn .layui-layer-btn0 {
+        background: #fff;
+        color: black;
+        border: 1px solid #dedede
+    }
+
+    #all {
+        padding: 10px;
+        height: auto;
+        width: 100%
+    }
+
+    .layui-container {
+        margin: 0
+    }
+
+    .his span {
+        margin: 10px
+    }
+
+    #historyBox {
+        height: 100%;
+
+        padding: 10px;
+    }
+
+    .hisTitle {
+        color: cornflowerblue;
+        font-size: 20px;
+        padding-bottom: 20px;
+    }
+
+    .title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .creatTime {
+        color: slategrey;
+        text-align: center;
+        margin-top: 10px
+    }
+
+    .content {
+        margin-top: 10px
+    }
+
+    .content img {
+        width: 300px;
+        height: auto;
+    }
+
+    .layui-col-md8 {
+        padding: 10px;
+        border-right: 1px solid #dedede;
+    }
+
+    video {
+        margin-left: 150px
+    }
+
+    .gray {
+        color: #555
+    }
+
+    .cover {
+        height: 100px;
+        width: 200px
+    }
+
+    #contentBox {
+        min-height: 1000px;
+    }
+</style>
+
+<div class="layui-card" id="all">
+    <div class="layui-card-header">
+        <h2 class="header-title">文章审核</h2>
+        <span class="layui-breadcrumb pull-right">
+            <a href="#!console">首页</a>
+            <a><cite>文章审核</cite></a>
+        </span>
+    </div>
+    <div>
+        <div class="layui-btn-container allbut">
+            <button class="layui-btn layui-btn-normal isshow" name="editArticle">修改文章</button>
+            <button type="button" class="layui-btn layui-btn-normal zisShow" name="passArticles">提交审核</button>
+            <button type="button" class="layui-btn layui-btn-normal isshow" name="passArticles">审核通过</button>
+            <button type="button" class="layui-btn  layui-btn-warm isshow" name="nopassArticles">审核未通过</button>
+            <button type="button" class="layui-btn layui-btn-primary back" name="gobanck">返回</button>
+            <button class="layui-btn layui-btn-normal" name="lookPhone">手机预览模式</button>
+        </div>
+    </div>
+
+    <div class="layui-container">
+        <div class="layui-row" style="width: 130%;min-height: 1000px;">
+            <div class="layui-col-md8">
+                <div id="contentBox">
+                    <h4 class="title"></h4>
+                    <p class="creatTime"></p>
+                    <div class="content"></div>
+                </div>
+
+
+            </div>
+            <div class="layui-col-md3" id="historyBox">
+
+                <div class="jieshao">
+                    <p><span class="gray">封面:</span><br><img src="" alt="" class="cover"></p>
+                    <p style="margin:20px 0 0 0"><span class="gray">类型:</span><span class="type"></span></p>
+                    <p><span class="gray">来源:</span><span class="from"></span></p>
+                    <p><span class="gray">标签:</span><span class="tags"></span></p>
+                    <p style="margin:20px 0 0 0"><span class="gray">操作历史:</span></p>
+                </div>
+
+
+                <!-- <div class=""><span class="name"></span><span class="time"></span><span class="dosomething"></span></div> -->
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="videoBox">
+        <video width="70%" height="314" autoplay="autoplay" controls="controls" loop="loop"
+            src="http://admin2.ceh.com.cn/assets/video/20191218182220.mp4">
+        </video>
+    </script>
+
+</div>
+
+
+
+
+<script type="text/javascript" src="/assets/module/sys/audit/auditPreview.js"></script>
+<script type="text/javascript">
+    layui.use('element', function () {
+        Lay(layui);
+    });
+</script>

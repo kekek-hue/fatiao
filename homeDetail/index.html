@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no">
+
+		<meta name="x5-orientation" content="portrait">
+		<meta name="screen-orientation" content="portrait">
+		<title></title>
+		<script src='js/vue.min.js'></script>
+		<script src="js/mui.min.js"></script>
+		<link rel="stylesheet" href="css/mui.min.css">
+	</head>
+	<style type="text/css">
+		*{
+			background-color: #FFFFFF !important;
+		}
+		.content{
+			margin: 0px 12px;
+		}
+		p .kk_content_html  a {
+  display: none;
+}
+p .kk_content_html{
+	overflow: hidden;
+	white-space: pre-wrap;
+}
+	</style>
+	<body>
+		<div id="mainContent">
+			<!-- <p class="fenxiang">分享</p> -->
+			<div id="dom">
+				
+				<div class="content">
+					
+					<p class="content_html kk_content_html" ref="content_html" v-html="detailNew">
+						
+					</p>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#dom',
+			data: {
+				detailNew: ""
+			},
+
+			mounted() {},
+			methods: {
+
+			},
+		});
+		getIos()
+
+		function getIos() {
+			mui.toast('message')
+			window.getArticleInfo = function(data) {
+				
+				getdetail(data.content);
+			};
+		}
+
+		function getdetail(data) {
+			var dom = document.createElement("div")
+			dom.innerHTML = data;
+			dom.querySelectorAll("p").forEach(function(e) {
+				e.setAttribute(
+					"style",
+					"line-height:30px!important;color:#333 !important;font-size:18px!important; font-weight:normal; letter-spacing:1px; text-align: justify!important;margin:0 auto;padding-bottom: 20px;"
+				);
+			});
+			 dom.querySelectorAll("br").forEach(function(e) {
+          //  console.log(e)
+           var brdom=document.createElement("br")
+           var parent=e.parentNode
+           parent.insertBefore(brdom,e);
+        });
+			dom.querySelectorAll("span").forEach(function(e) {
+				e.setAttribute(
+					"style",
+					"line-height:30px!important;color:#333 !important;font-size:18px!important; font-weight:normal; letter-spacing:1px; text-align: justify!important;"
+				);
+			});
+			dom.querySelectorAll("div").forEach(function(e) {
+				e.setAttribute(
+					"style",
+					"line-height:30px!important;color:#333 !important;font-size:18px!important; font-weight:normal; letter-spacing:1px; text-align: justify!important;"
+				);
+			});
+			dom.querySelectorAll("img").forEach(function(e) {
+				e.setAttribute(
+					"style",
+					"width:99% !important;height:auto;margin:0 auto;"
+				);
+				// debugger;
+				let imgDomain = "http://img2.ceh.com.cn/show/";
+				let imgUrl = e.getAttribute("src");
+				
+				// e.style.marginRight="-100px"
+				if (imgUrl.substr(0, 7) == "http://") {} else {
+					e.setAttribute("src", imgDomain + imgUrl + "/medium");
+				}
+			});
+			dom.querySelectorAll("a").forEach(function(e) {
+				e.setAttribute(
+					"style",
+					"display: none;"
+				);
+				
+			});
+			data = dom.innerHTML;
+			vm.detailNew = data;
+		}
+	</script>
+</html>

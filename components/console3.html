@@ -1,0 +1,84 @@
+<script type="text/html" id="tree_bar">
+  {{# if (d.url == 2){ }}
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="preview">预览</a>
+  {{# } else { }}
+    {{d.url}}
+  {{# } }}
+</script>
+
+<div class="layui-row layui-col-space15">
+  <!--更新-->
+  <div class="layui-col-lg8 layui-col-md7">
+
+    <div class="layui-card">
+      <div class="layui-tab layui-tab-brief layadmin-latestData">
+        <ul class="layui-tab-title">
+          <li class="layui-this">采集数据</li>
+        </ul>
+        <div class="layui-tab-content">
+          <!--采集数据开始-->
+          <div class="layui-tab-item layui-show">
+            <table class="layui-table" id="data-crawler-table" lay-even="" lay-filter="data-crawler-table"
+              lay-skin="row">
+            </table>
+          </div>
+          <!--采集数据结束-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="layui-col-lg4 layui-col-md5">
+    <div class="layui-card">
+      <div class="layui-card-header">后台系统</div>
+      <div class="layui-card-body">
+        <table class="layui-table layui-text">
+          <colgroup>
+            <col width="130">
+            <col>
+          </colgroup>
+          <tbody>
+            <tr>
+              <td>版本</td>
+              <td>0.0.1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="layui-card">
+      <div class="layui-card-header">前端系统</div>
+      <div class="layui-card-body">
+        <table class="layui-table layui-text">
+          <colgroup>
+            <col width="100">
+            <col>
+          </colgroup>
+          <tbody>
+            <tr>
+              <td>版本</td>
+              <td><a href="#" target="_blank">0.0.2</a></td>
+            </tr>
+            <tr>
+              <td>联系方式</td>
+              <td style="padding-bottom: 0">
+                <div class="layui-btn-container">
+                  <a href="" target="_blank" class="layui-btn layui-btn-danger">联系管理员</a>
+                  <a href="" target="_blank" class="layui-btn">联系客服</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/module/sys/home/home.js?v=0.1.6"></script>
+
+<script type="text/javascript">
+  layui.use(['element'], function () {
+    Lay(layui);
+  });
+</script>

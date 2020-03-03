@@ -1,0 +1,61 @@
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="edit-attr"><i class="layui-icon"></i></button>
+<!--     <button class="layui-btn layui-btn-normal" lay-event="project-info-attr">公告详情</button>
+ --></script>
+ <div class="layui-fluid">
+   <div class="crumb-caption">
+    <span class="crumb">
+      <a href="/">首页</a>
+      <a href="javascript:;"> /公告列表</a>
+    </span>
+</div>
+  <div  class="layui-card">
+   <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+          <div class="layui-form-item">
+            <div class="layui-inline">
+              <label class="layui-form-label">公告ID</label>
+              <div class="layui-input-block">
+                <input type="text" name="id" placeholder="请输入" id="id" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">公告名称</label>
+              <div class="layui-input-block">
+                <input type="text" name="title" id="title" placeholder="请输入" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <button class="layui-btn reload-btn" data-type="reload">
+                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+              </button>
+            </div>
+          </div>
+    </div>
+    <script type="text/html" id="articleTool">
+        <div class="layui-btn-container">
+          <button class="layui-btn layui-btn-normal" lay-event="addNotice">添加公告</button>
+          <button type="button" class="layui-btn layui-btn-normal" lay-event="getCheckData">删除公告</button>
+          </div>
+    </script>
+    <div>
+        <table class="layui-table chart-group-table" id="chart-group-table" lay-filter="chart-group-table" lay-even="" lay-skin="row">
+        </table>
+        <div class="layui-tab-item">
+          <div id="pageDemo"></div>
+        </div>
+    </div>
+</div>    
+   
+ </div>
+<script type="text/javascript"  src="/assets/module/sys/project/notice.js?v=0.0.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>
+
+
+
+
+
+

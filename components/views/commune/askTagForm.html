@@ -1,0 +1,43 @@
+<!-- user表单弹窗 -->
+<form id="tag-form" lay-filter="tag-form" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <!--<div class="layui-form-item" style="display: none;">-->
+        <!--<label class="layui-form-label">账号</label>-->
+        <!--<div class="layui-input-block">-->
+            <!--<input id="name" name="name" placeholder="请输入账号" type="text" class="layui-input u_name"  maxlength="20" lay-verify="required"/>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">标签名称</label>
+        <div class="layui-input-block">
+            <input name="name" placeholder="请输入名称" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item type-show">
+        <label class="layui-form-label">标签类型</label>
+        <div class="layui-input-block">
+            <select name="type" id="type"  lay-verify="required">
+                <option value="">请选择</option>
+                <option value="1">所属行业</option>
+                <option value="2">所在地区</option>
+                <option value="3">回报机制</option>
+                <option value="4">项目总投资</option>
+                <option value="5">职务</option>
+                <option value="6">所处阶段</option>
+                <option value="7">项目示范级别/批次</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="tag-form-submit" lay-submit type="button">保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/commune/setAskTag.js"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

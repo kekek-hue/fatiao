@@ -1,0 +1,37 @@
+<script type="text/html" id="barDemo">
+    <i class="layui-icon layui-icon-edit" title="编辑" lay-event="edit"></i>
+</script>
+<script type="text/html" id="label">
+    <i class="layui-icon layui-icon-edit" title="编辑" lay-event="label-edit"></i>
+</script>
+
+<script type="text/html" id="article">
+    <i class="layui-icon layui-icon-edit" title="编辑" lay-event="article-edit"></i>
+</script>
+
+<div class="layui-fluid">
+    <div class="crumb-caption">
+    <span class="crumb">
+      <a href="/">首页</a>
+      <a href="javascript:;"> /专题</a>
+    </span>
+    </div>
+    <script type="text/html" id="articleTool">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-normal" lay-event="add">添加</button>
+            <button type="button" class="layui-btn layui-btn-normal" lay-event="del">删除</button>
+        </div>
+    </script>
+    <table class="layui-table article-table" id="article-table" lay-filter="article-table">
+    </table>
+    <div class="layui-tab-item">
+        <div id="pageDemo"></div>
+    </div>
+</div>
+<script src="/assets/module/sys/article/topic.js"></script>
+
+
+
+
+
+

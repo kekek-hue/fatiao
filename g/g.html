@@ -1,0 +1,1004 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Monarch Sciences</title>
+    <meta name="description" content="Discovery and Defense in a Time of Monsters. Join Us.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta property="og:title" content="Monarch Sciences – Now Declassified">
+    <meta property="og:description" content="Discovery and Defense in a Time of Monsters. Join Us.">
+    <meta property="og:url" content="https://www.monarchsciences.com">
+    <meta property="og:image" content="https://www.monarchsciences.com/i18n/img/share.jpg">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MonarchSciences">
+    <meta name="twitter:image:alt" content="Discovery and Defense in a Time of Monsters. Join Us.">
+    <meta name="twitter:description" content="Discovery and Defense in a Time of Monsters. Join Us.">
+
+    <!--        <link rel="stylesheet" href="https://use.typekit.net/ujf8ltb.css">-->
+
+    <link rel="stylesheet" href="css/main.min.css?cb=16">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" href="https://www.monarchsciences.com/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="https://www.monarchsciences.com/favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="preconnect" href="https://s3.amazonaws.com">
+    <link rel="preconnect" href="https://aa.agkn.com">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K5K42VK');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5K42VK"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<!-- begin site -->
+<div id="downloader"></div>
+<div id="big-world" class="full">
+    <div id="big-world-map"></div>
+</div>
+<div id="globe" class="full center-inside"></div>
+<div id="hamburger">
+    <div class="over">
+        <img src="img/menu_over.png">
+    </div>
+</div>
+<div id="ui-touchy">
+    <div id="crosshair">
+        <div class="ch-bar ch-top"></div>
+        <div class="ch-bar ch-left"></div>
+        <div class="ch-bar ch-bottom"></div>
+        <div class="ch-bar ch-right"></div>
+        <div class="on-target">
+            <img id="ontarget-outter" src="img/ellipse-outter.png">
+            <img id="ontarget-inner" src="img/ellipse-inner.png">
+        </div>
+    </div>
+    <div class="outpost-label"></div>
+</div>
+<div id="ui-no-touchy">
+    <div class="header-syfy"></div>
+    <div class="footer-syfy"></div>
+    <div id="found-him">
+        <div class="title ui-godzillaTrackerStatus"></div>
+        <div class="status"><span class="bracket">[</span> <span class="ui-godzillaFound"></span><span class="ui-godzillaOffline"></span> <span class="bracket">]</span></div>
+    </div>
+</div>
+<div id="ops-menu-wash"></div>
+<div id="marquee-container" class="center-inside">
+    <div id="marquee-outer">
+        <div id="marquee-back" class="marquee">
+            <div class="left"></div>
+            <div class="center"></div>
+            <div class="right"></div>
+        </div>
+        <div id="marquee-inner"></div>
+    </div>
+</div>
+<div id="zoom-controls"><span class="out"></span><span class="in"></span></div>
+<div id="social-links">
+    <button id="getTickets" class="get-tickets" onclick="I18n.openLink(event, this);">
+        <span class="ui-getTickets"></span>
+        <span class="notch"></span>
+    </button>
+</div>
+<div id="ui" class="">
+    <div id="open-briefing-container"><button id="open-briefing"><span class="ui-briefing"></span><span class="notch"></span></button></div>
+    <div id="open-monarch-id" ><button><img class='level1' src="img/id-icon-green.png"><img class='level2' src="img/id-icon-amber.png"><img class='level3' src="img/id-icon-crimson.png">&nbsp;&nbsp;<span class="ui-monarchID"></span><span class="notch"></span></button></div>
+    <div id="open-operatives-container">
+        <button id="open-operatives"><span class="ui-operatives"></span><span class="notch"></span></button>
+        <ul>
+            <li><button data-ops-key="chen"><span class="operatives-chen-button" ></span><span class="notch"></span></button></li>
+            <li><button data-ops-key="coleman"><span class="operatives-coleman-button" ></span><span class="notch"></span></button></li>
+            <li><button data-ops-key="graham"><span class="operatives-graham-button" ></span><span class="notch"></span></button></li>
+            <li><button data-ops-key="russellEmma"><span class="operatives-russellEmma-button" ></span><span class="notch"></span></button></li>
+            <li><button data-ops-key="russellMark"><span class="operatives-russellMark-button" ></span><span class="notch"></span></button></li>
+            <li><button data-ops-key="serizawa"><span class="operatives-serizawa-button" ></span><span class="notch"></span></button></li>
+            <li><button data-ops-key="stanton"><span class="operatives-stanton-button" ></span><span class="notch"></span></button></li>
+            <li><button data-ops-key="russellMadison"><span class="operatives-russellMadison-button" ></span><span class="notch"></span></button></li>
+            <li><button class="military" data-ops-key="barnes" data-ops-designation="military"><span class="operatives-barnes-button" ></span><span class="notch"></span></button></li>
+            <li><button class="military" data-ops-key="foster" data-ops-designation="military"><span class="operatives-foster-button" ></span><span class="notch"></span></button></li>
+            <li><button class="military" data-ops-key="griffin" data-ops-designation="military"><span class="operatives-griffin-button" ></span><span class="notch"></span></button></li>
+            <li><button class="military" data-ops-key="martinez" data-ops-designation="military"><span class="operatives-martinez-button" ></span><span class="notch"></span></button></li>
+        </ul>
+    </div>
+    <div><button id="open-orca"><span class="ui-orca"></span><span class="notch"></span></button></div>
+    <div id="godzilla-activity">
+        <div class="locate">
+            <div class="header">
+                <img src="img/gojira-head.png">&nbsp;&nbsp;<span class="ui-locate"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal" class="full">
+    <div id="briefing" class="modal">
+        <div class="modal-bg">
+            <div class="tl"></div>
+            <div class="tm"></div>
+            <div class="tr"></div>
+            <div class="main"></div>
+        </div>
+        <div class="syfy top"></div>
+        <div class="syfy bottom"></div>
+        <header><h2 class="briefing-title"></h2></header>
+        <p class="briefing-intro"></p>
+        <div class="grid-wrap">
+            <p class="briefing-how"></p>
+            <div class="caesura"><span><img class="godzilla" src="img/gojira-head.png"></span></div>
+            <p class="li"></span><span class="briefing-li1"></span></p>
+            <div class="caesura"><img class="monarch-icon" src="img/outpost_icon.png"></div>
+            <p class="li"><span class="briefing-li2"></p>
+            <p class="briefing-help1 help"></p>
+            <p class="briefing-help2 help"></p>
+            <div id="briefing-explore"><button class="briefing-explore"></button></div>
+        </div>
+    </div>
+    <div id="mosura-outpostFile" class="modal outpost-file">
+        <div class="outpost-container mosura">
+            <div class="outposts-specimenContainer">
+                <div class="background full">
+                    <img src="img/outpost_mosura.jpg">
+                </div>
+                <div class="monarch-logo white"></div>
+                <h3 class="outposts-specimen"></h3>
+                <h1 class="outposts-one-name post-monster"></h1>
+                <p class="outposts-one-titanNick outpost-nick"></p>
+            </div>
+            <div class="outpost-content">
+                <div class="outpost-stats">
+                            <span class="fancy-wrap">
+                                <span class="outposts-superSpecies"></span>
+                                <span class="notch top left"></span>
+                                <span class="notch top right"></span>
+                                <span class="notch bottom left"></span>
+                                <span class="notch bottom right"></span>
+                                <div class="fancy-underline"></div>
+                            </span>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-mosura-h1Label label"></span>
+                        <span class="evidence-declass-mosura-h1Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-mosura-h2Label label"></span>
+                        <span class="evidence-declass-mosura-h2Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-mosura-h3Label label"></span>
+                        <span class="evidence-declass-mosura-h3Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-mosura-h4Label label"></span>
+                        <span class="evidence-declass-mosura-h4Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-mosura-h5Label label"></span>
+                        <span class="evidence-declass-mosura-h5Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-mosura-h6Label label"></span>
+                        <span class="evidence-declass-mosura-h6Data data"></span>
+                    </p>
+                </div>
+                <div class="media-content">
+                    <div class="media top-media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-one-media-abilities"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="abilities-mothra" class="content movie" data-vid-type="abilities" data-titan="mothra">
+                            <div class="center-inside full">
+                                <img src="img/playbutton.png" class="play">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-one-media-surveillance"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="surveillance-mothra" class="content movie" data-vid-type="surveil" data-titan="mothra">
+                            <div class="center-inside full">
+                                <img src="img/playbutton.png" class="play">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cryptid-title">
+                            <span class="fancy-wrap">
+                                <span class="outposts-cryptid"></span>
+                                <span class="notch top left"></span>
+                                <span class="notch top right"></span>
+                                <span class="notch bottom left"></span>
+                                <span class="notch bottom right"></span>
+                                <div class="fancy-underline"></div>
+                            </span>
+                    </div>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-one-media-cryptid1"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content sketch-mothra"></div>
+                    </div>
+                    <p class="evidence-declass-mosura-p1"></p>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-one-media-cryptid2"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content scan-mothra"></div>
+                    </div>
+                    <p class="evidence-amber-mosura-p1"></p>
+                    <p class="evidence-amber-mosura-p2"></p>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-one-media-cryptid3"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content satellite-mothra"></div>
+                    </div>
+                    <p class="evidence-crimson-mosura-p1"></p>
+                    <p class="evidence-crimson-mosura-p2"></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="rodan-outpostFile" class="modal outpost-file">
+        <div class="outpost-container rodan">
+            <div class="outposts-specimenContainer ">
+                <div class="background full">
+                    <img src="img/outpost_rodan.jpg">
+                </div>
+                <div class="monarch-logo white"></div>
+                <h3 class="outposts-specimen"></h3>
+                <h1 class="outposts-two-name post-monster"></h1>
+                <p class="outposts-two-titanNick outpost-nick"></p>
+            </div>
+            <div class="outpost-content">
+                <div class="outpost-stats">
+                            <span class="fancy-wrap">
+                                <span class="outposts-superSpecies"></span>
+                                <span class="notch top left"></span>
+                                <span class="notch top right"></span>
+                                <span class="notch bottom left"></span>
+                                <span class="notch bottom right"></span>
+                                <div class="fancy-underline"></div>
+                            </span>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-rodan-h1Label label"></span>
+                        <span class="evidence-declass-rodan-h1Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-rodan-h2Label label"></span>
+                        <span class="evidence-declass-rodan-h2Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-rodan-h3Label label"></span>
+                        <span class="evidence-declass-rodan-h3Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-rodan-h4Label label"></span>
+                        <span class="evidence-declass-rodan-h4Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-rodan-h5Label label"></span>
+                        <span class="evidence-declass-rodan-h5Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-rodan-h6Label label"></span>
+                        <span class="evidence-declass-rodan-h6Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-rodan-h7Label label"></span>
+                        <span class="evidence-declass-rodan-h7Data data"></span>
+                    </p>
+                </div>
+                <div class="media-content">
+                    <div class="media top-media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-two-media-abilities"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="abilities-rodan" class="content movie" data-vid-type="abilities" data-titan="rodan">
+                            <div class="center-inside full">
+                                <img src="img/playbutton.png" class="play">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-two-media-surveillance"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="surveillance-rodan" class="content movie" data-vid-type="surveil" data-titan="rodan">
+                            <div class="center-inside full">
+                                <img src="img/playbutton.png" class="play">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cryptid-title">
+                            <span class="fancy-wrap">
+                                <span class="outposts-cryptid"></span>
+                                <span class="notch top left"></span>
+                                <span class="notch top right"></span>
+                                <span class="notch bottom left"></span>
+                                <span class="notch bottom right"></span>
+                                <div class="fancy-underline"></div>
+                            </span>
+                    </div>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-two-media-cryptid1"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content sketch-rodan"></div>
+                    </div>
+                    <p class="evidence-declass-rodan-p1"></p>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-two-media-cryptid1"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content scan-rodan"></div>
+                    </div>
+                    <p class="evidence-amber-rodan-p1"></p>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-two-media-cryptid2"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content sighting-rodan"></div>
+                    </div>
+                    <p class="evidence-amber-rodan-p2"></p>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-two-media-cryptid3"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content satellite-rodan"></div>
+                    </div>
+                    <p class="evidence-crimson-rodan-p1"></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="ghidorah-outpostFile" class="modal outpost-file">
+        <div class="outpost-container ghidorah">
+            <div class="outposts-specimenContainer ">
+                <div class="background full">
+                    <img src="img/outpost_ghidorah.jpg">
+                </div>
+                <div class="monarch-logo white"></div>
+                <h3 class="outposts-specimen"></h3>
+                <h1 class="outposts-three-name post-monster"></h1>
+                <p class="outposts-three-titanNick outpost-nick"></p>
+            </div>
+            <div class="outpost-content">
+                <div class="outpost-stats">
+                            <span class="fancy-wrap">
+                                <span class="outposts-superSpecies"></span>
+                                <span class="notch top left"></span>
+                                <span class="notch top right"></span>
+                                <span class="notch bottom left"></span>
+                                <span class="notch bottom right"></span>
+                                <div class="fancy-underline"></div>
+                            </span>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-zero-h1Label label"></span>
+                        <span class="evidence-declass-zero-h1Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-zero-h2Label label"></span>
+                        <span class="evidence-declass-zero-h2Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-zero-h3Label label"></span>
+                        <span class="evidence-declass-zero-h3Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-zero-h4Label label"></span>
+                        <span class="evidence-declass-zero-h4Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-zero-h5Label label"></span>
+                        <span class="evidence-declass-zero-h5Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-zero-h6Label label"></span>
+                        <span class="evidence-declass-zero-h6Data data"></span>
+                    </p>
+                </div>
+                <div class="media-content">
+                    <div class="media top-media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-three-media-abilities"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="abilities-ghidorah" class="content movie" data-vid-type="abilities" data-titan="ghidorah">
+                            <div class="center-inside full">
+                                <img src="img/playbutton.png" class="play">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-three-media-surveillance"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="surveillance-ghidorah" class="content movie" data-vid-type="surveil" data-titan="ghidorah">
+                            <div class="center-inside full">
+                                <img src="img/playbutton.png" class="play">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cryptid-title">
+                            <span class="fancy-wrap">
+                                <span class="outposts-cryptid"></span>
+                                <span class="notch top left"></span>
+                                <span class="notch top right"></span>
+                                <span class="notch bottom left"></span>
+                                <span class="notch bottom right"></span>
+                                <div class="fancy-underline"></div>
+                            </span>
+                    </div>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-three-media-cryptid1"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content sketch-zero"></div>
+                    </div>
+                    <p class="evidence-declass-zero-p1"></p>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-three-media-cryptid1"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content scan-zero"></div>
+                    </div>
+                    <p class="evidence-amber-zero-p1"></p>
+                    <p class="evidence-amber-zero-p2"></p>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-three-media-cryptid3"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content satellite-zero"></div>
+                    </div>
+                    <p class="evidence-crimson-zero-p1"></p>
+                    <p class="evidence-crimson-zero-p2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="godzilla-outpostFile" class="modal outpost-file">
+        <h2 class="outposts-four-title outpost-number"></h2>
+        <div class="outpost-container godzilla">
+            <div class="outpost-content">
+                <div class="outpost-vitals">
+                    <div class="video online"></div>
+                    <div class="outposts-four-name"></div>
+                    <div class="outposts-four-nickname"></div>
+                    <div class="ui-offline offline"></div>
+                    <div class="godzilla-stat-names online">
+                        <div class="ui-thermal"></div>
+                        <div class="ui-heartRate"></div>
+                        <div class="ui-radiation"></div>
+                    </div>
+                    <div class="bottom-chrome">
+                        <img src="img/godzilla-chrome-bottom.jpg">
+                    </div>
+                </div>
+                <div class="outpost-stats">
+                            <span class="fancy-wrap">
+                                <span class="outposts-superSpecies"></span>
+                                <span class="notch top left"></span>
+                                <span class="notch top right"></span>
+                                <span class="notch bottom left"></span>
+                                <span class="notch bottom right"></span>
+                                <div class="fancy-underline"></div>
+                            </span>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-godzilla-h1Label label"></span>
+                        <span class="evidence-declass-godzilla-h1Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-godzilla-h2Label label"></span>
+                        <span class="evidence-declass-godzilla-h2Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-godzilla-h3Label label"></span>
+                        <span class="evidence-declass-godzilla-h3Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-godzilla-h4Label label"></span>
+                        <span class="evidence-declass-godzilla-h4Data data"></span>
+                    </p>
+                    <p class="outpost-stat">
+                        <span class="evidence-declass-godzilla-h5Label label"></span>
+                        <span class="evidence-declass-godzilla-h5Data data"></span>
+                    </p>
+                </div>
+                <div class="media-content">
+                    <div class="media top-media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-four-media-abilities"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="abilities-godzilla" class="content movie" data-vid-type="abilities" data-titan="godzilla">
+                            <div class="center-inside full">
+                                <img src="img/playbutton.png" class="play">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-four-media-surveillance"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="surveillance-godzilla" class="content movie" data-vid-type="surveil" data-titan="godzilla">
+                            <div class="center-inside full">
+                                <img src="img/playbutton.png" class="play">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cryptid-title">
+                                <span class="fancy-wrap">
+                                    <span class="outposts-cryptid"></span>
+                                    <span class="notch top left"></span>
+                                    <span class="notch top right"></span>
+                                    <span class="notch bottom left"></span>
+                                    <span class="notch bottom right"></span>
+                                    <div class="fancy-underline"></div>
+                                </span>
+                    </div>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-four-media-cryptid1"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content mural-godzilla"></div>
+                    </div>
+                    <p class="evidence-declass-godzilla-p1"></p>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-four-media-cryptid1"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content godzilla-sketch-1"></div>
+                    </div>
+                    <p class="evidence-declass-godzilla-p2"></p>
+                    <p class="evidence-declass-godzilla-p3"></p>
+                    <div class="media">
+                        <div class="head">
+                            <div class="media-chrome full">
+                                <div class="left center-inside">
+                                    <img src="img/outpost_content_head_left.png">
+                                </div>
+                                <div class="text outposts-four-media-cryptid3"></div>
+                                <div class="right1 center-inside">
+                                    <img src="img/outpost_content_head_center.png">
+                                </div>
+                                <div class="right2 center-inside">
+                                    <img src="img/outpost_content_head_right.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content godzilla-sketch-2"></div>
+                    </div>
+                    <p class="evidence-declass-godzilla-p4"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="sighting" class="modal sighting case-file">
+        <div class="modal-bg">
+            <div class="tl"></div>
+            <div class="tm"></div>
+            <div class="tr"></div>
+            <div class="main"></div>
+        </div>
+        <div class="indicator top"></div>
+        <header><span class="indicator title"></span><h2 class="sighting-title"></h2></header>
+        <div class="sighting-media">
+            <img class="sighting-image">
+        </div>
+        <div class="sighting-record stats-wrap">
+            <div class="gradient-back"></div>
+            <div class="syfy left"></div>
+            <div class="syfy right"></div>
+            <div class="syfy top"></div>
+            <span class="fancy-wrap">
+                        <div class="sighting-record-container">
+                            <div class="record-top"></div>
+                            <div class="record-bottom"></div>
+                        </div>
+                        <span class="notch top left"></span>
+                        <span class="notch top right"></span>
+                        <span class="notch bottom left"></span>
+                        <span class="notch bottom right"></span>
+                        <div class="pin"><img src="img/pin.png"></div>
+                        <div class="pin-civ"><img src="img/pin_civ.png"></div>
+                    </span>
+            <div class="sighting-info">
+                <p class="sighting-info-ia"></p>
+            </div>
+        </div>
+        <div class="bottom-padding"></div>
+    </div>
+    <div id="operatives-modal" class="modal operatives">
+        <h2 class="operatives-general-modalLabel"></h2>
+        <div class="designation-bar">
+            <div class="syfy-copy monarch">
+                <span class="operatives-general-decoration1"></span><br>
+                <span class="operatives-general-decoration2"></span><br>
+                <span class="operatives-general-decoration3"></span><br>
+                <span class="decoration4"></span>
+            </div>
+            <div class="symbol"></div>
+        </div>
+        <header>
+            <figure class="true"></figure>
+            <figure class="alert"></figure>
+            <h3><span class="name line1"></span><br><span class="name line2"></span></h3>
+            <p class="activation"></p>
+        </header>
+        <section class="data">
+            <div class="syfy"></div>
+            <h4 class="operatives-general-personalData"></h4>
+            <h5 class="no-top"><span class="operatives-general-title monarch alert"></span><span class="operatives-general-rank military"></span>_</h5>
+            <p class="title"></p>
+            <h5><span class="operatives-general-expertise monarch alert"></span><span class="operatives-general-tactical military"></span>_</h5>
+            <p class="expertise"></p>
+            <!--                    <h4 class="operatives-general-background"></h4>-->
+            <h5><span class="operatives-general-education monarch military"></span><span class="operatives-general-militaryHistory alert"></span>_</h5>
+            <p class="education"></p>
+            <!--                    <h5><span class="operatives-general-languages"></span>_</h5>-->
+            <!--                    <p class="languages"></p>-->
+            <!--                    <h4 class="operatives-general-activities"></h4>-->
+            <h5><span class="operatives-general-nextOfKin"></span>_</h5>
+            <p class="nextOfKin"></p>
+            <h5><span class="operatives-general-status monarch military"></span><span class="operatives-general-whereabouts alert"></span>_ <br class="alert"><span class="status"></span></h5>
+        </section>
+        <hr>
+        <section class="bio">
+            <h4><span class="effects"><span class="operatives-general-bio"></span><span class="corner top left"></span><span class="corner top right"></span><span class="corner bottom left"></span><span class="corner bottom right"></span></span></h4>
+            <div class="bio-graphs"></div>
+        </section>
+        <footer>
+            <div class="syfy"></div>
+            <div class="view-all-wrap"><button class="operatives-general-viewall view-all"></button></div>
+            <button class="gallery prev">←</button>
+            <button class="gallery next">→</button>
+        </footer>
+    </div>
+</div>
+<div id="unlock-message" class="full center-inside">
+    <div class="content">
+        <p><img class='level1' src="img/id-icon-green.png"><img class='level2' src="img/id-icon-amber.png"><img class='level3' src="img/id-icon-crimson.png">&nbsp;&nbsp;<span class="evidence-unlock-p1"></span></p>
+        <p class="evidence-unlock-p2"></p>
+    </div>
+</div>
+<div id="jonah-message" class="full center-inside">
+    <div class="content">
+        <p class="operatives-jonah-unlock"></p>
+    </div>
+</div>
+<div id="monarch-id" class="full">
+    <div class="content">
+        <div class="header">
+            <div id="status-granted-msg">
+                <div class="icon"></div>
+                <div class="id-p1"></div>
+                <div class="id-p2"></div>
+                <div class="id-p3Green level"></div>
+                <div class="id-p3Amber level"></div>
+                <div class="id-p3Crimson level"></div>
+            </div>
+        </div>
+        <div class="column left">
+            <div id="monarch-id-img">
+                <div id="monarch-id-number"></div>
+            </div>
+        </div>
+        <div class="column right">
+            <div id="share-monarch-id">
+                <div class="id-social"></div>
+                <div id="id-social-share">
+                    <div id="id-download">
+                        <img class="off" src="img/download.png">
+                        <img class="over" src="img/download-over.png">
+                    </div>
+                    <div id="id-facebook-share">
+                        <img class="off" src="img/facebook.png">
+                        <img class="over" src="img/facebook-over.png">
+                    </div>
+                    <div id="id-twiter-share">
+                        <img class="off" src="img/twitter.png">
+                        <img class="over" src="img/twitter-over.png">
+                    </div>
+                </div>
+            </div>
+            <div id="monarch-id-cta">
+                <h3 class="id-callToAction-header"></h3>
+                <p class="id-callToAction-p1">
+                    <span class="id-callToAction-p11"></span><span class="id-callToAction-p12"></span><a id="id-callToAction-twitterHandle" class="id-callToAction-twitterHandle" href="#" onclick="I18n.openLink(event, this);" rel="noopener"></a><span class="id-callToAction-p13"></span><span class="id-callToAction-p14"></span><span class="id-callToAction-p15"></span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="tt"></div>
+<footer id="persistent-legal">
+    <div id="show-legal-container"><span id="show-legal-button" class="legal-show legal-toggle"></span> </div>
+    <div class="links">
+        <a id="legal-privacy" class="legal-privacy" href="#" onclick="I18n.openLink(event, this);"></a>
+        <a id="legal-terms" class="legal-terms" href="#" onclick="I18n.openLink(event, this);"></a>
+        <a id="legal-adChoices" class="legal-adChoices" href="#" onclick="I18n.openLink(event, this);"></a>
+        <a href="javascript:void(0);" style="font-size: 1em;"  id="dnsDiv" class="optanon-toggle-display" data-ignore-geolocation="true">DO NOT SELL MY PERSONAL INFORMATION</a>
+    </div>
+</footer>
+<footer id="hidden-legal">
+    <div id="hide-legal-button"><span class="legal-close legal-toggle"></span></div>
+    <p class="links">
+        <a id="legal-filmRatings" class="legal-filmRatings" href="#" onclick="I18n.openLink(event, this);"></a>
+        <a id="legal-parentalGuide" class="legal-parentalGuide" href="#" onclick="I18n.openLink(event, this);"></a>
+        <a id="legal-mpaa" class="legal-mpaa" href="#" onclick="I18n.openLink(event, this);"></a>
+    </p>
+    <p class="copyrights">
+        <span class="legal-wbToho"></span>
+    </p>
+</footer>
+<div id="our-mission" class="full center-inside">
+    <div class="logo"><img src="img/Monarch-Logo.png"></div>
+    <div id="our-mission-copy">
+        <h2 class="ourMission-title">&nbsp;</h2>
+        <h3 class="ourMission-p1">&nbsp;</h3>
+    </div>
+    <div><img class="loading-indicator" src="img/loading.gif"></div><br>
+</div>
+<div id="global-error" class="full center-inside"><p></p></div>
+<div id="no-landscape" class="full"></div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+<script src="js/strings.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/main.min.js"></script>
+
+<script>
+
+
+    $( window ).on( "load", readyFn );
+    function readyFn()
+    {
+        //alert('ready');
+        window.dataLayer.push( { event: 'GroupsUpdated' } )
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!-- <script type="text/html" id="articleTool">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-normal" lay-event="addPublish">添加</button>
+        </div>
+    </script> -->
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">发布管理</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>发布管理</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <!-- 搜索条件 -->
+        <div class="layui-form toolbar">
+            <form id="searchForm" onsubmit="return false;">
+                文章id：<input name="info_id" class="layui-input search-input" type="text" placeholder="输入文章id"/>&emsp;
+                文章标题：<input name="title" class="layui-input search-input" type="text" placeholder="输入文章标题"/>&emsp;
+                类型：<select name="category_id" lay-verify="" id="category">
+                    <option value="">请选择类型</option>
+                </select>
+                <button id="user-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+            </form>
+        </div>
+        <!-- 表格顶部操作列 -->
+        <table class="layui-table" id="user-table" lay-filter="user-table"></table>
+    </div>
+</div>
+<script type="text/html" id="faceHtml">
+    <div>
+        {{# if(d.cover_url){ }}
+        <img style="height:28px" src="{{d.cover_url}}">
+        {{# }else{ }}
+        无
+        {{# } }}
+    </div>
+</script>
+<!-- 表格操作列 -->
+<script type="text/html" id="user-table-bar">
+  <!--<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="scheme-select">版式选择</a>-->
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="publish-delete">删除</a>
+  <a class="layui-btn  layui-btn-xs" lay-event="publish-hot">热点</a><a class="layui-btn  layui-btn-xs" lay-event="publish-banner">轮播图</a>
+</script>
+<!-- 表格状态列 -->
+<script type="text/html" id="publish-tpl-status">
+    <input type="checkbox" lay-filter="publish-tpl-status" value="{{d.id}}" lay-skin="switch"
+           lay-text="发布|下架" {{d.status==2?'checked':''}}/>
+</script>
+<script type="text/javascript"   src="/assets/module/sys/publish/publish.js"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

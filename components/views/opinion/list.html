@@ -1,0 +1,50 @@
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">意见反馈</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>意见反馈</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <!-- 搜索条件 -->
+        <div class="layui-form toolbar">
+            <form id="searchForm" onsubmit="return false;">
+                发布人：<input name="sendName" class="layui-input search-input" type="text" maxlength="30" placeholder="输入发布人"/>&emsp;
+                联系人：<input name="key" class="layui-input search-input" type="text" maxlength="30"  placeholder="输入联系人"/>&emsp;
+                状态：<select name="status" lay-verify="">
+                <option value="">请选择状态</option>
+                <option value="1">未解决</option>
+                <option value="2">已解决</option>
+            </select>
+                <button id="opinion-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+            </form>
+        </div>
+        <!-- 表格顶部操作列 -->
+        <script type="text/html" id="opinion-toolbar">
+<!--            <div class="layui-btn-container">-->
+<!--                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add"><i-->
+<!--                        class="layui-icon">&#xe654;</i>添加-->
+<!--                </button>-->
+<!--            </div>-->
+        </script>
+        <table class="layui-table" id="opinion-table" lay-filter="opinion-table"></table>
+    </div>
+</div>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="opinion-table-bar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+</script>
+
+<!-- 表格状态列 -->
+<script type="text/html" id="opinion-tpl-status">
+    <span>{{d.status==1?'未解决':'已解决'}}</span>
+</script>
+<script type="text/javascript"  src="/assets/module/sys/opinion/opinions.js"></script>
+<script type="text/javascript">
+    layui.use('element',function(){
+        Lay(layui);
+    });
+</script>

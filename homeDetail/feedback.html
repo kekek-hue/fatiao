@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="screen-orientation" content="portrait">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		#dom {
+			background: #f5f6fa;
+			height: 100vh;
+		}
+
+		.opinion_th {
+			width: 100%;
+			line-height: 2;
+			padding: 12px;
+		}
+
+		textarea {
+			width: 100%;
+			padding: 12px;
+			height: 200px;
+			/* line-height: 40px; */
+			font-size: 14px;
+			color: #333;
+			text-align: justify;
+			border-radius: 3px;
+			border: none;
+		}
+
+		input {
+			padding: 10px;
+			width: 100%;
+			border: none;
+		}
+
+		.inputBox {
+			margin-top: 10px;
+		}
+
+		.inputBoxb {
+			margin-top: 20px;
+		}
+
+		.subBtn {
+			padding: 5px;
+			background: #fff;
+			text-align: center;
+			margin-top: 40px;
+			color: #3966a7
+		}
+		.err{
+			color: red;
+			margin: 0;
+			padding: 0;
+			display: none;
+			}
+	</style>
+	<body>
+		<div id="dom">
+			<form action method="get" class="opinion_th">
+				<div>
+					<p>意见（必填）</p>
+					<textarea name="内容" cols="24" rows="2" maxlength="120" placeholder="请输入您的意见" v-model="Comment"></textarea>
+				</div>
+				<div class="inputBox">
+					<p>姓名（选填）</p>
+					<input type="text" name id placeholder="请填写您的姓名" v-model="name" />
+				</div>
+				<div class="inputBoxb">
+					<p>联系方式（必填）</p>
+					<input type="text" name id placeholder="请填写手机号或邮箱" v-model="tel"   @focus="disnone"/>
+					<p class="err">请输入正确的手机号</p>
+				</div>
+				<div class="subBtn" @click="tijiao()">提交</div>
+			</form>
+		</div>
+		</div>
+	</body>
+	<script src='js/vue.min.js'></script>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#dom',
+			data: {
+				Comment: "",
+				tel: "",
+				name: "",
+				userid: ""
+			},
+
+			mounted() {},
+			created() {
+				this.brige()
+			},
+			activated() {
+
+			},
+			methods: {
+				brige() {
+					var that = this
+					window.getparms = function(data) {
+						that.userid = data.content;
+					};
+				},
+				tijiao() {
+					this.email();
+					let that=this
+					mui.ajax('http://api2.ceh.com.cn/user/opinion/insert', {
+						data: {
+							content: this.Comment,
+							name: this.name,
+							contact: this.tel,
+							user_id:this.userid
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						success: function(data) {
+							var param = {
+								result: data.result
+							};
+							
+							if (window.hasOwnProperty("webkit")) {
+								window.webkit.messageHandlers.closeWebView.postMessage(param);
+							} else {
+								app.closeWebView(data.result) 
+							}
+
+						},
+						error: function(xhr, type, errorThrown) {
+							//异常处理；
+							console.log(type);
+						}
+					});
+				},
+				email: function() {
+					var email =/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+					var phone=/^1([38]\d|5[0-35-9]|7[3678])\d{8}$/;
+					if (phone.test(this.tel) || email.test(this.tel)) {		
+					}else{
+					document.querySelector(".err").style.display="block"
+						this.tel = "";
+						return;
+					}
+				},
+				disnone:function(){
+						document.querySelector(".err").style.display="none"
+						this.tel = "";
+				}
+
+
+			},
+		});
+	</script>
+</html>

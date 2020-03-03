@@ -1,0 +1,158 @@
+<!--提示信息-->
+<div class="layui-col-md12">
+        <div class="layui-card">
+            <div class="layui-card-header">首页 -添加直播</div>
+        </div>
+    </div>
+    <!--提示信息-->
+    <form action="" class="layui-form layer-form" id="article-form" lay-filter="article-form">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12 " style="width:600px;">
+                <div class="layui-tab layui-tab-card">
+                    <div class="layui-tab-item layui-show">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">视频标题:</label>
+                            <div class="layui-col-md8">
+                                <input type="text" name="title" lay-verify="art-title" autocomplete="off"
+                                    placeholder="请输入标题" class="layui-input" value=''>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">封面图:</label>
+                            <div class="layui-input-block">
+                                <div class="layui-upload">
+                                    <button type="button" class="layui-btn" id="thumbnail-img"
+                                        name="thumbnail_img[]">上传图片</button>
+                                    <div class="layui-upload-list thumbnail">
+                                        <input type="hidden" name="cover_id" class="thumbnailPath" id="cover_id"
+                                            value="">
+                                            <input type="hidden" name="cover_ext" class="thumbnailPath" id="cover_ext"
+                                            value="">
+                                            <input type="hidden" name="img_ext" class="thumbnailPath" id="img_ext"
+                                            value="">
+                                        <img class="layui-upload-img" style="height: 50px" id="lowSource" name="cover_url" src="">
+                                        <p id="failText"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">直播简介:</label>
+                                <div class="layui-col-md8">
+                                        <textarea name="introduce" rows="4" cols="53"></textarea> 
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">开始时间:</label>
+                                <div class="layui-col-md8">
+                                    <input type="text" name="startTime" lay-verify="art-title" autocomplete="off"
+                                        placeholder="开始时间" class="layui-input" value='' id="start">
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">结束时间:</label>
+                                <div class="layui-col-md8">
+                                    <input type="text" name="endTime" lay-verify="art-title" autocomplete="off"
+                                        placeholder="结束时间" class="layui-input" value='' id="end">
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">直播地址:</label>
+                                <div class="layui-col-md8">
+                                    <input type="text" name="path" lay-verify="art-title" autocomplete="off"
+                                        placeholder="请输入地址" class="layui-input" value=''>
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn layui-btn-normal" lay-submit=""
+                                    lay-filter="routineInformation">确定</button>
+                                    <button type="button" class="layui-btn layui-btn-primary ppp-back" >返回</button>
+                            </div>
+                        </div>
+                        <!-- <input type="hidden" id="globalId" name="globalId" value=""> -->
+    
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-card">
+                    <div class="layui-card-header">属性</div>
+                    <div class="layui-card-body layadmin-takerates">
+                        <!--折叠开始-->
+                        <div class="layui-collapse" lay-accordion="">
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">类型</h2>
+                                <div class="layui-colla-content layui-show">
+                                    <div id="category-id">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--折叠结束-->
+                            <!--折叠开始-->
+                            <!--折叠结束-->
+                        </div>
+    
+                      
+                        <div class="layui-collapse" lay-filter="test">
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">来源</h2>
+                                <div class="layui-colla-content layui-show">
+                                    <div class="layui-form-item">
+                                        <div class="">
+                                           
+                                            <!--来源网址-->
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">来源网址:</label>
+                                                <div class="layui-input-block">
+                                                    <select name="source_id" lay-search="" id="source_type_id">
+                                                        <option value="">直接选择或搜索选择</option>
+                                                        <option>
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--折叠结束-->
+    
+                        <!-- 操作图文标签开始 -->
+                        <div class="layui-col-md4" style="width:540px;margin:20px 0 0 -15px;">
+                            <div class="layui-card">
+                                <div class="layui-card-header">标签</div>
+                                <div class="layui-card-body layadmin-takerates">
+                                    <div class="layui-collapse" lay-filter="test">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">标签</h2>
+                                            <div class="layui-form-item">
+                                                <blockquote class="layui-elem-quote layui-quote-nm">
+                                                    <div id="add_tag_div"></div>
+                                                    <div id="pagebox"></div>
+                                                </blockquote>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 操作图文标签结束 -->
+                </div>
+                <!--左边属性结束-->
+            </div>
+    
+        </div>
+    </form>
+    <script type="text/javascript" charset="utf-8" src="/assets/jquery/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/assets/jquery/jquery-ui.js"></script>
+    <script src="/assets/module/sys/live/updateLive.js"></script>
+    <script type="text/javascript">
+        layui.use('element', function () {
+            Lay(layui);
+        });
+    </script>

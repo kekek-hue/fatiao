@@ -1,0 +1,119 @@
+<style>
+        .disnone {
+            display: none;
+        }
+    
+        .layui-layer-btn .layui-layer-btn0 {
+            background: #fff;
+            color: black;
+            border: 1px solid #dedede
+        }
+    
+        #all {
+            padding: 10px;
+            height: auto;
+            width: 100%
+        }
+    
+        .layui-container {
+            margin: 0
+        }
+    
+        .his span {
+            margin: 10px
+        }
+    
+        #historyBox {
+            height: 100%;
+    
+            padding: 10px;
+        }
+    
+        .hisTitle {
+            color: cornflowerblue;
+            font-size: 20px;
+            padding-bottom: 20px;
+        }
+    
+        .title {
+            font-size: 20px;
+            text-align: center;
+        }
+    
+        .creatTime {
+            color: slategrey;
+            text-align: center;
+            margin-top: 10px
+        }
+    
+        .content {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    
+        .imgContent img {
+            width: 300px;
+            height: auto;
+        }
+    
+        .layui-col-md9 {
+            padding: 10px;
+            border-right: 1px solid #dedede;
+        }
+    
+        video {
+            margin-left: 150px
+        }
+    
+        .gray {
+            color: #555
+        }
+    
+        .cover {
+            height: 100px;
+            width: 200px
+        }
+    
+        #contentBox {
+            min-height: 1000px;
+        }
+    </style>
+    
+    <div class="layui-card" id="all">
+        <div class="layui-card-header">
+            <h2 class="header-title">动态详情</h2>
+            <span class="layui-breadcrumb pull-right">
+                <a href="#!console">首页</a>
+                <a><cite>动态详情</cite></a>
+            </span>
+        </div>
+        <div>
+            <div class="layui-btn-container allbut">
+                <button type="button" class="layui-btn " name="gobanck">返回</button>
+                <button type="button" class="layui-btn  layui-btn-warm isshow" name="nopassArticles">审核不通过</button>
+            </div>
+        </div>
+    
+        <div class="layui-container">
+            <div class="layui-row" style="width: 130%;min-height: 1000px;">
+                <div class="layui-col-md9">
+                    <div id="contentBox">
+                        <div class="content"></div>
+                        <div class="time"></div>
+                        <div class="imgContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    
+    
+    
+    <script type="text/javascript" src="/assets/module/sys/smallVideo/info.js"></script>
+    <script type="text/javascript">
+        layui.use('element', function () {
+            Lay(layui);
+        });
+    </script>

@@ -1,0 +1,24 @@
+<form id="group-form" lay-filter="group-form" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核状态：</label>
+        <div class="layui-input-block">
+            <select name="status" lay-verify="required" lay-search="">
+                <option value="">直接选择或搜索选择</option>
+                <option value="1">待审核</option>
+                <option value="2">通过</option>
+                <option value="3">审核未通过</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="scheme-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/chat/group/add.js?v=0.0.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

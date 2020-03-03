@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="screen-orientation" content="portrait">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.content {
+			padding: 10px;
+		}
+
+		.content .contentinfo {
+			padding: 10px 0;
+			line-height: 27px;
+			color: #333;
+			font-size: 18px;
+			font-weight: normal;
+			letter-spacing: 1px;
+			margin: 0 auto
+		}
+
+		.content img {
+			width: 100% !important;
+			height: auto;
+			margin: 0 auto
+		}
+
+		h3 {
+			padding: 10px 0;
+		}
+
+		.titfoot {
+			width: 65%;
+			display: flex;
+			justify-content: space-between;
+			padding: 0 0 10px;
+			color: #666666;
+		}
+		 [v-cloak] {
+            display: none;
+        }
+			
+		.yaoqiu{
+			display:flex;
+			justify-content: space-between;
+		}
+	</style>
+	<body>
+		<div id="mainContent">
+			<!-- <p class="fenxiang">分享</p> -->
+			<div id="dom">
+				<div class="content" v-cloak>
+					<h3>{{detailNew.title}}</h3>
+					<p class="titfoot"><span>{{detailNew.create_time}}</span>
+						<p class="yaoqiu" style="color: #999999;"><span>所属地区:{{detailNew.area_name}}</span><span>回报机制:{{detailNew.reward_name}}</span></p>
+					</p>
+					<p class="contentinfo">
+						<p v-html="detailNew.content"></p>
+						
+						<img :src="detailNew.imgPath"/>
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src='js/vue.min.js'></script>
+	<script src="js/mui.min.js"></script>
+
+	<script type="text/javascript">
+		var vm = new Vue({
+
+			el: '#dom',
+			data: {
+
+				detailNew: {}
+			},
+
+			mounted() {},
+			activated() {},
+			methods: {},
+		});
+
+		function getQueryString(name) {
+			let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			let r = window.location.search.substr(1).match(reg);
+			if (r != null) {
+				return unescape(r[2]);
+			};
+			return null;
+		};
+
+		function getproject(projectid) {
+			console.log(projectid)
+			mui.ajax(' http://api2.ceh.com.cn/commune/ask/info', {
+				data: {
+					id: projectid
+				},
+				dataType: 'json', //服务器返回json格式数据
+				type: 'get', //HTTP请求类型
+				success: function(data) {
+					console.log(data)
+					vm.detailNew = data
+					//服务器返回响应，根据响应结果，分析是否登录成功
+				},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					console.log(type);
+				}
+			});
+		}
+		getproject(getQueryString('id'))
+	</script>
+</html>

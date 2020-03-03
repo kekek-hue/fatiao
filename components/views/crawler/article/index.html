@@ -1,0 +1,143 @@
+<script type="text/html" id="barDemo">
+
+  <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="import">导入</a>
+
+</script>
+<style>
+  .layui-table-tool .layui-table-tool-self .layui-inline{
+    display: none
+  }
+   .layui-icon-loading {
+     color: black;
+     font-size: 30px
+   }
+   .layui-table-tips-main{
+     display: none
+   }
+   .layui-table-tips-c{
+     display: none
+   }
+</style>
+<div  class="layui-card">
+  <div class="layui-card-header">
+      <h2 class="header-title">数据源管理</h2>
+      <span class="layui-breadcrumb pull-right">
+          <a href="index.html">首页</a>
+        <a href="index.html">数据源管理</a>
+        <a><cite>文章管理</cite></a>
+      </span>
+  </div>
+  <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+        <form id='searchForm' onsubmit="return false;" >
+          <div class="layui-form-item">
+            <div class="layui-inline">
+              <label class="layui-form-label">ID：</label>
+              <div class="layui-input-block">
+                <input type="text" name="id" placeholder="请输入" id="id" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">标题：</label>
+              <div class="layui-input-block">
+                <input type="text" name="title" id="title" placeholder="请输入" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">类型：</label>
+              <div class="layui-input-block">
+                  <select name="tag_id" id="tag_id" lay-verify=""  lay-search="">
+                    <option value="" >请选择分类</option>
+                  </select>  
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">来源网址：</label>
+              <div class="layui-input-block">
+                  <select name="site_id" id="site_id" lay-verify="" lay-search="">
+                    <option value="" >请选择</option>
+                  </select>  
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">状态：</label>
+              <div class="layui-input-block">
+                  <select name="status" id="status" lay-verify="" lay-search="">
+                    <option value="" >请选择</option>
+                    <option value="1" >未下载</option>
+                    <option value="2" >未解析</option>
+                    <option value="3" >下载失败</option>
+                    <option value="4" >已解析</option>
+                    <option value="5" >解析失败</option>
+                    <option value="8" >草稿</option>
+                  </select>  
+              </div>
+            </div>
+            <br/>
+            <div class="layui-inline">
+              <label class="layui-form-label">开始时间：</label>
+              <div class="layui-input-block"> 
+                  <input type="text" class="layui-input" id="start_time" name="start_time">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">结束时间：</label>
+              <div class="layui-input-block">
+                <input type="text" class="layui-input" id="end_time" name="end_time">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <button class="layui-btn reload-btn" data-type="reload">
+                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+  </div>
+    <script type="text/html" id="articleTool">
+        <div class="layui-btn-container">
+            <button type="button" class="layui-btn layui-btn-normal" lay-event="getCheckData">批量导入</button>
+        </div>
+    </script>
+    <div class="layui-card-body">
+      <div>
+        <table class="layui-table article-table" id="crawler-article-table" lay-filter="crawler-article-table" lay-even="" lay-skin="row">
+        </table>
+      </div>
+        <div class="layui-tab-item">
+          <div id="pageDemo"></div>
+        </div>
+    </div>
+</div>    
+<script type="text/html" id="newState">
+  {{# if (d.status == 3){d.status ='下载失败'}}
+    <span style="color:#009688;" class="status">{{d.status}}</span>
+  {{#} else if (d.status == 4){d.status ='已解析'}}
+    <span style="color:#F581B1;"  class="status_{{# d.id}} ">{{d.status}}</span>
+  {{#} else if (d.status == 8){d.status ='草稿'}}
+    <span style="color:#f5ac23;"  class="status_{{# d.id}} ">{{d.status}}</span>
+  {{#} else if (d.status == 1){d.status =未下载'}}
+    <span style="color:#f5ac23;"  class="status_{{# d.id}} ">{{d.status}}</span>
+  {{#} else if (d.status == 2){d.status ='已下载,未解析'}}
+    <span style="color:#f5ac23;"  class="status_{{# d.id}} ">{{d.status}}</span>
+     {{#} else if (d.status == 5){d.status ='解析失败'}}
+  <span style="color:#f5ac23;"  class="status_{{# d.id}} ">{{d.status}}</span>
+  {{# } }}
+</script>
+<script type="text/html" id="faceHtml">
+  {{# if(d.cover_id != 0) { d.cover_id = d.cover_id  }else{ d.cover_id = '/static/images/log.jpg' }  }}
+  <div>
+    <img style="height:28px" data-img="{{d.cover_id}}" src="{{d.cover_id}}">
+  </div>
+</script>
+<script type="text/javascript"  src="/assets/module/sys/crawler/article.js"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>
+
+
+
+
+
+

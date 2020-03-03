@@ -1,0 +1,65 @@
+<!--用户管理-->
+
+<div class="layui-fluid">
+    <form action="">
+        <label>用户类别</label>
+        <select name="category">
+            <option value="0">普通用户</option>
+            <option value="1">单位员工</option>
+            <option value="2">社群用户</option>
+            <option value="3">后台管理员</option>
+        </select>
+    </form>
+    <div class="layui-btn-group pb10 pt10">
+        <button class="layui-btn  layui-btn-normal" >增加</button>
+        <button class="layui-btn layui-btn-normal">编辑</button>
+        <button class="layui-btn layui-btn-normal">删除</button>
+    </div>
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>
+                <input type="checkbox"/>
+            </th>
+            <th>昵称</th>
+            <th>职位</th>
+            <th>内部职责</th>
+            <th>内部权力</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>贤心</td>
+            <td>总经理</td>
+            <td>总经理</td>
+            <td>管理下属</td>
+            <td>
+                <div class="layui-table-cell laytable-cell-3-0-9">
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>贤心</td>
+            <td>总经理</td>
+            <td>总经理</td>
+            <td>管理下属</td>
+            <td>
+                <div class="layui-table-cell laytable-cell-3-0-9">
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

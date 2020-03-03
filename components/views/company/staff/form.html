@@ -1,0 +1,45 @@
+<div class="layui-form model-form" id="add-form">
+    <form class="layui-form layer-form" id="addForm">
+        <div class="layui-form-item">
+            <label class="layui-form-label">单位名称:</label>
+            <div class="layui-input-inline">
+                <select name="company_id" id="company_id" lay-verify="required" autocomplete="off">
+                    <option value="">请选择单位</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">职位名称:</label>
+            <div class="layui-input-inline">
+                <select name="job_id" id="job_id" lay-verify="required" autocomplete="off">
+                    <option value="">请选择职位</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">员工:</label>
+            <div class="layui-input-inline">
+                <select name="user_id" id="user_id" lay-verify="required" autocomplete="off">
+                    <option value="">请选择员工</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="info" id="info" lay-verify="required" autocomplete="off"
+                    placeholder="如：今日入职" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item model-form-footer">
+            <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+            <button class="layui-btn" lay-filter="staff-form-submit" lay-submit>保存</button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript"  src="/assets/module/sys/staff/add.js?v=0.0.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

@@ -1,0 +1,21 @@
+<form id="form" lay-filter="form" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <div class="layui-form-item">
+        <label class="layui-form-label">app类别名称</label>
+        <div class="layui-input-block">
+            <select name="category_id" id="appCategory" lay-verify="required">
+            </select>
+        </div>
+    </div>
+    <input type="hidden" name="id">
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button type="button" class="layui-btn" lay-filter="form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/type/app/add.js"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

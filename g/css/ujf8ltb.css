@@ -1,0 +1,36 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * futura-pt:
+ *   - http://typekit.com/eulas/00000000000000000001008f
+ *   - http://typekit.com/eulas/000000000000000000010091
+ *   - http://typekit.com/eulas/000000000000000000013365
+ *
+ * © 2009-2019 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2018-09-25 01:19:29 UTC"}*/
+
+@import url("https://p.typekit.net/p.css?s=1&k=ujf8ltb&ht=tk&f=10879.10881.10884&a=6585062&app=typekit&e=css");
+
+@font-face {
+font-family:"futura-pt";
+src:url("https://use.typekit.net/af/2cd6bf/00000000000000000001008f/27/l?subset_id=1&fvd=n5&v=3") format("woff2"),url("https://use.typekit.net/af/2cd6bf/00000000000000000001008f/27/d?subset_id=1&fvd=n5&v=3") format("woff"),url("https://use.typekit.net/af/2cd6bf/00000000000000000001008f/27/a?subset_id=1&fvd=n5&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:500;
+}
+
+@font-face {
+font-family:"futura-pt";
+src:url("https://use.typekit.net/af/309dfe/000000000000000000010091/27/l?subset_id=1&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/309dfe/000000000000000000010091/27/d?subset_id=1&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/309dfe/000000000000000000010091/27/a?subset_id=1&fvd=n7&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;
+}
+
+@font-face {
+font-family:"futura-pt";
+src:url("https://use.typekit.net/af/9b05f3/000000000000000000013365/27/l?subset_id=1&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/9b05f3/000000000000000000013365/27/d?subset_id=1&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/9b05f3/000000000000000000013365/27/a?subset_id=1&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;
+}
+
+.tk-futura-pt { font-family: "futura-pt",sans-serif; }

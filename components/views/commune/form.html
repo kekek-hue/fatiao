@@ -1,0 +1,82 @@
+<form  enctype="multipart/form-data" id="commune-form" lay-filter="commune-form" class="layui-form model-form">
+    <input type="hidden" name="userid" id="userid" value="1">
+    <div class="layui-form-item">
+        <label class="layui-form-label">名称</label>
+        <div class="layui-input-block">
+            <input id="name" name="name" placeholder="请输入名称" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">详情</label>
+        <div class="layui-input-block">
+            <input name="info" id="info" placeholder="请输入详情" type="text" class="layui-input" maxlength="30"
+                   lay-verify="required"/>
+            <p>最多30个字</p>
+        </div>
+    </div>
+    <div class="layui-form-item" style="display: none;">
+        <label class="layui-form-label">标签</label>
+        <div class="layui-input-block">
+            <input name="tag" id="tag" placeholder="请输入标签" type="text" class="layui-input" value="公社" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item"  style="display: none;">
+        <label class="layui-form-label">省</label>
+        <div class="layui-input-block">
+            <input name="province" id="province" placeholder="请输入省" value="北京" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item"  style="display: none;">
+        <label class="layui-form-label">市</label>
+        <div class="layui-input-block">
+            <input name="city" id="city" placeholder="请输入市" type="text" value="北京" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item"  style="display: none;">
+        <label class="layui-form-label">区/县</label>
+        <div class="layui-input-block">
+            <input name="area" id="area"  placeholder="请输入区/县" type="text" value="西城" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+<!-- 
+    <div class="layui-form-item">
+        <label class="layui-form-label">上传图片</label>
+        <div class="layui-input-block">
+            <input name="file" id="image" placeholder="请上传图片" multiple="multiple" type="file" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div> -->
+    <div class="layui-form-item">
+            <label class="layui-form-label">封面图:</label>
+            <div class="layui-input-block">
+                <div class="layui-upload">
+                    <button type="button" class="layui-btn" id="thumbnail-img"
+                        name="thumbnail_img[]">上传图片</button>
+                    <div class="layui-upload-list thumbnail">
+                        <input type="hidden" name="cover_id" class="thumbnailPath" id="cover_id"
+                            value="">
+                            <input type="hidden" name="cover_ext" class="thumbnailPath" id="cover_ext"
+                            value="">
+                        <img class="layui-upload-img" style="height: 50px" id="lowSource" name="cover_url" src="">
+                        <p id="failText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" type="button" lay-filter="commune-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript" src="/assets/module/sys/commune/form.js"></script>
+<script type="text/javascript">
+    layui.use('element',function(){
+        Lay(layui);
+    });
+</script>

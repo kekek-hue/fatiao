@@ -1,0 +1,43 @@
+<script type="text/html" id="barDemo">
+    <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="edit-attr" data-edit-type="shop"
+            data-edit-title="商品" id="edit"><i
+            class="layui-icon"></i></button>
+    <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="del-attr" data-edit-type="shop"
+            data-edit-title="商品" id="del"><i
+            class="layui-icon"></i></button>
+</script>
+<script type="text/html" id="faceHtml">
+    <div><img style="height:28px"  data-img="{{d.image_url}}"   src="{{d.image_url}}"></div>
+</script>
+<script type="text/html" id="add-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-normal" lay-event="add-attr">添加</button>
+        <button class="layui-btn layui-btn-normal" lay-event="del-attr"><i
+                class="layui-icon"></i></button>
+    </div>
+</script>
+<div class="layui-fluid">
+    <div class="crumb-caption">
+  <span class="crumb">
+    <a href="/">首页</a>
+    <a href="javascript:;"> /积分管理/商品管理</a>
+  </span>
+    </div>
+    <div class="layui-card">
+        <div>
+            <table class="layui-table article-table" id="shop" lay-filter="shop" lay-even=""
+                   lay-skin="row">
+            </table>
+            <div class="layui-tab-item">
+                <div id="pageDemo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/assets/module/sys/integral/shop.js"></script>
+<script type="text/javascript">
+    layui.use(['element','ppp'], function () {
+        Lay(layui);
+    });
+</script>

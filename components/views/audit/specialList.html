@@ -1,0 +1,249 @@
+<style>
+        .disnone {
+            display: none;
+        }
+        .layui-layer-btn .layui-layer-btn0 {
+        background: #fff;
+        color: black;
+        border: 1px solid #dedede
+    }
+    </style>
+  
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <h2 class="header-title">文章审核</h2>
+            <span class="layui-breadcrumb pull-right">
+                <a href="#!console">首页</a>
+                <a><cite>文章审核</cite></a>
+            </span>
+        </div>
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">ID</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="id" placeholder="请输入" id="id" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键字:</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" id="title" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">栏目：</label>
+                    <div class="layui-input-block">
+                        <select name="cate" id="cate" lay-verify="" lay-search="">
+                            <option value="">请选择来源</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                        <label class="layui-form-label">状态:</label>
+                        <div class="layui-input-block">
+                            <select name="status" id="status" lay-verify="" lay-search="">
+                                <option value="">请选择状态</option>
+                            </select>
+                        </div>
+                    </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">类型：</label>
+                    <div class="layui-input-block">
+                        <select name="type" id="type" lay-verify="" lay-search="">
+                            <option value="">请选择分类</option>
+                            <option value="3">视频</option>
+                            <option value="5">直播</option>
+                            <option value="4">专题</option>
+                        </select>
+                    </div>
+                </div>
+                <!--<div class="layui-inline">-->
+                <!--<label class="layui-form-label">摘要</label>-->
+                <!--<div class="layui-input-block">-->
+                <!--<input type="text" name="info" id="info" placeholder="请输入" autocomplete="off" class="layui-input">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!-- <div class="layui-inline">
+                    <label class="layui-form-label">开始时间：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="start_time" name="start_time" autocomplete="off">
+                    </div>
+                </div> -->
+                <!-- <div class="layui-inline">
+                    <label class="layui-form-label">结束时间：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" id="end_time" name="end_time" autocomplete="off">
+                    </div>
+                </div> -->
+                <div class="layui-inline">
+                    <button class="layui-btn reload-btn" data-type="reload">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script type="text/html" id="articleTool">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal" lay-event="addArticle">添加文章</button>
+                {{# if(d.role==10 ){ }}
+                <button type="button" class="layui-btn layui-btn-normal" lay-event="submitArticles">提交审核</button>
+                {{# }else if(d.role==12 || d.role==11){ }}
+                <button type="button" class="layui-btn layui-btn-normal" lay-event="passArticles">审核通过</button>
+                <button type="button" class="layui-btn  layui-btn-warm" lay-event="nopassArticles">审核未通过</button>
+                {{# }else if(d.role==13){ }}
+                <button type="button" class="layui-btn layui-btn-normal pass" lay-event="passArticles">审核通过</button>
+                <button type="button" class="layui-btn  layui-btn-warm nopass" lay-event="nopassArticles">审核未通过</button>
+                <button type="button" class="layui-btn layui-btn-primary fabu" lay-event="publishArticles">发布文章</button>
+                {{#} else {}}
+                <button type="button" class="layui-btn layui-btn-normal tijiao" lay-event="submitArticles">提交审核</button>
+                <button type="button" class="layui-btn layui-btn-normal pass" lay-event="passArticles">审核通过</button>
+                <button type="button" class="layui-btn  layui-btn-warm nopass" lay-event="nopassArticles">审核未通过</button>
+                <button type="button" class="layui-btn layui-btn-primary fabu" lay-event="publishArticles">发布文章</button>
+                {{# } }}
+                <button type="button" class="layui-btn layui-btn-danger del" lay-event="getCheckData">删除文章</button>
+            </div>
+        </script>
+        <script type="text/html" id="barDemo">
+            {{# if(d.status == d.statusAll.tongguo ){ }}
+            <a href="javascript:void(0);" class="layui-btn layui-btn-warm layui-btn-xs del-btn" lay-event="publish-attr">发布</a>
+            {{# } }} 
+            <!-- 责编是自己发的显示提交 -->
+            {{# if(d.role==d.roleall.zebian && d.userId==d.creator_id && d.status==d.statusAll.weiti){ }}
+            <a href="javascript:void(0);" class="layui-btn layui-btn-primary layui-btn-xs del-btn" lay-event="update-attr">编辑</a>
+            <a href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-xs del-btn" lay-event="submitAudit">提交审核</a>
+            <!-- 主政显示 编 预 通 不通 -->
+            {{# }else if(d.role==d.roleall.zhubian  && d.status < d.statusAll.buzhu){ }}
+            <a href="javascript:void(0);" class="layui-btn layui-btn-primary layui-btn-xs del-btn" lay-event="update-attr">编辑</a>
+            <a href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-xs del-btn" lay-event="pass">审核通过</a>
+            <a href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-xs del-btn" lay-event="nopass">审核未通过</a>
+            {{# }else if(d.role==d.roleall.zhengshen  && d.status < d.statusAll.buzheng ){ }}
+            <a href="javascript:void(0);" class="layui-btn layui-btn-primary layui-btn-xs del-btn" lay-event="update-attr">编辑</a>
+            <a href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-xs del-btn" lay-event="pass">审核通过</a>
+            <a href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-xs del-btn" lay-event="nopass">审核未通过</a>
+            <!-- 主政显示 编 预 通 不通 发 -->
+            {{# }else if(d.role==d.roleall.zongbian && d.status< d.statusAll.buzong){ }}
+            <a href="javascript:void(0);" class="layui-btn layui-btn-primary layui-btn-xs del-btn" lay-event="update-attr">编辑</a>
+            <a href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-xs del-btn" lay-event="pass">审核通过</a>
+            <a href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-xs del-btn" lay-event="nopass">审核未通过</a>
+            {{# }else if(d.role==226 || d.role==227){ }}
+            <a href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-xs del-btn" lay-event="pass">审核通过</a>
+            <a href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-xs del-btn" lay-event="nopass">审核未通过</a>
+            {{# } }}
+           <!-- 自己发的会有删除按钮 -->
+           {{# if(d.role==d.roleall.zebian && d.userId==d.creator_id && d.status==d.statusAll.weiti && d.type_id==4){ }}
+           <a href="javascript:void(0);" class="layui-btn layui-btn-danger layui-btn-xs del-btn" lay-event="addtic">添加专题</a>
+           {{# }else if(d.role==d.roleall.zhubian  && d.status < d.statusAll.buzhu && d.type_id==4){ }}
+           <a href="javascript:void(0);" class="layui-btn layui-btn-danger layui-btn-xs del-btn" lay-event="addtic">添加专题</a>
+           {{# }else if(d.role==d.roleall.zhengshen  && d.status < d.statusAll.buzheng && d.type_id==4){ }}
+           <a href="javascript:void(0);" class="layui-btn layui-btn-danger layui-btn-xs del-btn" lay-event="addtic">添加专题</a>
+           {{# }else if(d.role==d.roleall.zongbian && d.status< d.statusAll.buzong && d.type_id==4){ }}
+           <a href="javascript:void(0);" class="layui-btn layui-btn-danger layui-btn-xs del-btn" lay-event="addtic">添加专题</a>
+           {{# } }}
+            {{# if(d.userId==d.creator_id && (d.status == d.statusAll.buzhu || d.status == d.statusAll.buzheng || d.status == d.statusAll.buzong) ){ }}
+            <a href="javascript:void(0);" class="layui-btn layui-btn-danger layui-btn-xs del-btn" lay-event="del">删除</a>
+            {{# }else if ( d.userId==d.creator_id && d.role==d.roleall.zebian &&  d.status == d.statusAll.weiti) { }}
+            <a href="javascript:void(0);" class="layui-btn layui-btn-danger layui-btn-xs del-btn" lay-event="del">删除</a>
+            {{# } }}           
+            </script>
+            <script type="text/html" id="barLook">
+                <a href="javascript:void(0);" class="layui-btn layui-btn-normal layui-btn-xs del-btn" lay-event="look">预览</a>
+            </script>
+        <div>
+            <table class="layui-table article-table" id="article-table" lay-filter="article-table" lay-even=""
+                lay-skin="row">
+            </table>
+            <div class="layui-tab-item">
+                <div id="pageDemo"></div>
+            </div>
+        </div>
+    </div>
+    <!--点击编辑属性弹出层-->
+    <div class="form-dv" id="newUpdate" style="display:none;">
+        <form class="layui-form layer-form" id="updateForm">
+            <input type="hidden" name="news-id" id="news-id">
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章类型:</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="type" value="1" title="图文">
+                    <input type="radio" name="type" value="2" title="图集">
+                    <input type="radio" name="type" value="3" title="视频">
+                    <input type="radio" name="type" value="4" title="其他">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">标题:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" id="title-news" lay-verify="title" autocomplete="off"
+                        placeholder="请输入标题" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态:</label>
+                <div class="layui-input-block">
+                    <select name="status" lay-verify="required" lay-search="">
+                        <option value="">直接选择或搜索选择</option>
+                        <option value="1">待审核</option>
+                        <option value="2">通过</option>
+                        <option value="3">审核未通过</option>
+                        <option value="4">发布</option>
+                        <option value="5">置顶</option>
+                        <option value="4">热门</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="newsUpdateForm">确定</button>
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="closeDialog()">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- </div> -->
+    <script type="text/html" id="newType">
+        {{# if (d.type_id == 1){d.type_id = '图文'}}
+        <span style="color:#F581B1;">{{d.type_id}}</span>
+        {{#} else if (d.type_id == 2){d.type_id ='图集'}}
+        <span style="color:#1e9fff;">{{d.type_id}}</span>
+        {{#} else if (d.type_id == 3){d.type_id ='视频'}}
+        <span style="color:#F581B1;">{{d.type_id}}</span>
+        {{#} else if (d.type_id == 4){d.type_id ='专题'}}
+        <span style="color:#F581B1;">{{d.type_id}}</span>
+        {{#} else if(d.type_id == 5){d.type_id ='直播'}}
+        <span style="color:#F581B1;">{{d.type_id}}</span>
+        {{# } }}
+    </script>
+    <script type="text/html" id="newState">
+        {{# if (d.status == d.statusAll.buzhu || d.status == d.statusAll.buzong || d.status == d.statusAll.buzheng ){}}
+        <span style="color:red;">{{d.statusData}}</span>
+        {{#} else if (d.status == d.statusAll.tongguo){}}
+        <span style="color:green;">{{d.statusData}}</span>
+        {{#  }else{ }}
+        <span style="color:black;">{{d.statusData}}</span>
+        {{# } }}
+    </script>
+    <script type="text/html" id="faceHtml">
+        <div>
+            {{# if(d.cover_url){ }}
+            <img style="height:28px" src="{{d.cover_url}}">
+            {{# }else{ }}
+            无
+            {{# } }}
+        </div>
+    </script>
+    <script type="text/html" id="lanmu">
+        <div>
+            {{# if(d.category_name){ }}
+           <span style="color:#f5ac23;">{{d.category_name}}</span>
+            {{# }else{ }}
+            无
+            {{# } }}
+        </div>
+    </script>
+    <script type="text/javascript" src="/assets/module/sys/audit/specialList.js"></script>
+    <script type="text/javascript">
+        layui.use('element', function () {
+            Lay(layui);
+        });
+    </script>

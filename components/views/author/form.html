@@ -1,0 +1,41 @@
+<div class="layui-tab-item layui-show">
+    <form enctype="multipart/form-data" id="searchForm" class="layui-form layer-form" onsubmit="return false;">
+        <div class="layui-form-item">
+            <label class="layui-form-label">昵称:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="name" lay-verify="art-title" autocomplete="off" placeholder="请输入" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">类型:</label>
+            <div class="layui-input-inline">
+                <select name="type" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">大V</option>
+                    <option value="2">普通作者</option>
+                    <option value="3">发条号</option>
+                    <?php $data = $GLOBALS['g_status_display']['pt_news_author']['type']; ?>
+                    <?php foreach($data as $k=>$v){ ?>
+                        <option value="<?php echo $k; ?>"><?php echo $v; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">logo:</label>
+            <div class="layui-input-block">
+                <a href="javascript:;" class="upload">选择文件
+                    <input class="change" name="image[]" type="file"  id="img"/>
+                </a>
+                <div class="thumbnail" id="thumbail"> </div>
+            </div>
+        </div>
+        <!--这放编辑器-->
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">介绍</label>
+            <div class="layui-input-block">
+                <textarea name="info" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+    </form>
+</div>

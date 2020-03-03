@@ -1,0 +1,24 @@
+<form id="scheme-form" lay-filter="type-form" class="layui-form model-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态：</label>
+        <input type="hidden" id="id" name="id" lay-filter="id">
+        <div class="layui-input-block">
+            <select id="status" name="status" lay-filter="status" lay-verify="required">
+                <option value="">请选择</option>
+                <option value="1">待审</option>
+                <option value="2">审核通过</option>
+                <option value="3">审核不通过</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="type-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/comment/add.js"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

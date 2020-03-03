@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="screen-orientation" content="portrait">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/iconfont.css?av=2" />
+	<body>
+		<div id="">
+			<div class="iconbox">
+    <i class="color iconfont icon-commue" slot="icon" v-if="!actType" @click="getparants()">
+      <span class="hh-fab-value">{{num}}</span>
+    </i>
+    <i :class="['iconfont',like,'color']" @click="setlike()">
+      <span class="hh-fab-value">{{likeNum}}</span>
+    </i>
+
+    <i :class="['iconfont',collect,'color']" @click="setcollect()"></i>
+    <i class="color iconfont icon-share" @click="share()"></i>
+  </div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src='js/vue.min.js'></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#dom',
+			data: {
+				alltag: [],
+				mytag: [],
+				active: "active",
+				tagvalue: "",
+				tagdata: [],
+				colorlist: ["mui-btn-primary", "mui-btn-success", "mui-btn-warning", "mui-btn-danger", "mui-btn-royal", ""]
+			},
+			activated() {
+				this.usertag();
+			},
+			created() {
+				this.usertag();
+			},
+			mounted() {},
+			methods: {
+				//用户的所有标签
+				usertag() {
+					this.mytag=[];
+					this.alltag=[]
+					let that = this
+					mui.ajax('http://api2.ceh.com.cn/tag/interests/list', {
+						data: {
+							user_id: "319430217930703154"
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'get', //HTTP请求类型
+						success: function(data) {
+							that.mytag = data.in;
+							that.alltag = data.not_in
+						},
+						error: function(xhr, type, errorThrown) {
+	
+						}
+					});
+	
+				},
+				randomRgb() {
+					return this.colorlist[Math.floor(Math.random() * this.colorlist.length)];
+				},
+				settag(tagstatus, item, index) {
+					let that = this
+					mui.ajax('http://api2.ceh.com.cn/tag/interests/set', {
+						data: {
+							user_id:"319430217930703154",
+							userid:"319430217930703154",
+							status: tagstatus,
+							tag_name: item.name,
+							tag_id: item.id
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						success: function(data) {
+							if(tagstatus==1){
+								that.alltag.splice(index,1)
+								that.mytag.unshift(item)
+							}else{
+								that.mytag.splice(index,1)
+								that.alltag.unshift(item);
+							}
+							// that.usertag();
+						},
+						error: function(xhr, type, errorThrown) {
+	
+						}
+					});
+	
+				},
+				getQueryString(name) {
+					let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+					let r = window.location.search.substr(1).match(reg);
+					if (r != null) {
+						return unescape(r[2]);
+					};
+					return null;
+				},
+			},
+		});
+</html>

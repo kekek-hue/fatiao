@@ -1,0 +1,39 @@
+<!-- user表单弹窗 -->
+<form id="user-form" lay-filter="user-form" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号</label>
+        <div class="layui-input-block">
+            <input id="name" name="name" placeholder="请输入账号" type="text" class="layui-input" maxlength="20" lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">昵称</label>
+        <div class="layui-input-block">
+            <input name="nickname" placeholder="请输入用户名" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手机号</label>
+        <div class="layui-input-block">
+            <input name="phone" placeholder="请输入手机号" type="text" class="layui-input" lay-verify="phone"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input name="email" placeholder="请输入邮箱" type="text" class="layui-input" lay-verify="email"/>
+        </div>
+    </div>
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+        <button class="layui-btn" lay-filter="user-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript"  src="/assets/module/sys/app/user/addUser.js?v=0.0.1"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

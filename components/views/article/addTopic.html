@@ -1,0 +1,189 @@
+<!--提示信息-->
+<div class="layui-col-md12">
+    <div class="layui-card">
+        <div class="layui-card-header">首页 - 添加专题</div>
+    </div>
+</div>
+<!--提示信息-->
+<form action="" class="layui-form layer-form" id="article-form" lay-filter="article-form">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md8">
+                <div class="layui-form-item">
+                        <button type="button" class="layui-btn layui-btn-normal" lay-filter="form-submit" lay-submit>
+                            <i class="layui-icon">提交</i>
+                        </button>
+                        <button type="button" class="ppp-back layui-btn layui-btn-primary">返回</button>
+                    </div>
+            <div class="layui-tab layui-tab-card">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">文章标题:</label>
+                        <div class="layui-col-md8">
+                            <input type="text" lay-verify="required"  name="title" autocomplete="off"
+                                   placeholder="请输入标题" class="layui-input" value=''>
+                        </div>
+                    </div>
+                    <!--//专题-->
+                    <input type="hidden" name="type_id" value="4">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">封面:</label>
+                        <div class="layui-col-md8">
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="test1">封面</button>
+                                <div class="layui-upload-list">
+                                    <img style="height: 108px; width:192px;" class="layui-upload-img" id="demo1">
+                                    <p id="demoText"></p>
+                                    <input lay-verify="required"  type="hidden" id="cover_id" name="cover_id">
+                                    <input lay-verify="required"  type="hidden" id="cover_ext" name="cover_ext">
+                                    <input type="hidden" name="img_ext" class="thumbnailPath" id="img_ext"
+                                    value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">简介</label>
+                        <div class="layui-input-block">
+                            <textarea name="abstract" lay-verify="required" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="layui-col-md4">
+                <div class="layui-card">
+                    <div class="layui-card-header">属性</div>
+                    <div class="layui-card-body layadmin-takerates">
+                        <!--折叠开始-->
+                        <div class="layui-collapse" lay-accordion="">
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">类型</h2>
+                                <div class="layui-colla-content layui-show">
+                                    <div id="category-id">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--折叠结束-->
+                            <!--折叠开始-->
+                            <!--折叠结束-->
+                        </div>
+    
+                        <!--折叠开始-->
+                        <!--                    <div class="layui-collapse" lay-filter="test">-->
+                        <!--                      <div class="layui-colla-item">-->
+                        <!--                        <h2 class="layui-colla-title">发布与可见性</h2>-->
+                        <!--                        <div class="layui-colla-content">-->
+                        <!--                          &lt;!&ndash; <p>可见性</p> &ndash;&gt;-->
+                        <!--                          <p>-->
+                        <!--                            <div class="layui-inline">-->
+                        <!--                              <label class="layui-form-label">发布</label>-->
+                        <!--                              <div class="layui-input-inline">-->
+                        <!--                                <input type="text" class="layui-input" name="publish-date" id="publish-btn" placeholder="yyyy-MM-dd HH:mm:ss">-->
+                        <!--                              </div>-->
+                        <!--                            </div>-->
+                        <!--                          </p>-->
+                        <!--                        </div>-->
+                        <!--                      </div>-->
+                        <!--                    </div>-->
+                        <!--折叠结束-->
+                        <!--折叠开始-->
+                        <!--                    <div class="layui-collapse" lay-filter="test">-->
+                        <!--                      <div class="layui-colla-item">-->
+                        <!--                        <h2 class="layui-colla-title">文章摘要(可选)</h2>-->
+                        <!--                        <div class="layui-colla-content">-->
+                        <!--                          <div class="layui-form-item">-->
+                        <!--                                <textarea placeholder="请输入内容" name="info" class="layui-textarea"></textarea>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                      </div>-->
+                        <!--                    </div>-->
+                        <!--折叠结束-->
+                        <!--折叠开始-->
+                        <div class="layui-collapse" lay-filter="test">
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">来源</h2>
+                                <div class="layui-colla-content layui-show">
+                                    <div class="layui-form-item">
+                                        <div class="">
+                                            <!--作者选择开始-->
+                                            <!--                                     <div class="layui-form-item">-->
+                                            <!--                                        <label class="layui-form-label">作者:</label>-->
+                                            <!--                                         <div class="layui-input-block">-->
+                                            <!--                                            <select name="author_id"  lay-search="">-->
+                                            <!--                                                <option value="">直接选择或搜索选择</option>-->
+                                            <!--                                            </select>-->
+                                            <!--                                        </div>-->
+                                            <!--                                    </div>-->
+                                            <!--作者选择结束-->
+    
+                                            <!--来源网址-->
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">来源网址:</label>
+                                                <div class="layui-input-block">
+                                                    <select name="source_id" lay-search="" id="source_type_id">
+                                                        <option value="">直接选择或搜索选择</option>
+                                                        <option>
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!--来源网址-->
+                                            <!--来源url-->
+                                            <!--                                    <div class="layui-form-item">-->
+                                            <!--                                        <label class="layui-form-label">来源url:</label>-->
+                                            <!--                                        <div class="layui-input-block">-->
+                                            <!--                                            <input type="text" name="source_url" lay-verify="art-title" autocomplete="off" placeholder="请输入来源url" class="layui-input" value="">-->
+                                            <!--                                        </div>-->
+                                            <!--                                    </div>-->
+                                            <!--来源url-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--折叠结束-->
+    
+                        <!-- 操作图文标签开始 -->
+                        <div class="layui-col-md4" style="width:540px;margin:20px 0 0 -15px;">
+                            <div class="layui-card">
+                                <div class="layui-card-header">标签</div>
+                                <div class="layui-card-body layadmin-takerates">
+                                    <div class="layui-collapse" lay-filter="test">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">标签</h2>
+                                            <div class="layui-form-item">
+                                                <blockquote class="layui-elem-quote layui-quote-nm">
+                                                    <div id="add_tag_div"></div>
+                                                    <div id="pagebox"></div>
+                                                </blockquote>
+                                                <!--                                        <div class="layui-inline">-->
+                                                <!--                                            <label class="layui-form-label">添加标签:</label>-->
+                                                <!--                                            <div class="layui-input-inline">-->
+                                                <!--                                                <input name="add_tag" id="add_tag" type="text" placeholder="标签" autocomplete="off"-->
+                                                <!--                                                       class="layui-input">-->
+                                                <!--                                            </div>-->
+                                                <!--                                        </div>-->
+                                            </div>
+                                            <!--                                    <div class="layui-form-item">-->
+                                            <!--                                        <button type="button" class="layui-btn layui-btn-sm" id="add_tag_btn">-->
+                                            <!--                                            <i class="layui-icon">添加</i>-->
+                                            <!--                                        </button>-->
+                                            <!--                                    </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 操作图文标签结束 -->
+                </div>
+                <!--左边属性结束-->
+            </div>
+    </div>
+</form>
+<script src="/assets/module/sys/article/addTopic.js"></script>
+

@@ -1,0 +1,33 @@
+<form enctype="multipart/form-data" id="person-form" lay-filter="person-form" class="layui-form model-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">订单号</label>
+        <div class="layui-input-block">
+            <input id="order_id" name="order_id" disabled type="text" class="layui-input" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-block">
+            <select name="status" lay-verify="required">
+                <option value="0">下单</option>
+                <option value="1">派送</option>
+                <option value="2">送达</option>
+                <option value="3">对方拒收</option>
+                <option value="4">未发货</option>
+                <option value="5">其他</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">说明</label>
+        <div class="layui-input-block">
+            <input id="info" name="info" placeholder="说明" type="text" class="layui-input" lay-verify="required"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item model-form-footer">
+        <button class="layui-btn layui-btn-primary close" id="cancel" type="button">取消</button>
+        <button type="button" class="layui-btn" lay-filter="integral-form-submit" lay-submit>保存</button>
+    </div>
+</form>
+<script type="text/javascript" src="/assets/module/sys/integral/setOrder.js"></script>

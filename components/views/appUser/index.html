@@ -1,0 +1,69 @@
+<style>
+ .layui-table-tips-main{
+     display: none
+   }
+   .layui-table-tips-c{
+     display: none
+   }
+</style>
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">用户管理</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>用户管理</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <!-- 搜索条件 -->
+        <div class="layui-form toolbar">
+            <form id="searchForm" onsubmit="return false;">
+                账号：<input name="name" class="layui-input search-input" type="text" placeholder="输入账号"/>&emsp;
+                用户名：<input name="nickname" class="layui-input search-input" type="text" placeholder="输入用户名"/>&emsp;
+
+                <!--是否是大v <select name="is_dv" lay-verify="">-->
+                <!--<option value="">请选择状态</option>-->
+                <!--<option value="0">是</option>-->
+                <!--<option value="1">否</option>-->
+            <!--</select>-->
+                <button id="user-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+            </form>
+        </div>
+        <table class="layui-table" id="user-table" lay-filter="user-table"></table>
+
+    </div>
+</div>
+
+<script type="text/html" id="TagDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="tagadd-attr">设置</a>
+    <!--<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="tag-delete">删除</a>-->
+</script>
+<!--是否大v-->
+
+<!-- 表格状态列 -->
+<script type="text/html" id="user-tpl-status">
+    <input type="checkbox" lay-filter="user-tpl-status" value="{{d.id}}" lay-skin="switch"
+           lay-text="正常|禁用" {{d.status==1?'checked':''}}/>
+</script>
+
+<script type="text/html" id="userDv">
+    {{# if (d.check_status != 1){d.check_status = '否'}}
+    <span style="color:#F581B1;">{{d.check_status}}</span>
+    {{#} else if (d.check_status == 1){d.check_status = '是'}}
+    <span style="color:green;">{{d.check_status}}</span>
+    {{# } }}
+</script>
+
+<script type="text/html" id="faceHtml">
+  {{# if(d.logo) { d.logo =d.logo }else{ d.logo = '/static/images/morentu.jpg' }  }}
+  <div><img style="height:28px;" data-img="{{d.logo}}" src="{{d.logo}}"></div>
+</script>
+
+
+
+<script type="text/javascript"  src="/assets/module/sys/app/user/user.js?v=0.1.9"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>

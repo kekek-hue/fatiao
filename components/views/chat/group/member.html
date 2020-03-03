@@ -1,0 +1,42 @@
+<div class="layui-card">
+        <div class="layui-card-header">
+            <h2 class="header-title">群组成员</h2>
+            <span class="layui-breadcrumb pull-right">
+              <a href="#!console">首页</a>
+              <a><cite>群组成员</cite></a>
+            </span>
+        </div>
+        <div class="layui-card-body">
+          <!-- 表格顶部操作列 -->
+            <script type="text/html" id="add-publish-article-toolbar">
+                <div class="layui-btn-container">
+                    <!--
+                        <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="addPublishArticle"><i
+                            class="layui-icon">&#xe654;</i>添加发布文章
+                        </button>
+                    -->
+
+                </div>
+            </script>
+            <table class="layui-table" id="scheme-article-table" lay-filter="scheme-article-table"></table>
+        </div>
+    </div>
+    <script type="text/html" id="faceArticle">
+      {{# if(d.face_res_id) { d.face_res_id = '../litImag/'+d.face_res_id }else{ d.face_res_id = '/static/images/log.jpg' }  }}
+      <div><img style="height:50px" data-img="{{d.face_res_id}}" src="{{d.face_res_id}}"></div>
+    </script>
+    <!-- 表格操作列 -->
+    <!--    
+        <script type="text/html" id="scheme-article-table-bar">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="delete">删除</a>
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="addPublishArticle">添加</a>
+        </script>
+    -->
+
+    <script type="text/javascript"  src="/assets/module/sys/chat/group/member.js?v=0.1.9"></script>
+    <script type="text/javascript">
+      layui.use('element',function(){
+        Lay(layui);
+      });
+    </script>
+    

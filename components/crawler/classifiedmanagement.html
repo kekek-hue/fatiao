@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>分类管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="assets/layui/css/layui.css"  media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <style>
+        #tips-add{
+            padding:20px;
+        }
+        .pd-20{
+            padding:20px;
+        }
+    </style>
+</head>
+<body class="pd-20">
+
+<div class="demoTable">
+    <button class="layui-btn" data-type="reload">添加</button>
+</div>
+
+<table class="layui-hide" id="LAY_table_user" lay-filter="demo" class="pd-20"></table>
+
+
+
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs del-btn" lay-event="del">删除</a>
+</script>
+
+<script src="/assets/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    var domain = 'http://api2.ceh.com.cn/';
+    var url = domain+'list/type';
+    layui.use(['table','layer','jquery','form'], function(){
+        var layer=layui.layer;
+        var form=layui.form;
+        var $=layui.jquery;
+        var table = layui.table;
+        var w=$(parent.window).width()-200;//获取浏览器的宽，减去侧边栏的宽度
+        //方法级渲染
+        table.render({
+            elem: '#LAY_table_user'
+            ,url: url
+            ,parseData: function(res){ //res 即为原始返回的数据
+                console.log(res);
+                var status;
+                if(res.result === 'ok'){
+                    status = 0;
+                }
+                for(var i in res.list.data){
+                    if(res.list.data[i].is_use ==1){
+                        res.list.data[i].use="否"
+                    }else{
+                        res.list.data[i].use="是"
+                    }
+                }
+
+                return {
+                    "code": status, //解析接口状态
+                    "msg": res.result, //解析提示文本
+                    "count": res.list.total, //解析数据长度
+                    "data": res.list.data //解析数据列表
+                };
+            }
+            ,width:w
+            ,cols: [[
+                {checkbox: true, fixed: true}
+                ,{field:'id', title: 'ID', width:80, sort: true, fixed: true}
+                ,{field:'name', title: '分类名称'}
+                // ,{field:'num', title: '数量', width:80, sort: true}
+                 ,{field:'tag', title: '关键词'}
+                 ,{field:'num', title: '最少个数',width:100}
+                 ,{field:'sort', title: '排序',width:80}
+                 ,{field:'use', title: '是否使用',width:100}
+                 ,{field:'create_time', title: '创建时间'}
+                ,{fixed: 'right', title: '操作', align:'center', toolbar: '#barDemo',width:150}
+            ]]
+            ,id: 'testReload'
+            ,page: true
+            ,limit:10
+        });
+
+        var $ = layui.$, active = {
+            reload: function(){
+                var demoReload = $('#demoReload');
+
+                //执行重载
+                table.reload('testReload', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    ,where: {
+                        key: {
+                            id: demoReload.val()
+                        }
+                    }
+                });
+            }
+        };
+
+        var i;
+        $('.demoTable .layui-btn').on('click', function(){
+            //获取form表单
+            var form1=document.getElementById("flForm");
+            form1.setAttribute('data-edi',1);
+            i=layer.open({
+                type: 1,
+                skin: 'layui-layer-rim', //加上边框
+                title:'添加分类',
+                area:'500px',
+//                area: ['500px', '400px'], //宽高
+                content: $('#tips-add')
+            });
+
+        });
+
+        //当点击确定的时候
+        $('.ok-btn').on('click',function(){
+            var tag=document.querySelector('.tag').value;
+            document.querySelector('.tag').value=tag.replace(/，/g,',');
+            var fForm=document.getElementById('flForm');
+            var fd=new FormData(fForm);
+            if(fForm.getAttribute('data-edi')==1){
+
+                $.ajax({
+                    url:domain+'add/type',
+                    type:'post',
+                    dataType:'json',
+                    data:fd,
+                    processData: false,
+                    contentType: false,
+                    success:function(d){
+                        if(d.result=='ok'){
+                            location.reload();
+                        }
+                    }
+                })
+            }else if(fForm.getAttribute('data-edi')==2){
+               fd.append('id',fForm.getAttribute('data-id'));
+               fd.append('data[name]',fd.get('name'));
+               fd.append('data[tag]',fd.get('tag'));
+               fd.append('data[num]',fd.get('num'));
+               fd.append('data[sort]',fd.get('sort'));
+                if(fd.get('use')=='是'){
+
+                    fd.append('data[use]','use');
+                }else{
+                    fd.append('data[use]','no');
+                }
+
+                $.ajax({
+                    url:domain+'up/data',
+                    type:'post',
+                    data:fd,
+                    dataType:'json',
+                    processData: false,
+                    contentType: false,
+                    success:function(d){
+                        if(d.result=='ok'){
+                            location.reload();
+
+                        }
+                    }
+                })
+            }
+        });
+
+        //监听工具条,删除,编辑
+        table.on('tool(demo)', function(obj){
+            var data = obj.data;
+            console.log(data);
+            if(obj.event === 'del'){
+                layer.confirm('确定删除这条数据吗', function(index){
+                    console.log(data.id);
+
+                    $.ajax({
+                        url:domain+'del/type',
+                        type:'post',
+                        data:{
+                            id:data.id
+                        },
+                        dataType:'json',
+                        success:function(d){
+                            if(d.result == 'ok'){
+                                obj.del();
+                            }
+                        }
+                    })
+
+                    layer.close(index);
+                });
+            }else if(obj.event === 'edit'){
+
+                var form1=document.getElementById("flForm");
+                form1.setAttribute('data-edi',2);
+                form1.setAttribute('data-id',data.id);
+                form1.elements['name'].value=data.name;
+                form1.elements['tag'].value=data.tag;
+                form1.elements['num'].value=data.num;
+                form1.elements['sort'].value=data.sort;
+
+                document.querySelector('.radio[value='+data.use+']').setAttribute('checked',true);
+
+                form.render('radio','form');
+                console.log($('.radio[value='+data.use+']'));
+                i=layer.open({
+                    type: 1,
+                    skin: 'layui-layer-rim', //加上边框
+                    title:'修改信息',
+                    area:'500px',
+//                    area: ['500px', '500px'], //宽高
+                    content: $('#tips-add')
+                });
+            }
+        });
+        //取消事件
+        $(document).on('click','.cancel-btn',function(){
+            layer.close(i);
+            location.reload();
+        })
+
+
+
+    });
+</script>
+
+</body>
+
+<div id="tips-add" style="display:none;">
+    <form class="layui-form pd-20" data-edi="1" action="" onsubmit="return false;" enctype="multipart/form-data" id="flForm" lay-filter="form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="name"  placeholder="请输入分类名称"  class="layui-input " lay-verify="title">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">关键词</label>
+            <div class="layui-input-block">
+                <input type="text" name="tag" lay-verify="title"  placeholder="请输入关键词使用英文,分隔" class="layui-input tag">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">最少个数</label>
+            <div class="layui-input-block">
+                <input type="number" name="num" placeholder="最少个数" class="layui-input" min="1">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">排序</label>
+            <div class="layui-input-block">
+                <input type="number" name="sort" lay-verify="title"  placeholder="请输入优先级，以数字格式" class="layui-input" min="1">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否使用</label>
+            <div class="layui-input-block">
+                <input type="radio" name="use" value="是" title="是" class="radio">
+                <input type="radio" name="use" value="否" title="否" class="radio">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn ok-btn">确定</button>
+                <button type="button" class="layui-btn cancel-btn layui-btn-primary">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</html>

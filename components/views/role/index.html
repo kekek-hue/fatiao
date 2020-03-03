@@ -1,0 +1,96 @@
+<style>
+ #searchForm *{
+   vertical-align: middle
+ }
+</style>
+<div class="layui-card">
+    <div class="layui-card-header">
+        <h2 class="header-title">角色管理</h2>
+        <span class="layui-breadcrumb pull-right">
+          <a href="#!console">首页</a>
+          <a><cite>角色管理</cite></a>
+        </span>
+    </div>
+    <div class="layui-card-body">
+        <!-- 搜索条件 -->
+        <!--<div class="layui-form toolbar">-->
+            <!--<form id="searchForm" onsubmit="return false;">-->
+                <!--角色名：<input name="roleName" class="layui-input search-input" type="text" placeholder="输入角色名"/>&emsp;-->
+                <!--<button id="role-btn-search" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>-->
+            <!--</form>-->
+        <!--</div>-->
+        <!-- 表格顶部操作列 -->
+        <!-- <script type="text/html" id="role-toolbar">
+            <div class="layui-btn-container">
+                {{# if({{addShow}} == true){ }}
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add"><i
+                        class="layui-icon">&#xe654;</i>添加
+                </button>
+                {{# } }}
+            </div>
+        </script> -->
+        <!-- 数据表格 -->
+        <table class="layui-table" id="role-table" lay-filter="role-table"></table>
+    </div>
+</div>
+
+<!-- 表单弹窗 -->
+<script type="text/html" id="role-model">
+    <form id="role-form" lay-filter="role-form" class="layui-form model-form">
+        <input name="id" type="hidden"/>
+        <input name="res_id" type="hidden"/>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色名</label>
+            <div class="layui-input-block">
+                <input name="name" placeholder="请输入角色名" type="text" class="layui-input" maxlength="20"
+                       lay-verify="required"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea name="describe" placeholder="请输入内容" class="layui-textarea" maxlength="200"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item model-form-footer">
+            <button class="layui-btn layui-btn-primary close" type="button">取消</button>
+            <button class="layui-btn" lay-filter="role-form-submit" lay-submit>保存</button>
+        </div>
+    </form>
+</script>
+
+<!-- 表单tree -->
+<script type="text/html" id="menu-tree">
+    <form id="tree-form" lay-filter="tree-form" class="layui-form model-form">
+        <input name="roleId" type="hidden"/>
+        <div class="content_wrap" style="padding:20px 70px 100px;height:200px;overflow-y: auto">
+            <div>
+                <ul id="menuTreeData" class="ztree"></ul>
+            </div>
+        </div>
+        <div class="layui-form-item model-form-footer" style="padding:10px 30px;">
+            <button class="layui-btn layui-btn-primary layui-btn-sm close" type="button">取消</button>
+            <button class="layui-btn layui-btn-sm" lay-filter="tree-form-submit" lay-submit>保存</button>
+        </div>
+    </form>
+</script>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="role-table-bar">
+    {{#  if({{permShow}} == true){ }}
+    <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="resource">菜单授权</a>
+    {{#  } }}
+    {{#  if({{editShow}} == true){ }}
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    {{#  } }}
+    {{#  if({{deleteShow}} == true){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    {{#  } }}
+</script>
+<script type="text/javascript"  src="/assets/module/sys/role/role.js"></script>
+<script type="text/javascript">
+  layui.use('element',function(){
+    Lay(layui);
+  });
+</script>
